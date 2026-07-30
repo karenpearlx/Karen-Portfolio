@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services & Pricing — Karen Pearl Ong</title>
-    <meta name="description" content="Operations Lead and systems builder for early-stage startups. I help founders turn chaos into process — SOPs, workflows, AI-powered internal tools, and remote teams that actually run themselves.">
+    <title>Work — Karen Pearl Ong</title>
+    <meta name="description" content="Case studies, internal tools, deliverables, and SEO results from Karen Pearl Ong's operations and systems work.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -3135,22 +3135,244 @@
             }
         }
 
-    </style>
+    
+/* ========== HIGHLIGHTS STRIP (homepage) ========== */
+.highlights { padding: 120px 0; background: var(--dark); color: var(--white); position: relative; overflow: hidden; }
+.highlights::before {
+    content: ''; position: absolute; top: -30%; right: -10%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(181,107,74,0.10), transparent 65%);
+    border-radius: 50%; pointer-events: none;
+}
+.highlights-header { max-width: 780px; margin-bottom: 60px; position: relative; z-index: 1; }
+.highlights-header .section-label { color: var(--teal); }
+.highlights-lead {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+    color: var(--gray-400);
+    line-height: 1.55;
+    margin-top: 18px;
+    max-width: 720px;
+}
+.highlights-lead strong { color: var(--white); font-weight: 500; }
+.metrics-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 20px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative; z-index: 1;
+}
+.metric-cell {
+    padding: 40px 32px;
+    border-right: 1px solid rgba(255,255,255,0.06);
+}
+.metric-cell:last-child { border-right: none; }
+.metric-value {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+.metric-value .u { color: var(--teal); font-size: 0.55em; margin-left: 4px; }
+.metric-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-top: 14px;
+    line-height: 1.5;
+}
+.highlights-wins {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    position: relative; z-index: 1;
+}
+.win-chip {
+    padding: 20px 22px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    display: flex; flex-direction: column; gap: 6px;
+}
+.win-kw {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--white);
+    line-height: 1.35;
+}
+.win-meta {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--teal);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.highlights-cta {
+    margin-top: 48px;
+    display: flex;
+    justify-content: center;
+    position: relative; z-index: 1;
+}
+.highlights-cta a {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    color: var(--teal);
+    padding: 14px 30px;
+    border: 1px solid rgba(181,107,74,0.4);
+    border-radius: 50px;
+    transition: all 0.3s var(--ease-out);
+    display: inline-flex; align-items: center; gap: 10px;
+}
+.highlights-cta a:hover {
+    background: var(--teal);
+    color: var(--dark);
+    border-color: var(--teal);
+    transform: translateY(-2px);
+}
+.highlights-note {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    margin-top: 20px;
+    position: relative; z-index: 1;
+}
+@media (max-width: 900px) {
+    .metrics-row { grid-template-columns: repeat(2, 1fr); }
+    .metric-cell:nth-child(2) { border-right: none; }
+    .metric-cell:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .highlights-wins { grid-template-columns: 1fr; }
+}
+
+/* ========== WORK PAGE ========== */
+.work-hero {
+    padding: 160px 0 80px;
+    background: var(--dark);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+.work-hero::before {
+    content: ''; position: absolute; top: -40%; left: -10%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(181,107,74,0.08), transparent 65%);
+    border-radius: 50%; pointer-events: none;
+}
+.work-hero-inner { max-width: 820px; position: relative; z-index: 1; }
+.work-hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 6vw, 4.6rem);
+    line-height: 1.05;
+    color: var(--white);
+    font-weight: 400;
+    margin: 14px 0 24px;
+    letter-spacing: -0.02em;
+}
+.work-hero h1 em { font-style: italic; color: var(--teal); }
+.work-hero-lead {
+    font-size: 1.15rem;
+    color: var(--gray-400);
+    max-width: 680px;
+    line-height: 1.75;
+}
+
+.work-cards {
+    padding: 100px 0 60px;
+    background: var(--white);
+}
+.work-hub-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+.work-hub-card {
+    background: var(--light);
+    border: 1px solid var(--blush);
+    border-radius: 24px;
+    padding: 44px 40px;
+    transition: all 0.4s var(--ease-out);
+    display: flex; flex-direction: column; gap: 16px;
+    position: relative;
+    overflow: hidden;
+}
+.work-hub-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 60px rgba(10,10,10,0.08);
+    border-color: var(--teal);
+}
+.work-hub-card.dark {
+    background: var(--dark);
+    color: var(--white);
+    border-color: rgba(255,255,255,0.08);
+}
+.work-hub-tag {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--teal);
+}
+.work-hub-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--dark);
+    line-height: 1.15;
+}
+.work-hub-card.dark .work-hub-title { color: var(--white); }
+.work-hub-desc {
+    font-size: 0.98rem;
+    color: var(--gray-600);
+    line-height: 1.7;
+    flex-grow: 1;
+}
+.work-hub-card.dark .work-hub-desc { color: var(--gray-400); }
+.work-hub-arrow {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    color: var(--teal);
+    display: inline-flex; align-items: center; gap: 10px;
+    transition: gap 0.3s ease;
+    margin-top: 8px;
+}
+.work-hub-card:hover .work-hub-arrow { gap: 16px; }
+@media (max-width: 800px) {
+    .work-hub-grid { grid-template-columns: 1fr; }
+}
+
+/* Section anchors on work page */
+.work-section {
+    padding: 100px 0;
+    border-top: 1px solid var(--blush);
+}
+.work-section.dark {
+    background: var(--dark);
+    color: var(--white);
+    border-top-color: rgba(255,255,255,0.06);
+}
+.work-section-head { max-width: 720px; margin-bottom: 50px; }
+.work-section.dark .section-title { color: var(--white); }
+
+</style>
 </head>
 <body>
-<!-- ========== NAVIGATION ========== -->
-<nav class="nav" id="nav">
+
+<nav class="nav scrolled" id="nav">
     <div class="container nav-inner">
         <a href="index.html" class="nav-logo">K<span>.</span>Pearl</a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html#about">About</a></li>
-            <li><a href="index.html#content">Content</a></li>
-            <li><a href="index.html#process">Process</a></li>
-            <li><a href="index.html#experience">Experience</a></li>
-            <li><a href="index.html#work">Work</a></li>
-            <li><a href="index.html#case-studies">Case Studies</a></li>
-            <li><a href="index.html#testimonials">Testimonials</a></li>
-            <li><a href="services.html" style="color: var(--teal);">Services</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="work.html">Work</a></li>
             <li><a href="index.html#contact">Contact</a></li>
         </ul>
         <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
@@ -3159,94 +3381,215 @@
     </div>
 </nav>
 
-<!-- ========== PAGE HEADER ========== -->
-<section style="padding: 140px 0 60px; background: var(--white);">
+<!-- WORK HERO -->
+<section class="work-hero">
     <div class="container">
-        <a href="index.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--gray-500); font-family: var(--font-display); font-size: 0.9rem; font-weight: 500; margin-bottom: 24px; transition: color .2s;" onmouseover="this.style.color='var(--teal)'" onmouseout="this.style.color='var(--gray-500)'">← Back to Portfolio</a>
-        <div class="section-label">Services & Pricing</div>
-        <h1 class="section-title dark" style="font-size: clamp(2.4rem, 5vw, 3.6rem); margin-top: 12px;">Pick the size of<br>the problem you have.</h1>
-        <p style="font-size: 1.1rem; color: var(--gray-500); margin-top: 20px; max-width: 640px; line-height: 1.7;">Three ways to work together. Custom scope and hourly consulting available too. Tell me what you're trying to fix and we'll scope from there.</p>
-    </div>
-</section>
-
-<!-- ========== SERVICES ========== -->
-<section class="services">
-    <div class="container">
-        <div class="services-grid">
-
-            <div class="service-card reveal">
-                <div class="service-name">Ops Audit</div>
-                <div class="service-price">$300</div>
-                <div class="service-price-note">One-time engagement</div>
-                <p class="service-desc">A clear-eyed look at how your ops actually run today and where they're quietly leaking time, money, and quality.</p>
-                <ul class="service-list">
-                    <li>Walkthrough of current workflows and tools</li>
-                    <li>Bottleneck and inefficiency map</li>
-                    <li>Written report with prioritized recommendations</li>
-                    <li>30-min review call to walk through findings</li>
-                    <li>Good entry point if you're not sure what you need yet</li>
-                </ul>
-                <a href="index.html#contact" class="service-cta">Book the audit</a>
-            </div>
-
-            <div class="service-card featured reveal reveal-delay-1">
-                <div class="service-badge">Most Popular</div>
-                <div class="service-name">Systems Build</div>
-                <div class="service-price">$1,500<span style="font-size: 1.2rem; font-weight: 500; color: var(--ink-mid);"> min</span></div>
-                <div class="service-price-note">One-time engagement</div>
-                <p class="service-desc">The full build. SOPs, workflows, and tool setup so your team stops asking the same questions and starts running the playbook. I build the files and templates on my end and hand the finished deliverables to you. Already have a system that needs fixing? We can work with what you've got.</p>
-                <ul class="service-list">
-                    <li>SOPs for every core process, written and documented</li>
-                    <li>Workflow design end-to-end with handoffs mapped</li>
-                    <li>Tool setup and config (Notion, ClickUp, Airtable, etc.)</li>
-                    <li>Ready-to-use process templates</li>
-                    <li>Loom walkthroughs for the team</li>
-                </ul>
-                <a href="index.html#contact" class="service-cta">Start the build</a>
-            </div>
-
-            <div class="service-card reveal reveal-delay-2">
-                <div class="service-name">Full Ops Setup</div>
-                <div class="service-price">$3,000</div>
-                <div class="service-price-note">One-time engagement</div>
-                <p class="service-desc">Everything done for you. Audit, systems build, plus hiring and training the team to actually run it after I hand it off.</p>
-                <ul class="service-list">
-                    <li>Everything in Ops Audit and Systems Build</li>
-                    <li>VA sourcing, screening, and hiring</li>
-                    <li>Onboarding flow and 2-week ramp plan</li>
-                    <li>Live training sessions with the new team</li>
-                    <li>Clean handoff so it runs without me</li>
-                </ul>
-                <a href="index.html#contact" class="service-cta">Let's set it up</a>
-            </div>
-
-        </div>
-        <div class="services-note reveal">
-            <strong>Custom projects</strong> and <strong>hourly consulting ($40/hr)</strong> available too. Also open to <strong>full-time remote roles at $20/hr</strong>. Tell me what you're trying to fix and we'll scope it from there.
-        </div>
-
-        <div style="text-align: center; margin-top: 60px;">
-            <a href="index.html#contact" class="btn btn-primary" style="display: inline-block; padding: 16px 36px; background: var(--dark); color: var(--white); border-radius: 50px; font-family: var(--font-display); font-weight: 700;">Get in Touch →</a>
+        <div class="work-hero-inner">
+            <div class="section-label">Work</div>
+            <h1>Projects, results, and <em>the systems behind them</em>.</h1>
+            <p class="work-hero-lead">A hub for everything I've built and shipped: campaign case studies, internal tools, agency deliverables, and SEO wins across client work.</p>
         </div>
     </div>
 </section>
 
-<!-- ========== FOOTER ========== -->
+<!-- HUB GRID -->
+<section class="work-cards">
+    <div class="container">
+        <div class="work-hub-grid">
+            <a href="results.html" class="work-hub-card dark">
+                <span class="work-hub-tag">Featured Campaign</span>
+                <div class="work-hub-title">Case Studies</div>
+                <p class="work-hub-desc">Full breakdown of the AEO/GEO blog campaign: 250 keywords seeded, 61% win rate, and a median time-to-rank of 1 day across nine anonymized clients.</p>
+                <span class="work-hub-arrow">Open case studies <span>→</span></span>
+            </a>
+            <a href="#tools" class="work-hub-card">
+                <span class="work-hub-tag">Systems</span>
+                <div class="work-hub-title">Internal Tools</div>
+                <p class="work-hub-desc">Operations dashboards, SOP libraries, and AI-assisted internal tooling built with React, Supabase, Vercel, and prompt-engineered workflows.</p>
+                <span class="work-hub-arrow">See tools <span>↓</span></span>
+            </a>
+            <a href="#deliverables" class="work-hub-card">
+                <span class="work-hub-tag">Client Work</span>
+                <div class="work-hub-title">Deliverables</div>
+                <p class="work-hub-desc">Site audits, Figma web designs, and SEO proposals. Production-ready client deliverables from years of agency ops.</p>
+                <span class="work-hub-arrow">Browse deliverables <span>↓</span></span>
+            </a>
+            <a href="#seo-results" class="work-hub-card">
+                <span class="work-hub-tag">Screenshots</span>
+                <div class="work-hub-title">SEO Results</div>
+                <p class="work-hub-desc">GeoGrid transformations, GBP interaction growth, keyword rank movement, and organic traffic gains &mdash; captured straight from the tools.</p>
+                <span class="work-hub-arrow">View results <span>↓</span></span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- INTERNAL TOOLS -->
+<section class="work-section" id="tools">
+    <div class="container">
+        <div class="work-section-head reveal">
+            <div class="section-label">Internal Tools</div>
+            <h2 class="section-title dark">Software I built to<br>replace the spreadsheet mess.</h2>
+        </div>
+        <div class="work-link-cards reveal">
+            <div class="work-link-card" style="text-align:left; align-items:flex-start;">
+                <div class="work-link-icon teal">⚙️</div>
+                <div class="work-link-title">Operations Dashboard</div>
+                <div class="work-link-desc" style="text-align:left;">Built for an AI search startup in React + Supabase, deployed on Vercel. One internal tool covering Reddit ops, blog content production, and SEO tracking, replacing a tangle of spreadsheets. Centralized scheduling, status, and reporting; review time dropped and missed work went near-zero.</div>
+                <div class="work-link-btn">React · Supabase · Vercel</div>
+            </div>
+            <div class="work-link-card" style="text-align:left; align-items:flex-start;">
+                <div class="work-link-icon orange">📐</div>
+                <div class="work-link-title">SOP & Workflow Library</div>
+                <div class="work-link-desc" style="text-align:left;">A living set of SOPs covering onboarding, blog production, Reddit ops, QA, client comms, and reporting. Originally built for 30+ agency accounts and refined across engagements. Written so a new hire can take a task from zero to done without pinging the founder.</div>
+                <div class="work-link-btn">Notion · Linear · Slack</div>
+            </div>
+            <div class="work-link-card" style="text-align:left; align-items:flex-start;">
+                <div class="work-link-icon blue">🤖</div>
+                <div class="work-link-title">AI-Assisted Internal Tools</div>
+                <div class="work-link-desc" style="text-align:left;">Prompt-engineered workflows and small internal tools using Claude, ChatGPT, Gemini, and Cursor. Anything from QA checklists and content briefs to one-off scripts that save the team hours a week.</div>
+                <div class="work-link-btn">Claude · ChatGPT · Cursor</div>
+            </div>
+            <a href="https://feelingly-curtly-just-takin.kitten.space" target="_blank" class="work-link-card" style="text-align:left; align-items:flex-start;">
+                <div class="work-link-icon teal">📚</div>
+                <div class="work-link-title">The Book Vault PH</div>
+                <div class="work-link-desc" style="text-align:left;">Full-stack e-commerce site for a preloved bookstore. Vanilla HTML/CSS/JS, Supabase backend, custom admin panel. Real-time inventory sync, order flow, content creator tools, session auth. Shipped in a day.</div>
+                <div class="work-link-btn">Visit Site <span>→</span></div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- DELIVERABLES -->
+<section class="work-section" id="deliverables" style="background: var(--light);">
+    <div class="container">
+        <div class="work-section-head reveal">
+            <div class="section-label">Deliverables</div>
+            <h2 class="section-title dark">Audits, designs, and<br>proposals from client work.</h2>
+        </div>
+        <div class="work-link-cards reveal">
+            <a href="https://drive.google.com/drive/u/1/folders/1Y2qAPkH9u-9Rua8IkWlhB0mRT0fLUBRK" target="_blank" class="work-link-card">
+                <div class="work-link-icon teal">📊</div>
+                <div class="work-link-title">Site Audits</div>
+                <div class="work-link-desc">Comprehensive technical SEO audits covering site health, on-page issues, backlink profiles, and actionable recommendations.</div>
+                <div class="work-link-btn">View Audits <span>→</span></div>
+            </a>
+            <a href="https://www.figma.com/design/j1xfWpbLq0wsA9aUpWLF8N/PORTFOLIO---WEB-DESIGN?node-id=0-1&p=f" target="_blank" class="work-link-card">
+                <div class="work-link-icon orange">🎨</div>
+                <div class="work-link-title">Website Designs</div>
+                <div class="work-link-desc">Custom Figma web designs for client sites &mdash; from wireframes to high-fidelity mockups ready for development.</div>
+                <div class="work-link-btn">View Designs <span>→</span></div>
+            </a>
+            <a href="https://drive.google.com/drive/u/1/folders/1YcbBIrb_-tLCB2UiKjs-HiHi0pkv7CRW" target="_blank" class="work-link-card">
+                <div class="work-link-icon blue">📋</div>
+                <div class="work-link-title">SEO Proposals</div>
+                <div class="work-link-desc">Strategic SEO proposals outlining campaign roadmaps, keyword targets, competitive analysis, and projected outcomes.</div>
+                <div class="work-link-btn">View Proposals <span>→</span></div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- SEO RESULTS -->
+<section class="work-section" id="seo-results">
+    <div class="container">
+        <div class="work-section-head reveal">
+            <div class="section-label">SEO Results</div>
+            <h2 class="section-title dark">Rankings, growth, and<br>numbers that moved.</h2>
+        </div>
+        <div class="results-grid reveal">
+            <div class="result-card">
+                <img src="images/seo-results/geogrid-before-after.png" alt="GeoGrid Before and After" class="zoomable">
+                <div class="result-card-body">
+                    <span class="result-card-label">Local Rankings Transformation</span>
+                    <span class="result-highlight">17.94 → 3.02 Avg</span>
+                </div>
+            </div>
+            <div class="result-card">
+                <img src="images/seo-results/geogrid-green.png" alt="GeoGrid Results" class="zoomable">
+                <div class="result-card-body">
+                    <span class="result-card-label">Map Pack Dominance</span>
+                    <span class="result-highlight">2.74 Avg Rank</span>
+                </div>
+            </div>
+            <div class="result-card">
+                <img src="images/seo-results/gbp-interactions2.png" alt="GBP Interactions Growth" class="zoomable">
+                <div class="result-card-body">
+                    <span class="result-card-label">GBP Interactions Growth</span>
+                    <span class="result-highlight">+762.7% YoY</span>
+                </div>
+            </div>
+            <div class="result-card">
+                <img src="images/seo-results/gbp-interactions1.png" alt="GBP Performance" class="zoomable">
+                <div class="result-card-body">
+                    <span class="result-card-label">Business Profile Performance</span>
+                    <span class="result-highlight">+48.9% YoY</span>
+                </div>
+            </div>
+            <div class="result-card">
+                <img src="images/seo-results/keyword-rankings-roofing.png" alt="Roofing Keyword Rankings" class="zoomable">
+                <div class="result-card-body">
+                    <span class="result-card-label">Roofing Keywords — Charlotte, NC</span>
+                    <span class="result-highlight">Up to +49 Positions</span>
+                </div>
+            </div>
+            <div class="result-card">
+                <img src="images/seo-results/keyword-rankings-pest.png" alt="Pest Control Keyword Rankings" class="zoomable">
+                <div class="result-card-body">
+                    <span class="result-card-label">Pest Control Keywords — Wichita, KS</span>
+                    <span class="result-highlight">Up to +49 Positions</span>
+                </div>
+            </div>
+            <div class="result-card">
+                <img src="images/seo-results/ahrefs-overview1.png" alt="Ahrefs Overview" class="zoomable">
+                <div class="result-card-body">
+                    <span class="result-card-label">Organic Growth Overview</span>
+                    <span class="result-highlight">+96 Organic Traffic</span>
+                </div>
+            </div>
+            <div class="result-card">
+                <img src="images/seo-results/ahrefs-overview2.png" alt="Ahrefs Overview" class="zoomable">
+                <div class="result-card-body">
+                    <span class="result-card-label">Backlink Profile Growth</span>
+                    <span class="result-highlight">+102 Backlinks</span>
+                </div>
+            </div>
+            <div class="result-card">
+                <img src="images/seo-results/gbp-interactions3.png" alt="GBP Interactions" class="zoomable">
+                <div class="result-card-body">
+                    <span class="result-card-label">GBP Interactions Growth</span>
+                    <span class="result-highlight">+61.5% YoY</span>
+                </div>
+            </div>
+            <div class="result-card">
+                <img src="images/seo-results/gbp-interactions4.png" alt="GBP Interactions" class="zoomable">
+                <div class="result-card-body">
+                    <span class="result-card-label">GBP Interactions Growth</span>
+                    <span class="result-highlight">+55.9% YoY</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <footer class="footer">
     <div class="container">
         <p class="footer-text">© 2026 Karen Pearl Ong. Built with <span>♥</span> and lots of coffee.</p>
     </div>
 </footer>
 
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">✕</button>
+    <img src="" alt="Expanded view" id="lightboxImg">
+</div>
+
 <script>
     const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-        nav.classList.toggle('scrolled', window.scrollY > 50);
-    });
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
-    navToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('open');
+    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => navLinks.classList.remove('open'));
     });
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -3254,6 +3597,25 @@
         });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+    document.querySelectorAll('.zoomable').forEach(img => {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', () => {
+            lightboxImg.src = img.src;
+            lightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+    const closeLightbox = () => {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+    };
+    lightbox.addEventListener('click', closeLightbox);
+    lightboxClose.addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 </script>
 </body>
 </html>

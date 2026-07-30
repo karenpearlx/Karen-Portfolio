@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karen Pearl Ong — Operations Lead & Systems Builder</title>
-    <meta name="description" content="Operations Lead and systems builder for early-stage startups. I help founders turn chaos into process — SOPs, workflows, AI-powered internal tools, and remote teams that actually run themselves.">
+    <meta name="description" content="Operations Lead and systems builder for early-stage startups. SOPs, workflows, AI-powered internal tools, and remote teams that run themselves.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -3135,24 +3135,246 @@
             }
         }
 
-    </style>
+    
+/* ========== HIGHLIGHTS STRIP (homepage) ========== */
+.highlights { padding: 120px 0; background: var(--dark); color: var(--white); position: relative; overflow: hidden; }
+.highlights::before {
+    content: ''; position: absolute; top: -30%; right: -10%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(181,107,74,0.10), transparent 65%);
+    border-radius: 50%; pointer-events: none;
+}
+.highlights-header { max-width: 780px; margin-bottom: 60px; position: relative; z-index: 1; }
+.highlights-header .section-label { color: var(--teal); }
+.highlights-lead {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+    color: var(--gray-400);
+    line-height: 1.55;
+    margin-top: 18px;
+    max-width: 720px;
+}
+.highlights-lead strong { color: var(--white); font-weight: 500; }
+.metrics-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 20px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative; z-index: 1;
+}
+.metric-cell {
+    padding: 40px 32px;
+    border-right: 1px solid rgba(255,255,255,0.06);
+}
+.metric-cell:last-child { border-right: none; }
+.metric-value {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+.metric-value .u { color: var(--teal); font-size: 0.55em; margin-left: 4px; }
+.metric-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-top: 14px;
+    line-height: 1.5;
+}
+.highlights-wins {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    position: relative; z-index: 1;
+}
+.win-chip {
+    padding: 20px 22px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    display: flex; flex-direction: column; gap: 6px;
+}
+.win-kw {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--white);
+    line-height: 1.35;
+}
+.win-meta {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--teal);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.highlights-cta {
+    margin-top: 48px;
+    display: flex;
+    justify-content: center;
+    position: relative; z-index: 1;
+}
+.highlights-cta a {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    color: var(--teal);
+    padding: 14px 30px;
+    border: 1px solid rgba(181,107,74,0.4);
+    border-radius: 50px;
+    transition: all 0.3s var(--ease-out);
+    display: inline-flex; align-items: center; gap: 10px;
+}
+.highlights-cta a:hover {
+    background: var(--teal);
+    color: var(--dark);
+    border-color: var(--teal);
+    transform: translateY(-2px);
+}
+.highlights-note {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    margin-top: 20px;
+    position: relative; z-index: 1;
+}
+@media (max-width: 900px) {
+    .metrics-row { grid-template-columns: repeat(2, 1fr); }
+    .metric-cell:nth-child(2) { border-right: none; }
+    .metric-cell:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .highlights-wins { grid-template-columns: 1fr; }
+}
+
+/* ========== WORK PAGE ========== */
+.work-hero {
+    padding: 160px 0 80px;
+    background: var(--dark);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+.work-hero::before {
+    content: ''; position: absolute; top: -40%; left: -10%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(181,107,74,0.08), transparent 65%);
+    border-radius: 50%; pointer-events: none;
+}
+.work-hero-inner { max-width: 820px; position: relative; z-index: 1; }
+.work-hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 6vw, 4.6rem);
+    line-height: 1.05;
+    color: var(--white);
+    font-weight: 400;
+    margin: 14px 0 24px;
+    letter-spacing: -0.02em;
+}
+.work-hero h1 em { font-style: italic; color: var(--teal); }
+.work-hero-lead {
+    font-size: 1.15rem;
+    color: var(--gray-400);
+    max-width: 680px;
+    line-height: 1.75;
+}
+
+.work-cards {
+    padding: 100px 0 60px;
+    background: var(--white);
+}
+.work-hub-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+.work-hub-card {
+    background: var(--light);
+    border: 1px solid var(--blush);
+    border-radius: 24px;
+    padding: 44px 40px;
+    transition: all 0.4s var(--ease-out);
+    display: flex; flex-direction: column; gap: 16px;
+    position: relative;
+    overflow: hidden;
+}
+.work-hub-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 60px rgba(10,10,10,0.08);
+    border-color: var(--teal);
+}
+.work-hub-card.dark {
+    background: var(--dark);
+    color: var(--white);
+    border-color: rgba(255,255,255,0.08);
+}
+.work-hub-tag {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--teal);
+}
+.work-hub-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--dark);
+    line-height: 1.15;
+}
+.work-hub-card.dark .work-hub-title { color: var(--white); }
+.work-hub-desc {
+    font-size: 0.98rem;
+    color: var(--gray-600);
+    line-height: 1.7;
+    flex-grow: 1;
+}
+.work-hub-card.dark .work-hub-desc { color: var(--gray-400); }
+.work-hub-arrow {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    color: var(--teal);
+    display: inline-flex; align-items: center; gap: 10px;
+    transition: gap 0.3s ease;
+    margin-top: 8px;
+}
+.work-hub-card:hover .work-hub-arrow { gap: 16px; }
+@media (max-width: 800px) {
+    .work-hub-grid { grid-template-columns: 1fr; }
+}
+
+/* Section anchors on work page */
+.work-section {
+    padding: 100px 0;
+    border-top: 1px solid var(--blush);
+}
+.work-section.dark {
+    background: var(--dark);
+    color: var(--white);
+    border-top-color: rgba(255,255,255,0.06);
+}
+.work-section-head { max-width: 720px; margin-bottom: 50px; }
+.work-section.dark .section-title { color: var(--white); }
+
+</style>
 </head>
 <body>
 
-<!-- ========== NAVIGATION ========== -->
 <nav class="nav" id="nav">
     <div class="container nav-inner">
-        <a href="#" class="nav-logo">K<span>.</span>Pearl</a>
+        <a href="index.html" class="nav-logo">K<span>.</span>Pearl</a>
         <ul class="nav-links" id="navLinks">
             <li><a href="#about">About</a></li>
-            <li><a href="#content">Content</a></li>
-            <li><a href="#process">Process</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="results.html">Results</a></li>
-            <li><a href="#work">Work</a></li>
-            <li><a href="#case-studies">Case Studies</a></li>
+            <li><a href="#highlights">Highlights</a></li>
+            <li><a href="work.html">Work</a></li>
             <li><a href="#testimonials">Testimonials</a></li>
-            <li><a href="services.html">Services</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
         <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
@@ -3161,7 +3383,7 @@
     </div>
 </nav>
 
-<!-- ========== HERO ========== -->
+<!-- HERO -->
 <section class="hero" id="hero">
     <div class="hero-noise"></div>
     <div class="hero-grid"></div>
@@ -3170,29 +3392,28 @@
             <div class="hero-text">
                 <p class="hero-greeting">Hello, I'm</p>
                 <h1 class="hero-name">Karen Pearl <span class="accent">Ong</span></h1>
-                <p class="hero-role">SEO Lead · AEO/GEO · Content Systems · Systems Builder</p>
+                <p class="hero-role">Operations Lead · AEO/GEO · Content Systems · Systems Builder</p>
                 <p class="hero-desc">I help early-stage startups build the operational backbone they're missing. Hand me the chaos, and I'll hand you back SOPs, clean workflows, a team that runs without you, and the internal tools to keep it all moving.</p>
                 <div class="hero-availability">
                     <span class="hero-availability-dot"></span>
-                    <span>Open to full-time remote roles · <strong>$20/hr</strong></span>
+                    <span>Open to full-time remote roles</span>
                 </div>
                 <div class="hero-buttons">
-                    <a href="#work" class="btn btn-primary">See How I Work →</a>
-                    <a href="services.html" class="btn btn-outline">Services & Pricing</a>
+                    <a href="work.html" class="btn btn-primary">See My Work →</a>
                     <a href="#contact" class="btn btn-outline">Let's Talk</a>
                 </div>
                 <div class="hero-stats">
                     <div>
-                        <div class="hero-stat-number">5<span>+</span></div>
-                        <div class="hero-stat-label">Years Experience</div>
+                        <div class="hero-stat-number">250<span>+</span></div>
+                        <div class="hero-stat-label">Keywords Seeded</div>
                     </div>
                     <div>
-                        <div class="hero-stat-number">30<span>+</span></div>
-                        <div class="hero-stat-label">Workflows Built</div>
+                        <div class="hero-stat-number">61<span>%</span></div>
+                        <div class="hero-stat-label">Win Rate</div>
                     </div>
                     <div>
-                        <div class="hero-stat-number">3<span>×</span></div>
-                        <div class="hero-stat-label">Startup Ops Teams Led</div>
+                        <div class="hero-stat-number">1<span>d</span></div>
+                        <div class="hero-stat-label">Median Time-to-Rank</div>
                     </div>
                 </div>
             </div>
@@ -3207,7 +3428,7 @@
     </div>
 </section>
 
-<!-- ========== ABOUT ========== -->
+<!-- ABOUT -->
 <section class="about" id="about">
     <div class="container">
         <div class="about-inner">
@@ -3215,7 +3436,7 @@
                 <div class="section-label">About Me</div>
                 <h2 class="section-title dark">I build systems that make<br>startups run smoother.</h2>
                 <p>Most early-stage companies don't have an ops problem because they're failing. They have one because they're growing too fast for the duct tape to hold. That's where I come in. I find the bottlenecks, write the SOPs nobody had time to write, and build the workflows that let founders stop being the bottleneck themselves.</p>
-                <p>Most recently I built and shipped an internal Operations Dashboard in React and Supabase, covering Reddit ops, blog content production, and SEO tracking in one place, replacing a tangle of spreadsheets for an AI search startup. Before that, at Cascade Web Solutions, I started as the first VA hire and grew into the senior manager keeping 30+ accounts on rails, hiring, onboarding, training, SOPs, client comms, the whole backend of the agency.</p>
+                <p>Most recently I built and shipped an internal Operations Dashboard in React and Supabase, covering Reddit ops, blog content production, and SEO tracking in one place, replacing a tangle of spreadsheets for an AI search startup. Before that, at Cascade Web Solutions, I started as the first VA hire and grew into the senior manager keeping 30+ accounts on rails.</p>
                 <p>You focus on growth. I'll build the backend that keeps it running.</p>
             </div>
             <div class="reveal reveal-delay-2">
@@ -3225,10 +3446,10 @@
                     <div class="skill-tag">Workflow Design</div>
                     <div class="skill-tag">Team Operations</div>
                     <div class="skill-tag">VA Management</div>
-                    <div class="skill-tag">Process Automation</div>
+                    <div class="skill-tag">AEO / GEO</div>
+                    <div class="skill-tag">Content Strategy</div>
                     <div class="skill-tag">AI Tool Building</div>
                     <div class="skill-tag">Technical SEO</div>
-                    <div class="skill-tag">Project Management</div>
                 </div>
                 <div class="tools-section">
                     <div class="tools-title">Tools & Platforms</div>
@@ -3236,22 +3457,15 @@
                         <span class="tool-pill">Linear</span>
                         <span class="tool-pill">Slack</span>
                         <span class="tool-pill">Notion</span>
-                        <span class="tool-pill">ClickUp</span>
-                        <span class="tool-pill">Asana</span>
                         <span class="tool-pill">Claude</span>
-                        <span class="tool-pill">ChatGPT</span>
-                        <span class="tool-pill">Gemini</span>
                         <span class="tool-pill">Cursor</span>
                         <span class="tool-pill">React</span>
                         <span class="tool-pill">Supabase</span>
                         <span class="tool-pill">Vercel</span>
                         <span class="tool-pill">GitHub</span>
                         <span class="tool-pill">Webflow</span>
-                        <span class="tool-pill">WordPress</span>
                         <span class="tool-pill">Ahrefs</span>
-                        <span class="tool-pill">SEMrush</span>
                         <span class="tool-pill">GSC</span>
-                        <span class="tool-pill">Canva</span>
                     </div>
                 </div>
             </div>
@@ -3259,603 +3473,69 @@
     </div>
 </section>
 
-<!-- ========== HOW I WORK ========== -->
-<section class="process" id="process">
+<!-- HIGHLIGHTS -->
+<section class="highlights" id="highlights">
     <div class="container">
-        <div class="process-header reveal">
-            <div class="section-label">How I Work</div>
-            <h2 class="section-title dark">From chaos to<br>systems that run themselves.</h2>
-            <p class="process-sub">Every engagement follows the same backbone. Five steps, in order, so nothing gets skipped and nothing gets lost.</p>
+        <div class="highlights-header reveal">
+            <div class="section-label">Top Wins</div>
+            <h2 class="section-title light">Results, not decks.</h2>
+            <p class="highlights-lead">Across <strong>250 keyword-linked blog publishes</strong> (Apr–Jul 2026), <strong>119 ranked within 2 weeks</strong> of going live &mdash; 104 within one week. Median time-to-rank among those fast wins: <strong>1 day</strong>.</p>
         </div>
-        <div class="process-timeline">
-            <div class="process-step reveal">
-                <div class="process-number">01</div>
-                <span class="process-icon">🔍</span>
-                <h4>Discovery</h4>
-                <p>Sit inside the chaos with you. Map current workflows, tools, handoffs, and who actually does what.</p>
+
+        <div class="metrics-row reveal">
+            <div class="metric-cell">
+                <div class="metric-value">250<span class="u">kw</span></div>
+                <div class="metric-label">Blog Keywords Seeded</div>
             </div>
-            <div class="process-step reveal reveal-delay-1">
-                <div class="process-number">02</div>
-                <span class="process-icon">📊</span>
-                <h4>Audit</h4>
-                <p>Identify bottlenecks, silent failures, duplicate work, and the gaps where things keep slipping through.</p>
+            <div class="metric-cell">
+                <div class="metric-value">119<span class="u">/ 2wk</span></div>
+                <div class="metric-label">Ranked in 2 Weeks</div>
             </div>
-            <div class="process-step reveal reveal-delay-2">
-                <div class="process-number">03</div>
-                <span class="process-icon">⚙️</span>
-                <h4>Build</h4>
-                <p>Create SOPs, dashboards, automations, and the lightweight systems that turn process into infrastructure.</p>
+            <div class="metric-cell">
+                <div class="metric-value">61<span class="u">%</span></div>
+                <div class="metric-label">Campaign Win Rate</div>
             </div>
-            <div class="process-step reveal reveal-delay-3">
-                <div class="process-number">04</div>
-                <span class="process-icon">🎯</span>
-                <h4>Train</h4>
-                <p>Onboard the team, document everything in Loom and writing, and make sure the system survives without me.</p>
-            </div>
-            <div class="process-step reveal reveal-delay-4">
-                <div class="process-number">05</div>
-                <span class="process-icon">🤝</span>
-                <h4>Handoff</h4>
-                <p>You own it. I stay available for support, iteration, and the next thing that needs untangling.</p>
+            <div class="metric-cell">
+                <div class="metric-value">1<span class="u">day</span></div>
+                <div class="metric-label">Median Time-to-Rank</div>
             </div>
         </div>
+
+        <div class="highlights-wins reveal reveal-delay-1">
+            <div class="win-chip">
+                <div class="win-kw">"mac mini switch"</div>
+                <div class="win-meta">Client 1 · #1 · 0 days</div>
+            </div>
+            <div class="win-chip">
+                <div class="win-kw">"screen AI-fluent VA"</div>
+                <div class="win-meta">Client 2 · #1 · 0 days</div>
+            </div>
+            <div class="win-chip">
+                <div class="win-kw">"best AI agent hosting under $5"</div>
+                <div class="win-meta">Client 1 · #1 · 1 day</div>
+            </div>
+            <div class="win-chip">
+                <div class="win-kw">"best POS for small business"</div>
+                <div class="win-meta">Client 4 · #2 · 1 day</div>
+            </div>
+            <div class="win-chip">
+                <div class="win-kw">city "best energy broker" cluster</div>
+                <div class="win-meta">Client 6 · #1 · 1 day</div>
+            </div>
+            <div class="win-chip">
+                <div class="win-kw">"worth it / vs competitor"</div>
+                <div class="win-meta">Client 7 · #1 · 1 day</div>
+            </div>
+        </div>
+
+        <div class="highlights-cta reveal">
+            <a href="results.html">See full case studies <span>→</span></a>
+        </div>
+        <p class="highlights-note">Days to win = first Campaign Win Rate check that flagged a blog win minus first publish date.</p>
     </div>
 </section>
 
-<!-- ========== SEO BACKGROUND ========== -->
-<section class="seo-bg" id="seo">
-    <div class="container">
-        <div class="seo-bg-inner">
-            <div class="reveal">
-                <div class="section-label">SEO Background</div>
-                <h2 class="section-title dark">My SEO background is what<br>taught me to think in systems.</h2>
-                <p class="seo-bg-lead">Five years inside the trenches of organic growth. Local SEO for home service brands, technical fixes on sprawling sites, link building, content ops, and now AEO/GEO for the AI search era. Every campaign was a system underneath: keyword research feeds briefs, briefs feed writers, writers feed editors, editors feed publishing, publishing feeds reporting. Break any link, the whole thing stalls. That's where I learned to build process before output.</p>
-                <p class="seo-bg-lead">If you came here looking for an SEO who can also run your team, that's the order I'd want to be hired in too.</p>
-            </div>
-            <div class="reveal reveal-delay-2">
-                <div class="seo-stat-grid">
-                    <div class="seo-stat">
-                        <div class="seo-stat-num">30<span>+</span></div>
-                        <div class="seo-stat-lbl">Client accounts managed across roofing, home services, storage, real estate, and local</div>
-                    </div>
-                    <div class="seo-stat">
-                        <div class="seo-stat-num">762<span>%</span></div>
-                        <div class="seo-stat-lbl">Best GBP interactions YoY growth on a single client</div>
-                    </div>
-                    <div class="seo-stat">
-                        <div class="seo-stat-num">5<span>+</span></div>
-                        <div class="seo-stat-lbl">Years running on-page, technical, local, link building, and AEO/GEO campaigns</div>
-                    </div>
-                </div>
-                <div class="seo-specialties">
-                    <div class="tools-title">Specialties</div>
-                    <div class="tools-grid">
-                        <span class="tool-pill">Local SEO</span>
-                        <span class="tool-pill">Technical SEO</span>
-                        <span class="tool-pill">On-Page SEO</span>
-                        <span class="tool-pill">GBP Optimization</span>
-                        <span class="tool-pill">Link Building</span>
-                        <span class="tool-pill">Digital PR</span>
-                        <span class="tool-pill">AEO / GEO</span>
-                        <span class="tool-pill">Schema Markup</span>
-                        <span class="tool-pill">Content Strategy</span>
-                        <span class="tool-pill">Site Audits</span>
-                        <span class="tool-pill">Site Migrations</span>
-                        <span class="tool-pill">Citation Building</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ========== RESULTS TEASER ========== -->
-<section style="padding:90px 0;background:linear-gradient(180deg,#fbf8f5 0%,#ffffff 100%);border-top:1px solid var(--blush);border-bottom:1px solid var(--blush)">
-  <div class="container">
-    <a href="results.html" class="reveal" style="display:block;background:var(--ink);color:var(--cream);border-radius:var(--r-md,28px);padding:56px 48px;position:relative;overflow:hidden;text-decoration:none;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s;box-shadow:0 18px 48px rgba(10,10,10,.1)" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 24px 60px rgba(10,10,10,.18)'" onmouseout="this.style.transform='';this.style.boxShadow='0 18px 48px rgba(10,10,10,.1)'">
-      <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center" class="teaser-grid">
-        <div>
-          <div style="font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#e0a07a;margin-bottom:18px">Results & Impact</div>
-          <h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);line-height:1.1;color:var(--cream);font-weight:400;margin-bottom:18px;letter-spacing:-.01em">See the numbers <em style="color:#e0a07a">behind the work.</em></h2>
-          <p style="color:rgba(255,255,255,.7);font-size:1.05rem;max-width:520px;margin-bottom:24px">DR lifts, GSC growth, AI Overview wins, all with the actual work I did to make them happen.</p>
-          <span style="font-family:var(--font-mono);font-size:.85rem;color:#e0a07a">View case studies →</span>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px">
-          <div style="border-left:2px solid var(--coral);padding-left:16px"><div style="font-family:var(--font-display);font-size:2.2rem;line-height:1;color:var(--cream)">+23<span style="color:var(--coral);font-size:.55em;margin-left:4px">DR</span></div><div style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:8px">In 30 days</div></div>
-          <div style="border-left:2px solid var(--coral);padding-left:16px"><div style="font-family:var(--font-display);font-size:2.2rem;line-height:1;color:var(--cream)">1,244</div><div style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:8px">Blog impressions</div></div>
-          <div style="border-left:2px solid var(--coral);padding-left:16px"><div style="font-family:var(--font-display);font-size:2.2rem;line-height:1;color:var(--cream)">6<span style="color:var(--coral);font-size:.55em;margin-left:4px">/11</span></div><div style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:8px">AIO improvements</div></div>
-          <div style="border-left:2px solid var(--coral);padding-left:16px"><div style="font-family:var(--font-display);font-size:2.2rem;line-height:1;color:var(--cream)">100<span style="color:var(--coral);font-size:.55em;margin-left:4px">%</span></div><div style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:8px">Reddit page 1</div></div>
-        </div>
-      </div>
-    </a>
-  </div>
-  <style>@media(max-width:820px){.teaser-grid{grid-template-columns:1fr !important}}</style>
-</section>
-
-<!-- ========== CONTENT STRATEGY / BLOG SEO ========== -->
-<section class="geo" id="content">
-    <div class="container geo-inner">
-        <div class="geo-header reveal">
-            <div class="geo-tag">Content Strategy</div>
-            <h2 class="section-title light">Blogs that actually<br>rank on Google.</h2>
-            <p class="geo-lead">Most blog content is published and forgotten. Mine is built to rank, planned around real search intent, written for humans, structured for Google, and tracked until it shows up where it's supposed to. No fluff, no filler, no posts that exist just to fill a calendar.</p>
-            <div class="geo-engines">
-                <div class="geo-engine">Google Search</div>
-                <div class="geo-engine">Keyword Research</div>
-                <div class="geo-engine">On-Page SEO</div>
-                <div class="geo-engine">Internal Linking</div>
-                <div class="geo-engine">Schema</div>
-            </div>
-        </div>
-
-        <div class="geo-grid">
-            <div class="geo-strategy reveal">
-                <h3>My process for ranking blogs.</h3>
-                <div class="geo-step">
-                    <div class="geo-step-num">01</div>
-                    <div>
-                        <h4>Keyword research with intent in mind</h4>
-                        <p>Pick keywords by volume, difficulty, and what the searcher actually wants. Informational, commercial, transactional, each one needs a different shape of post. Skip the vanity terms that bring traffic but no buyers.</p>
-                    </div>
-                </div>
-                <div class="geo-step">
-                    <div class="geo-step-num">02</div>
-                    <div>
-                        <h4>SERP analysis before the brief</h4>
-                        <p>Look at the top 10 for the target keyword. What format ranks, listicle, guide, comparison? What's the average word count? What questions does Google show in People Also Ask? The brief is built off what's already winning, then sharpened to beat it.</p>
-                    </div>
-                </div>
-                <div class="geo-step">
-                    <div class="geo-step-num">03</div>
-                    <div>
-                        <h4>On-page that earns the click</h4>
-                        <p>Title tags and meta descriptions written to compete in the SERP, not generated by a plugin. Clean H1/H2 hierarchy, target keyword and variations placed where they belong, internal links to and from supporting posts, image alt text, schema markup where it fits.</p>
-                    </div>
-                </div>
-                <div class="geo-step">
-                    <div class="geo-step-num">04</div>
-                    <div>
-                        <h4>Content built for the reader and the crawler</h4>
-                        <p>Clear intro, scannable subheads, short paragraphs, real examples, original insight. Long enough to fully answer the query, short enough to respect the reader's time. Google rewards the post people actually finish.</p>
-                    </div>
-                </div>
-                <div class="geo-step">
-                    <div class="geo-step-num">05</div>
-                    <div>
-                        <h4>Track, refresh, repeat</h4>
-                        <p>Watch rankings and clicks in Search Console. Posts on page two get a refresh: better intro, stronger structure, new internal links, updated info. The biggest wins usually come from improving what's already close, not chasing new posts.</p>
-                    </div>
-                </div>
-            </div>
-
-            <aside class="geo-results reveal reveal-delay-1">
-                <div class="geo-results-label">Results</div>
-                <h3>Keywords ranked. Traffic earned.</h3>
-                <div class="geo-stat">
-                    <div class="geo-stat-label">Keywords on page 1</div>
-                    <div class="geo-stat-value">—</div>
-                </div>
-                <div class="geo-stat">
-                    <div class="geo-stat-label">Top 3 rankings</div>
-                    <div class="geo-stat-value">—</div>
-                </div>
-                <div class="geo-stat">
-                    <div class="geo-stat-label">Organic traffic growth</div>
-                    <div class="geo-stat-value">—</div>
-                </div>
-                <div class="geo-stat">
-                    <div class="geo-stat-label">Blogs ranked</div>
-                    <div class="geo-stat-value">—</div>
-                </div>
-                <div class="geo-placeholder">Specific keywords, ranking screenshots, and Search Console graphs to be plugged in here.</div>
-            </aside>
-        </div>
-
-        <div class="geo-edge reveal">
-            <div class="geo-edge-icon">📈</div>
-            <p>Anyone can publish a blog. <span>Getting it to rank is a different skill,</span> and it's the difference between content that earns traffic for years and content that disappears the day it goes live.</p>
-        </div>
-    </div>
-</section>
-
-<!-- ========== EXPERIENCE ========== -->
-<section class="experience" id="experience">
-    <div class="container">
-        <div style="text-align: center;" class="reveal">
-            <div class="section-label" style="justify-content: center;">Experience</div>
-            <h2 class="section-title light">Where I've<br>made an impact.</h2>
-        </div>
-        <div class="timeline">
-            <div class="timeline-item reveal">
-                <div class="timeline-content">
-                    <div class="timeline-date">2026 — Recent</div>
-                    <div class="timeline-role">Operations Lead / Strategist</div>
-                    <div class="timeline-company">AI Search Optimization Startup</div>
-                    <div class="timeline-desc">Led operations for an AI search platform that helps brands get cited by ChatGPT, Perplexity, and Google AI Overviews. Managed blog production, Reddit ops, and a VA team. Built an internal Operations Dashboard in React and Supabase, deployed on Vercel, covering Reddit ops, blog content, and SEO tracking. It replaced a sprawl of spreadsheets and cut review time significantly. Owned AEO/GEO strategy and schema implementation across client work.</div>
-                </div>
-                <div class="timeline-dot"></div>
-                <div class="timeline-empty"></div>
-            </div>
-            <div class="timeline-item reveal">
-                <div class="timeline-empty"></div>
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <div class="timeline-date">2024 — 2026</div>
-                    <div class="timeline-role">Operations Lead / Senior SEO Manager</div>
-                    <div class="timeline-company">Cascade Web Solutions</div>
-                    <div class="timeline-desc">Joined as the agency's first VA hire and grew into the senior manager keeping 30+ client accounts on rails. Built the SOPs, ran hiring and onboarding for the VA team, owned client communication, and standardized the full-cycle SEO workflow across roofing, home services, storage, real estate, and local. Turned a one-person operation into a system other people could run.</div>
-                </div>
-            </div>
-            <div class="timeline-item reveal">
-                <div class="timeline-content">
-                    <div class="timeline-date">2021 — 2023</div>
-                    <div class="timeline-role">Project Manager & Social Media Manager</div>
-                    <div class="timeline-company">GSV Studio</div>
-                    <div class="timeline-desc">Managed 6 simultaneous digital projects for a Canadian agency and led cross-functional remote teams of VAs across Pakistan, Latin America, and the Philippines. Built social media strategies and content calendars from scratch. First time leading a team — and where I learned that the right process is what makes remote work actually work.</div>
-                </div>
-                <div class="timeline-dot"></div>
-                <div class="timeline-empty"></div>
-            </div>
-            <div class="timeline-item reveal">
-                <div class="timeline-empty"></div>
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <div class="timeline-date">2019 — 2023</div>
-                    <div class="timeline-role">BS in Tourism Management</div>
-                    <div class="timeline-company">University of St. La Salle — Bacolod</div>
-                    <div class="timeline-desc">Graduated with a degree in Tourism Management. Previously studied Accounting, Business and Management at La Consolacion College (2016–2018).</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ========== WORK ========== -->
-<section class="work" id="work">
-    <div class="container">
-        <div class="reveal">
-            <div class="section-label">My Work</div>
-            <h2 class="section-title dark">Projects & results<br>that speak for themselves.</h2>
-        </div>
-        <div class="work-tabs reveal">
-            <button class="work-tab active" data-tab="tools">Internal Tools</button>
-            <button class="work-tab" data-tab="deliverables">Deliverables</button>
-            <button class="work-tab" data-tab="gbp">GBP Posts</button>
-            <button class="work-tab" data-tab="graphics">Graphic Design</button>
-            <button class="work-tab" data-tab="results">SEO Results</button>
-        </div>
-
-        <!-- Internal Tools Tab -->
-        <div class="work-category active" id="tab-tools">
-            <div class="work-link-cards reveal" style="grid-column: 1 / -1;">
-                <div class="work-link-card" style="text-align:left; align-items:flex-start;">
-                    <div class="work-link-icon teal">⚙️</div>
-                    <div class="work-link-title">Operations Dashboard</div>
-                    <div class="work-link-desc" style="text-align:left;">Built for an AI search startup in React + Supabase, deployed on Vercel. One internal tool covering Reddit ops, blog content production, and SEO tracking, replacing a tangle of spreadsheets the team was using for accounts, posts, briefs, drafts, rankings, and client assignments. Centralized scheduling, status, and reporting in one place; review time dropped and missed work went near-zero. Prompted and shipped with Cursor + Claude.</div>
-                    <div class="work-link-btn">React · Supabase · Vercel</div>
-                </div>
-                <div class="work-link-card" style="text-align:left; align-items:flex-start;">
-                    <div class="work-link-icon orange">📐</div>
-                    <div class="work-link-title">SOP & Workflow Library</div>
-                    <div class="work-link-desc" style="text-align:left;">A living set of SOPs covering onboarding, blog production, Reddit ops, QA, client comms, and reporting. Originally built at Cascade for 30+ accounts and refined across engagements since. Written so a new hire can take a task from zero to done without pinging the founder.</div>
-                    <div class="work-link-btn">Notion · Linear · Slack</div>
-                </div>
-                <div class="work-link-card" style="text-align:left; align-items:flex-start;">
-                    <div class="work-link-icon blue">🤖</div>
-                    <div class="work-link-title">AI-Assisted Internal Tools</div>
-                    <div class="work-link-desc" style="text-align:left;">Prompt-engineered workflows and small internal tools using Claude, ChatGPT, Gemini, and Cursor. Anything from QA checklists and content briefs to one-off scripts that save the team hours a week. Vibe-coded, but built to last.</div>
-                    <div class="work-link-btn">Claude · ChatGPT · Cursor</div>
-                </div>
-                <a href="https://feelingly-curtly-just-takin.kitten.space" target="_blank" class="work-link-card" style="text-align:left; align-items:flex-start;">
-                    <div class="work-link-icon teal">📚</div>
-                    <div class="work-link-title">The Book Vault PH</div>
-                    <div class="work-link-desc" style="text-align:left;">Full-stack e-commerce site for a preloved bookstore. Built with vanilla HTML/CSS/JS, Supabase backend, and custom admin panel. Features include real-time inventory sync, order flow with BPI payment integration, content creator tools for social media posts, and session-based authentication. Shipped in one day.</div>
-                    <div class="work-link-btn">Visit Site <span>→</span></div>
-                </a>
-            </div>
-        </div>
-
-        <!-- Deliverables Tab -->
-        <div class="work-category" id="tab-deliverables">
-            <div class="work-link-cards reveal" style="grid-column: 1 / -1;">
-                <a href="https://drive.google.com/drive/u/1/folders/1Y2qAPkH9u-9Rua8IkWlhB0mRT0fLUBRK" target="_blank" class="work-link-card">
-                    <div class="work-link-icon teal">📊</div>
-                    <div class="work-link-title">Site Audits</div>
-                    <div class="work-link-desc">Comprehensive technical SEO audits covering site health, on-page issues, backlink profiles, and actionable recommendations.</div>
-                    <div class="work-link-btn">View Audits <span>→</span></div>
-                </a>
-                <a href="https://www.figma.com/design/j1xfWpbLq0wsA9aUpWLF8N/PORTFOLIO---WEB-DESIGN?node-id=0-1&p=f" target="_blank" class="work-link-card">
-                    <div class="work-link-icon orange">🎨</div>
-                    <div class="work-link-title">Website Designs</div>
-                    <div class="work-link-desc">Custom Figma web designs for client sites — from wireframes to high-fidelity mockups ready for development.</div>
-                    <div class="work-link-btn">View Designs <span>→</span></div>
-                </a>
-                <a href="https://drive.google.com/drive/u/1/folders/1YcbBIrb_-tLCB2UiKjs-HiHi0pkv7CRW" target="_blank" class="work-link-card">
-                    <div class="work-link-icon blue">📋</div>
-                    <div class="work-link-title">SEO Proposals</div>
-                    <div class="work-link-desc">Strategic SEO proposals outlining campaign roadmaps, keyword targets, competitive analysis, and projected outcomes.</div>
-                    <div class="work-link-btn">View Proposals <span>→</span></div>
-                </a>
-            </div>
-        </div>
-
-        <!-- GBP Posts Tab -->
-        <div class="work-category" id="tab-gbp">
-            <div class="work-card reveal">
-                <img src="images/gbp-posts/ags-photoart.png" alt="AGS Photo Art GBP Post" class="work-card-image zoomable">
-                <div class="work-card-body">
-                    <div class="work-card-title">AGS Photo Art</div>
-                    <div class="work-card-desc">Wedding Photography — Carmel-By-The-Sea, CA</div>
-                </div>
-            </div>
-            <div class="work-card reveal reveal-delay-1">
-                <img src="images/gbp-posts/bray-electrical.png" alt="Bray Electrical GBP Post" class="work-card-image zoomable">
-                <div class="work-card-body">
-                    <div class="work-card-title">Bray Electrical</div>
-                    <div class="work-card-desc">Electrical Services — Dunwoody, GA</div>
-                </div>
-            </div>
-            <div class="work-card reveal reveal-delay-2">
-                <img src="images/gbp-posts/bugshockers.png" alt="Bugshockers GBP Post" class="work-card-image zoomable">
-                <div class="work-card-body">
-                    <div class="work-card-title">Bugshockers</div>
-                    <div class="work-card-desc">Pest Control — Wichita, KS</div>
-                </div>
-            </div>
-            <div class="work-card reveal">
-                <img src="images/gbp-posts/expert-epoxy.png" alt="Expert Epoxy GBP Post" class="work-card-image zoomable">
-                <div class="work-card-body">
-                    <div class="work-card-title">Expert Epoxy Solutions</div>
-                    <div class="work-card-desc">Epoxy Flooring — Wilmington, NC</div>
-                </div>
-            </div>
-            <div class="work-card reveal reveal-delay-1">
-                <img src="images/gbp-posts/green-dot.png" alt="Green Dot Painting GBP Post" class="work-card-image zoomable">
-                <div class="work-card-body">
-                    <div class="work-card-title">Green Dot Painting</div>
-                    <div class="work-card-desc">Painting Services — Huntsville, AL</div>
-                </div>
-            </div>
-            <div class="work-card reveal reveal-delay-2">
-                <img src="images/gbp-posts/integrity-roofers.png" alt="Integrity Roofers GBP Post" class="work-card-image zoomable">
-                <div class="work-card-body">
-                    <div class="work-card-title">Integrity Roofers</div>
-                    <div class="work-card-desc">Roofing — Toronto, ON, Canada</div>
-                </div>
-            </div>
-            <div class="work-card reveal">
-                <img src="images/gbp-posts/pools-etc.png" alt="Pools Etc GBP Post" class="work-card-image zoomable">
-                <div class="work-card-body">
-                    <div class="work-card-title">Pools Etc</div>
-                    <div class="work-card-desc">Pool Services — Menlo Park, CA</div>
-                </div>
-            </div>
-            <div class="work-card reveal reveal-delay-1">
-                <img src="images/gbp-posts/storage-daytona.png" alt="Storage Units Daytona Beach GBP Post" class="work-card-image zoomable">
-                <div class="work-card-body">
-                    <div class="work-card-title">Storage Units Daytona Beach</div>
-                    <div class="work-card-desc">Storage Facility — Daytona Beach, FL</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Graphic Design Tab -->
-        <div class="work-category" id="tab-graphics">
-            <div class="work-card reveal">
-                <img src="images/graphic-designs/design1.avif" alt="Social Media Design" class="work-card-image zoomable">
-                <div class="work-card-body">
-                    <div class="work-card-title">Social Media Post</div>
-                    <div class="work-card-desc">Custom graphic design for client social media</div>
-                </div>
-            </div>
-            <div class="work-card reveal reveal-delay-1">
-                <img src="images/graphic-designs/design2.avif" alt="Social Media Design" class="work-card-image zoomable">
-                <div class="work-card-body">
-                    <div class="work-card-title">Social Media Post</div>
-                    <div class="work-card-desc">Custom graphic design for client social media</div>
-                </div>
-            </div>
-            <div class="work-card reveal reveal-delay-2">
-                <img src="images/graphic-designs/design3.avif" alt="Social Media Design" class="work-card-image zoomable">
-                <div class="work-card-body">
-                    <div class="work-card-title">Social Media Post</div>
-                    <div class="work-card-desc">Custom graphic design for client social media</div>
-                </div>
-            </div>
-            <div class="work-card reveal">
-                <img src="images/graphic-designs/design4.avif" alt="Social Media Design" class="work-card-image zoomable">
-                <div class="work-card-body">
-                    <div class="work-card-title">Social Media Post</div>
-                    <div class="work-card-desc">Custom graphic design for client social media</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- SEO Results Tab -->
-        <div class="work-category" id="tab-results">
-            <div class="results-grid reveal" style="grid-column: 1 / -1;">
-                <div class="result-card">
-                    <img src="images/seo-results/geogrid-before-after.png" alt="GeoGrid Before and After" class="zoomable">
-                    <div class="result-card-body">
-                        <span class="result-card-label">Local Rankings Transformation</span>
-                        <span class="result-highlight">17.94 → 3.02 Avg</span>
-                    </div>
-                </div>
-                <div class="result-card">
-                    <img src="images/seo-results/geogrid-green.png" alt="GeoGrid Results" class="zoomable">
-                    <div class="result-card-body">
-                        <span class="result-card-label">Map Pack Dominance</span>
-                        <span class="result-highlight">2.74 Avg Rank</span>
-                    </div>
-                </div>
-                <div class="result-card">
-                    <img src="images/seo-results/gbp-interactions2.png" alt="GBP Interactions Growth" class="zoomable">
-                    <div class="result-card-body">
-                        <span class="result-card-label">GBP Interactions Growth</span>
-                        <span class="result-highlight">+762.7% YoY</span>
-                    </div>
-                </div>
-                <div class="result-card">
-                    <img src="images/seo-results/gbp-interactions1.png" alt="GBP Performance" class="zoomable">
-                    <div class="result-card-body">
-                        <span class="result-card-label">Business Profile Performance</span>
-                        <span class="result-highlight">+48.9% YoY</span>
-                    </div>
-                </div>
-                <div class="result-card">
-                    <img src="images/seo-results/keyword-rankings-roofing.png" alt="Roofing Keyword Rankings" class="zoomable">
-                    <div class="result-card-body">
-                        <span class="result-card-label">Roofing Keywords — Charlotte, NC</span>
-                        <span class="result-highlight">Up to +49 Positions</span>
-                    </div>
-                </div>
-                <div class="result-card">
-                    <img src="images/seo-results/keyword-rankings-pest.png" alt="Pest Control Keyword Rankings" class="zoomable">
-                    <div class="result-card-body">
-                        <span class="result-card-label">Pest Control Keywords — Wichita, KS</span>
-                        <span class="result-highlight">Up to +49 Positions</span>
-                    </div>
-                </div>
-                <div class="result-card">
-                    <img src="images/seo-results/ahrefs-overview1.png" alt="Ahrefs Overview" class="zoomable">
-                    <div class="result-card-body">
-                        <span class="result-card-label">Organic Growth Overview</span>
-                        <span class="result-highlight">+96 Organic Traffic</span>
-                    </div>
-                </div>
-                <div class="result-card">
-                    <img src="images/seo-results/ahrefs-overview2.png" alt="Ahrefs Overview" class="zoomable">
-                    <div class="result-card-body">
-                        <span class="result-card-label">Backlink Profile Growth</span>
-                        <span class="result-highlight">+102 Backlinks</span>
-                    </div>
-                </div>
-                <div class="result-card">
-                    <img src="images/seo-results/gbp-interactions3.png" alt="GBP Interactions" class="zoomable">
-                    <div class="result-card-body">
-                        <span class="result-card-label">GBP Interactions Growth</span>
-                        <span class="result-highlight">+61.5% YoY</span>
-                    </div>
-                </div>
-                <div class="result-card">
-                    <img src="images/seo-results/gbp-interactions4.png" alt="GBP Interactions" class="zoomable">
-                    <div class="result-card-body">
-                        <span class="result-card-label">GBP Interactions Growth</span>
-                        <span class="result-highlight">+55.9% YoY</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ========== CASE STUDIES ========== -->
-<section class="cases" id="case-studies">
-    <div class="container">
-        <div class="cases-header reveal">
-            <div class="section-label">Case Studies</div>
-            <h2 class="section-title dark">A closer look at how<br>messy turns into measurable.</h2>
-        </div>
-        <div class="cases-grid">
-
-            <div class="case-card reveal">
-                <div class="case-side">
-                    <div>
-                        <span class="case-tag">AI Search Startup · Internal Tooling</span>
-                        <h3>Operations Dashboard</h3>
-                        <p style="color: var(--gray-400); font-size: 0.95rem;">A scrappy ops team running Reddit, blog content, and SEO workflows across copy-pasted spreadsheets.</p>
-                    </div>
-                    <div class="case-metric">
-                        <div class="case-metric-value">1 wk</div>
-                        <div class="case-metric-label">From Google Sheets to fully adopted internal tool</div>
-                    </div>
-                </div>
-                <div class="case-body">
-                    <div class="case-block">
-                        <div class="case-block-label">Problem</div>
-                        <p>The team was tracking Reddit accounts and posts, blog briefs and drafts, and SEO rankings across a tangle of disconnected Google Sheets. VAs couldn't see status at a glance, founders couldn't audit quality, and nothing scaled past a handful of clients.</p>
-                    </div>
-                    <div class="case-block">
-                        <div class="case-block-label solution">Solution</div>
-                        <p>Designed and shipped a custom Operations Dashboard with three connected modules: Reddit account states and posting queues, blog content production from brief to publish, and SEO tracking for rankings and deliverables. Built it lightweight so the team could actually use it on day one, not in a quarter.</p>
-                        <div class="case-stack">
-                            <span>React</span><span>Supabase</span><span>Vercel</span><span>Cursor</span><span>Claude</span>
-                        </div>
-                    </div>
-                    <div class="case-block">
-                        <div class="case-block-label result">Result</div>
-                        <p>The team moved off spreadsheets inside the first week. Ops became auditable, VA throughput went up, and the dashboard replaced the folder of tabs nobody trusted as the source of truth.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="case-card reveal reveal-delay-1">
-                <div class="case-side">
-                    <div>
-                        <span class="case-tag">Cascade · SEO Operations</span>
-                        <h3>Standardizing 30+ SEO Clients</h3>
-                        <p style="color: var(--gray-400); font-size: 0.95rem;">A growing agency where every account ran on a different process and quality moved with whoever owned it.</p>
-                    </div>
-                    <div class="case-metric">
-                        <div class="case-metric-value">762%</div>
-                        <div class="case-metric-label">Average GBP growth across managed accounts</div>
-                    </div>
-                </div>
-                <div class="case-body">
-                    <div class="case-block">
-                        <div class="case-block-label">Problem</div>
-                        <p>30+ active SEO clients, no standardized delivery, every VA reinventing the wheel for audits, GBP optimization, and reporting. Quality was a coin flip and onboarding new hires took forever.</p>
-                    </div>
-                    <div class="case-block">
-                        <div class="case-block-label solution">Solution</div>
-                        <p>Built end-to-end SOPs for technical audits, on-page, local SEO, schema, GBP, and reporting. Trained the VA team, set up review checkpoints, and turned tribal knowledge into a system anyone could follow.</p>
-                        <div class="case-stack">
-                            <span>SOPs</span><span>GBP</span><span>Schema</span><span>Loom</span><span>VA Training</span>
-                        </div>
-                    </div>
-                    <div class="case-block">
-                        <div class="case-block-label result">Result</div>
-                        <p>Average 762% GBP growth across managed accounts, consistent delivery quality, and onboarding time for new VAs dropped from weeks to days. The agency could finally take on accounts without breaking.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="case-card reveal reveal-delay-2">
-                <div class="case-side">
-                    <div>
-                        <span class="case-tag">Cross-Client · Remote Teams</span>
-                        <h3>Building the VA Engine</h3>
-                        <p style="color: var(--gray-400); font-size: 0.95rem;">Founders hiring overseas talent fast and losing days to bad onboarding, missed handoffs, and unclear ownership.</p>
-                    </div>
-                    <div class="case-metric">
-                        <div class="case-metric-value">20+</div>
-                        <div class="case-metric-label">VAs sourced, hired, and onboarded across roles</div>
-                    </div>
-                </div>
-                <div class="case-body">
-                    <div class="case-block">
-                        <div class="case-block-label">Problem</div>
-                        <p>Teams growing past five people with no recruiting funnel, no onboarding doc, and no clear sense of who owned what. Every new hire meant a founder context-dump and a slow climb to usefulness.</p>
-                    </div>
-                    <div class="case-block">
-                        <div class="case-block-label solution">Solution</div>
-                        <p>Built a full hiring pipeline: sourcing channels, screening tests, interview loops, and a structured onboarding flow with role-specific SOPs and a two-week ramp plan. Tracked everything inside Linear and Slack so nothing depended on memory.</p>
-                        <div class="case-stack">
-                            <span>Recruiting</span><span>Onboarding</span><span>Linear</span><span>Slack</span><span>SOPs</span>
-                        </div>
-                    </div>
-                    <div class="case-block">
-                        <div class="case-block-label result">Result</div>
-                        <p>New VAs hit useful work inside two weeks instead of two months. Founders stopped being the bottleneck, retention went up, and the hiring engine kept running whether I was active on it or not.</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- ========== TESTIMONIALS ========== -->
+<!-- TESTIMONIALS -->
 <section class="testimonials" id="testimonials">
     <div class="container">
         <div style="text-align: center;" class="reveal">
@@ -3924,7 +3604,7 @@
                 </div>
             </div>
             <div class="testimonial-card reveal reveal-delay-2">
-                <p class="testimonial-text">"Karen completely transformed our social media game. Our engagement went through the roof, and she brought a level of creativity and consistency that we didn't have before. She just gets what works online."</p>
+                <p class="testimonial-text">"Karen completely transformed our social media game. Our engagement went through the roof, and she brought a level of creativity and consistency that we didn't have before."</p>
                 <div class="testimonial-author">
                     <div class="testimonial-avatar">MJ</div>
                     <div>
@@ -3947,118 +3627,7 @@
     </div>
 </section>
 
-<!-- ========== TEAM SAYS ========== -->
-<section class="team-section" id="team">
-    <div class="container">
-        <div style="text-align: center;" class="reveal">
-            <div class="section-label" style="justify-content: center;">My Team</div>
-            <h2 class="section-title light">What my team<br>says about me.</h2>
-        </div>
-        <div class="team-grid">
-            <div class="team-card reveal">
-                <span class="team-card-label seo">SEO Team</span>
-                <div class="team-quote-display" id="seo-quote">
-                    <p class="team-card-prompt">Click a team member to see what they say →</p>
-                </div>
-                <div class="team-card-members">
-                    <div class="team-member-chip clickable active-chip" data-team="seo" data-name="Ysabella M." data-quote="Karen is the kind of mentor who genuinely wants you to succeed. She took the time to walk me through technical audits and keyword strategy until it clicked. I went from feeling lost to confidently running campaigns on my own — and that's because of her.">
-                        <div class="team-member-avatar teal-bg">YM</div>
-                        <span class="team-member-name">Ysabella M.</span>
-                    </div>
-                    <div class="team-member-chip clickable" data-team="seo" data-name="Gail A." data-quote="What sets Karen apart is her eye for detail. She catches things the rest of us miss — a broken redirect, an inconsistent NAP, a missing schema tag. She's taught me to always double-check my work, and that habit has made me so much better at what I do.">
-                        <div class="team-member-avatar teal-bg">GA</div>
-                        <span class="team-member-name">Gail A.</span>
-                    </div>
-                    <div class="team-member-chip clickable" data-team="seo" data-name="Dolly A." data-quote="Karen thinks three steps ahead. She doesn't just fix problems — she builds systems that prevent them. Her SOPs and processes have made our entire workflow smoother, and she's always open to new ideas from the team.">
-                        <div class="team-member-avatar teal-bg">DA</div>
-                        <span class="team-member-name">Dolly A.</span>
-                    </div>
-                    <div class="team-member-chip clickable" data-team="seo" data-name="Jean S." data-quote="I joined the team with zero SEO experience, and Karen was incredibly patient with me. She broke down complex concepts into simple steps and never made me feel bad for asking questions. She's the reason I'm confident in this field now.">
-                        <div class="team-member-avatar teal-bg">JS</div>
-                        <span class="team-member-name">Jean S.</span>
-                    </div>
-                    <div class="team-member-chip clickable" data-team="seo" data-name="Yvonne P." data-quote="Karen leads by example. She's usually the first one online and the last one checking reports. She holds us to a high standard, but she holds herself to an even higher one. That kind of leadership earns real respect from the team.">
-                        <div class="team-member-avatar teal-bg">YP</div>
-                        <span class="team-member-name">Yvonne P.</span>
-                    </div>
-                </div>
-            </div>
-            <div class="team-card reveal reveal-delay-2">
-                <span class="team-card-label social">Social Media Team</span>
-                <div class="team-quote-display" id="social-quote">
-                    <p class="team-card-prompt">Click a team member to see what they say →</p>
-                </div>
-                <div class="team-card-members">
-                    <div class="team-member-chip clickable active-chip" data-team="social" data-name="Zeeshan A." data-quote="Karen has a natural ability to see the bigger picture while still caring about the small details. She pushed our creative boundaries and helped us produce content that actually moved the needle for clients. Working with her made me a better marketer.">
-                        <div class="team-member-avatar orange-bg">ZA</div>
-                        <span class="team-member-name">Zeeshan A.</span>
-                    </div>
-                    <div class="team-member-chip clickable" data-team="social" data-name="Aisha N." data-quote="Karen's communication is top-tier. She always keeps the team in the loop, gives clear feedback, and makes sure everyone knows exactly what's expected. There's never any guessing with her — and that makes working together really smooth.">
-                        <div class="team-member-avatar orange-bg">AN</div>
-                        <span class="team-member-name">Aisha N.</span>
-                    </div>
-                    <div class="team-member-chip clickable" data-team="social" data-name="James M." data-quote="I've worked with a lot of project leads, and Karen is one of the most organized I've seen. She juggles multiple clients and campaigns without ever dropping the ball. Her content calendars and workflows keep everything running like clockwork.">
-                        <div class="team-member-avatar orange-bg">JM</div>
-                        <span class="team-member-name">James M.</span>
-                    </div>
-                    <div class="team-member-chip clickable" data-team="social" data-name="Jaque S." data-quote="What I appreciate most about Karen is that she genuinely cares about her team. She checks in on you, celebrates your wins, and backs you up when things get tough. She creates a work environment where you actually want to do your best.">
-                        <div class="team-member-avatar orange-bg">JS</div>
-                        <span class="team-member-name">Jaque S.</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ========== WHO I WORK WITH ========== -->
-<section class="audience" id="who">
-    <div class="container audience-inner">
-        <div class="audience-header reveal">
-            <div class="section-label">Who I Work With</div>
-            <h2 class="section-title light">If any of this sounds<br>painfully familiar.</h2>
-        </div>
-        <div class="audience-grid">
-            <div class="audience-item reveal">
-                <div class="audience-check">✓</div>
-                <div>
-                    <h4>Startups scaling faster than ops can keep up</h4>
-                    <p>Revenue is growing, headcount is climbing, and the back office is held together with Slack threads and goodwill.</p>
-                </div>
-            </div>
-            <div class="audience-item reveal reveal-delay-1">
-                <div class="audience-check">✓</div>
-                <div>
-                    <h4>Founders drowning in tasks with no system underneath</h4>
-                    <p>You're the bottleneck for hiring, onboarding, QA, reporting, and four other things that should not require you.</p>
-                </div>
-            </div>
-            <div class="audience-item reveal reveal-delay-2">
-                <div class="audience-check">✓</div>
-                <div>
-                    <h4>Teams running on Google Sheets and Slack chaos</h4>
-                    <p>Twelve spreadsheets, three sources of truth, none of them right. Decisions get made on whatever tab was open last.</p>
-                </div>
-            </div>
-            <div class="audience-item reveal reveal-delay-3">
-                <div class="audience-check">✓</div>
-                <div>
-                    <h4>Companies that need their first real ops hire</h4>
-                    <p>You don't need a COO yet. You need someone who can come in, install the systems, train the team, and hand it back clean.</p>
-                </div>
-            </div>
-        </div>
-        <div class="audience-cta reveal">
-            <p>If this sounds like your week,<br>let's fix the part that's costing you the most.</p>
-            <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
-                <a href="services.html" class="btn">See Services & Pricing →</a>
-                <a href="#contact" class="btn" style="background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.25);">Let's Talk</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ========== CONTACT ========== -->
+<!-- CONTACT -->
 <section class="contact" id="contact">
     <div class="container">
         <div class="contact-inner">
@@ -4070,7 +3639,7 @@
                     <div class="contact-detail-icon">✉</div>
                     <div>
                         <div class="contact-detail-label">Email</div>
-                        <div class="contact-detail-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2c475c494d5e401c15156c4b414d4540024f4341">[email&#160;protected]</a></div>
+                        <div class="contact-detail-value">kpearl099@gmail.com</div>
                     </div>
                 </div>
                 <div class="contact-detail">
@@ -4082,7 +3651,6 @@
                 </div>
             </div>
             <form class="contact-form reveal reveal-delay-2" action="https://formsubmit.co/kpearl099@gmail.com" method="POST">
-                <!-- FormSubmit config -->
                 <input type="hidden" name="_subject" value="New Portfolio Contact!">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_next" value="#">
@@ -4097,7 +3665,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="subject">Subject</label>
-                    <input class="form-input" type="text" id="subject" name="subject" placeholder="Let's talk about SEO..." required>
+                    <input class="form-input" type="text" id="subject" name="subject" placeholder="Let's talk about ops..." required>
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="message">Message</label>
@@ -4109,114 +3677,29 @@
     </div>
 </section>
 
-<!-- ========== FOOTER ========== -->
 <footer class="footer">
     <div class="container">
         <p class="footer-text">© 2026 Karen Pearl Ong. Built with <span>♥</span> and lots of coffee.</p>
     </div>
 </footer>
 
-<!-- ========== LIGHTBOX ========== -->
-<div class="lightbox" id="lightbox">
-    <button class="lightbox-close" id="lightboxClose">✕</button>
-    <img src="" alt="Expanded view" id="lightboxImg">
-</div>
-
-<!-- ========== JAVASCRIPT ========== -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Navigation scroll effect
+<script>
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
         nav.classList.toggle('scrolled', window.scrollY > 50);
     });
-
-    // Mobile menu toggle
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
-    navToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('open');
-    });
+    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => navLinks.classList.remove('open'));
     });
-
-    // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
+            if (entry.isIntersecting) entry.target.classList.add('visible');
         });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    // Work tabs
-    const tabs = document.querySelectorAll('.work-tab');
-    const categories = document.querySelectorAll('.work-category');
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            tabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-            const target = tab.getAttribute('data-tab');
-            categories.forEach(cat => cat.classList.remove('active'));
-            document.getElementById('tab-' + target).classList.add('active');
-            // Re-observe newly visible items for animation
-            document.querySelectorAll('#tab-' + target + ' .reveal').forEach(el => {
-                el.classList.remove('visible');
-                observer.observe(el);
-            });
-        });
-    });
-
-    // Lightbox
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const lightboxClose = document.getElementById('lightboxClose');
-    document.querySelectorAll('.zoomable').forEach(img => {
-        img.style.cursor = 'zoom-in';
-        img.addEventListener('click', () => {
-            lightboxImg.src = img.src;
-            lightbox.classList.add('open');
-            document.body.style.overflow = 'hidden';
-        });
-    });
-    const closeLightbox = () => {
-        lightbox.classList.remove('open');
-        document.body.style.overflow = '';
-    };
-    lightbox.addEventListener('click', closeLightbox);
-    lightboxClose.addEventListener('click', closeLightbox);
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
-    // Team member individual quotes
-    document.querySelectorAll('.team-member-chip.clickable').forEach(chip => {
-        chip.addEventListener('click', () => {
-            const team = chip.getAttribute('data-team');
-            const name = chip.getAttribute('data-name');
-            const quote = chip.getAttribute('data-quote');
-            const displayId = team === 'seo' ? 'seo-quote' : 'social-quote';
-            const display = document.getElementById(displayId);
-            const isOrange = team === 'social';
-
-            // Update selected state
-            chip.closest('.team-card').querySelectorAll('.team-member-chip.clickable').forEach(c => {
-                c.classList.remove('selected');
-            });
-            chip.classList.add('selected');
-
-            // Show individual quote
-            display.innerHTML = `
-                <div class="team-individual-quote ${isOrange ? 'orange' : ''}">
-                    <div class="team-q-name">${name}</div>
-                    <p class="team-q-text">"${quote}"</p>
-                </div>
-            `;
-        });
-    });
-
-    // Auto-click first member in each team on load
-    document.querySelector('[data-team="seo"].clickable')?.click();
-    document.querySelector('[data-team="social"].clickable')?.click();
 </script>
 </body>
 </html>
