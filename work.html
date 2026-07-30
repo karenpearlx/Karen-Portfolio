@@ -123,11 +123,15 @@
 
         /* ========== ANIMATIONS ========== */
         .reveal {
-            opacity: 0;
-            transform: translateY(40px);
+            opacity: 1;
+            transform: none;
             transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
         }
-        .reveal.visible {
+        html.js-reveal .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        html.js-reveal .reveal.visible {
             opacity: 1;
             transform: translateY(0);
         }
@@ -3372,7 +3376,9 @@
         <a href="index.html" class="nav-logo">K<span>.</span>Pearl</a>
         <ul class="nav-links" id="navLinks">
             <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
             <li><a href="work.html">Work</a></li>
+            <li><a href="index.html#testimonials">Testimonials</a></li>
             <li><a href="index.html#contact">Contact</a></li>
         </ul>
         <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
@@ -3591,6 +3597,9 @@
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => navLinks.classList.remove('open'));
     });
+    if ('IntersectionObserver' in window) {
+        document.documentElement.classList.add('js-reveal');
+    }
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) entry.target.classList.add('visible');

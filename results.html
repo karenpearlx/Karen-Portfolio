@@ -46,8 +46,9 @@ img{max-width:100%;display:block}
 }
 .section-label::before{content:"";width:28px;height:1px;background:var(--coral)}
 
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out)}
-.reveal.visible{opacity:1;transform:none}
+.reveal{opacity:1;transform:none;transition:opacity .8s var(--ease-out),transform .8s var(--ease-out)}
+html.js-reveal .reveal{opacity:0;transform:translateY(24px)}
+html.js-reveal .reveal.visible{opacity:1;transform:none}
 .reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}.reveal-d3{transition-delay:.3s}
 
 .hero{padding:160px 0 80px;background:linear-gradient(180deg,#fbf8f5 0%,#ffffff 100%);position:relative;overflow:hidden}
@@ -148,7 +149,9 @@ footer{padding:40px 0;text-align:center;font-family:var(--font-mono);font-size:.
     <a href="index.html" class="nav-logo">K<span>.</span>Pearl</a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
       <li><a href="work.html">Work</a></li>
+      <li><a href="index.html#testimonials">Testimonials</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
     <a href="work.html" class="nav-back">← Back to Work</a>
@@ -368,6 +371,7 @@ footer{padding:40px 0;text-align:center;font-family:var(--font-mono);font-size:.
 <footer>© 2026 Karen Pearl Ong · Case Studies</footer>
 
 <script>
+if('IntersectionObserver' in window){document.documentElement.classList.add('js-reveal')}
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
@@ -402,7 +406,7 @@ new Chart(document.getElementById('ttrChart'),{
 new Chart(document.getElementById('clientChart'),{
   type:'bar',
   data:{
-    labels:['Client 1','Client 8 (home services)','Client 2','Client 6','Client 3','Client 4','Client 9','Client 5','Others'],
+    labels:['Client 1','Client 8','Client 2','Client 6','Client 3','Client 4','Client 9','Client 5','Others'],
     datasets:[{label:'Winning posts',
       data:[30,18,14,14,7,6,5,5,20],
       backgroundColor:['#b56b4a','#b56b4a','#b56b4a','#b56b4a','#8a5a3a','#8a5a3a','#8a5a3a','#8a5a3a','#c8b8a8'],

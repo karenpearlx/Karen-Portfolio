@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karen Pearl Ong — Operations Lead & Systems Builder</title>
-    <meta name="description" content="Operations Lead and systems builder for early-stage startups. SOPs, workflows, AI-powered internal tools, and remote teams that run themselves.">
+    <meta name="description" content="Operations Lead and systems builder for early-stage startups. I help founders turn chaos into process — SOPs, workflows, AI-powered internal tools, and remote teams that actually run themselves.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -123,11 +123,15 @@
 
         /* ========== ANIMATIONS ========== */
         .reveal {
-            opacity: 0;
-            transform: translateY(40px);
+            opacity: 1;
+            transform: none;
             transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
         }
-        .reveal.visible {
+        html.js-reveal .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        html.js-reveal .reveal.visible {
             opacity: 1;
             transform: translateY(0);
         }
@@ -3135,244 +3139,17 @@
             }
         }
 
-    
-/* ========== HIGHLIGHTS STRIP (homepage) ========== */
-.highlights { padding: 120px 0; background: var(--dark); color: var(--white); position: relative; overflow: hidden; }
-.highlights::before {
-    content: ''; position: absolute; top: -30%; right: -10%;
-    width: 700px; height: 700px;
-    background: radial-gradient(circle, rgba(181,107,74,0.10), transparent 65%);
-    border-radius: 50%; pointer-events: none;
-}
-.highlights-header { max-width: 780px; margin-bottom: 60px; position: relative; z-index: 1; }
-.highlights-header .section-label { color: var(--teal); }
-.highlights-lead {
-    font-family: var(--font-display);
-    font-size: clamp(1.2rem, 2.2vw, 1.6rem);
-    color: var(--gray-400);
-    line-height: 1.55;
-    margin-top: 18px;
-    max-width: 720px;
-}
-.highlights-lead strong { color: var(--white); font-weight: 500; }
-.metrics-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    margin-top: 20px;
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 24px;
-    overflow: hidden;
-    position: relative; z-index: 1;
-}
-.metric-cell {
-    padding: 40px 32px;
-    border-right: 1px solid rgba(255,255,255,0.06);
-}
-.metric-cell:last-child { border-right: none; }
-.metric-value {
-    font-family: var(--font-display);
-    font-size: clamp(2.4rem, 4.5vw, 3.6rem);
-    font-weight: 400;
-    color: var(--white);
-    line-height: 1;
-    letter-spacing: -0.02em;
-}
-.metric-value .u { color: var(--teal); font-size: 0.55em; margin-left: 4px; }
-.metric-label {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
-    margin-top: 14px;
-    line-height: 1.5;
-}
-.highlights-wins {
-    margin-top: 40px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    position: relative; z-index: 1;
-}
-.win-chip {
-    padding: 20px 22px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 16px;
-    display: flex; flex-direction: column; gap: 6px;
-}
-.win-kw {
-    font-family: var(--font-display);
-    font-size: 1.05rem;
-    color: var(--white);
-    line-height: 1.35;
-}
-.win-meta {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    color: var(--teal);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-.highlights-cta {
-    margin-top: 48px;
-    display: flex;
-    justify-content: center;
-    position: relative; z-index: 1;
-}
-.highlights-cta a {
-    font-family: var(--font-display);
-    font-size: 0.95rem;
-    color: var(--teal);
-    padding: 14px 30px;
-    border: 1px solid rgba(181,107,74,0.4);
-    border-radius: 50px;
-    transition: all 0.3s var(--ease-out);
-    display: inline-flex; align-items: center; gap: 10px;
-}
-.highlights-cta a:hover {
-    background: var(--teal);
-    color: var(--dark);
-    border-color: var(--teal);
-    transform: translateY(-2px);
-}
-.highlights-note {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    letter-spacing: 1px;
-    color: rgba(255,255,255,0.4);
-    text-align: center;
-    margin-top: 20px;
-    position: relative; z-index: 1;
-}
-@media (max-width: 900px) {
-    .metrics-row { grid-template-columns: repeat(2, 1fr); }
-    .metric-cell:nth-child(2) { border-right: none; }
-    .metric-cell:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,0.06); }
-    .highlights-wins { grid-template-columns: 1fr; }
-}
-
-/* ========== WORK PAGE ========== */
-.work-hero {
-    padding: 160px 0 80px;
-    background: var(--dark);
-    color: var(--white);
-    position: relative;
-    overflow: hidden;
-}
-.work-hero::before {
-    content: ''; position: absolute; top: -40%; left: -10%;
-    width: 700px; height: 700px;
-    background: radial-gradient(circle, rgba(181,107,74,0.08), transparent 65%);
-    border-radius: 50%; pointer-events: none;
-}
-.work-hero-inner { max-width: 820px; position: relative; z-index: 1; }
-.work-hero h1 {
-    font-family: var(--font-display);
-    font-size: clamp(2.6rem, 6vw, 4.6rem);
-    line-height: 1.05;
-    color: var(--white);
-    font-weight: 400;
-    margin: 14px 0 24px;
-    letter-spacing: -0.02em;
-}
-.work-hero h1 em { font-style: italic; color: var(--teal); }
-.work-hero-lead {
-    font-size: 1.15rem;
-    color: var(--gray-400);
-    max-width: 680px;
-    line-height: 1.75;
-}
-
-.work-cards {
-    padding: 100px 0 60px;
-    background: var(--white);
-}
-.work-hub-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-}
-.work-hub-card {
-    background: var(--light);
-    border: 1px solid var(--blush);
-    border-radius: 24px;
-    padding: 44px 40px;
-    transition: all 0.4s var(--ease-out);
-    display: flex; flex-direction: column; gap: 16px;
-    position: relative;
-    overflow: hidden;
-}
-.work-hub-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 30px 60px rgba(10,10,10,0.08);
-    border-color: var(--teal);
-}
-.work-hub-card.dark {
-    background: var(--dark);
-    color: var(--white);
-    border-color: rgba(255,255,255,0.08);
-}
-.work-hub-tag {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--teal);
-}
-.work-hub-title {
-    font-family: var(--font-display);
-    font-size: 1.8rem;
-    font-weight: 400;
-    color: var(--dark);
-    line-height: 1.15;
-}
-.work-hub-card.dark .work-hub-title { color: var(--white); }
-.work-hub-desc {
-    font-size: 0.98rem;
-    color: var(--gray-600);
-    line-height: 1.7;
-    flex-grow: 1;
-}
-.work-hub-card.dark .work-hub-desc { color: var(--gray-400); }
-.work-hub-arrow {
-    font-family: var(--font-display);
-    font-size: 0.95rem;
-    color: var(--teal);
-    display: inline-flex; align-items: center; gap: 10px;
-    transition: gap 0.3s ease;
-    margin-top: 8px;
-}
-.work-hub-card:hover .work-hub-arrow { gap: 16px; }
-@media (max-width: 800px) {
-    .work-hub-grid { grid-template-columns: 1fr; }
-}
-
-/* Section anchors on work page */
-.work-section {
-    padding: 100px 0;
-    border-top: 1px solid var(--blush);
-}
-.work-section.dark {
-    background: var(--dark);
-    color: var(--white);
-    border-top-color: rgba(255,255,255,0.06);
-}
-.work-section-head { max-width: 720px; margin-bottom: 50px; }
-.work-section.dark .section-title { color: var(--white); }
-
-</style>
+    </style>
 </head>
 <body>
 
+<!-- ========== NAVIGATION ========== -->
 <nav class="nav" id="nav">
     <div class="container nav-inner">
-        <a href="index.html" class="nav-logo">K<span>.</span>Pearl</a>
+        <a href="#" class="nav-logo">K<span>.</span>Pearl</a>
         <ul class="nav-links" id="navLinks">
+            <li><a href="#hero">Home</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#highlights">Highlights</a></li>
             <li><a href="work.html">Work</a></li>
             <li><a href="#testimonials">Testimonials</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -3383,7 +3160,7 @@
     </div>
 </nav>
 
-<!-- HERO -->
+<!-- ========== HERO ========== -->
 <section class="hero" id="hero">
     <div class="hero-noise"></div>
     <div class="hero-grid"></div>
@@ -3392,11 +3169,11 @@
             <div class="hero-text">
                 <p class="hero-greeting">Hello, I'm</p>
                 <h1 class="hero-name">Karen Pearl <span class="accent">Ong</span></h1>
-                <p class="hero-role">Operations Lead · AEO/GEO · Content Systems · Systems Builder</p>
+                <p class="hero-role">Operations Lead · Systems Builder · Problem Solver</p>
                 <p class="hero-desc">I help early-stage startups build the operational backbone they're missing. Hand me the chaos, and I'll hand you back SOPs, clean workflows, a team that runs without you, and the internal tools to keep it all moving.</p>
                 <div class="hero-availability">
                     <span class="hero-availability-dot"></span>
-                    <span>Open to full-time remote roles</span>
+                    <span>Open to full-time remote roles · <strong>$20/hr</strong></span>
                 </div>
                 <div class="hero-buttons">
                     <a href="work.html" class="btn btn-primary">See My Work →</a>
@@ -3404,16 +3181,16 @@
                 </div>
                 <div class="hero-stats">
                     <div>
-                        <div class="hero-stat-number">250<span>+</span></div>
-                        <div class="hero-stat-label">Keywords Seeded</div>
+                        <div class="hero-stat-number">5<span>+</span></div>
+                        <div class="hero-stat-label">Years Experience</div>
                     </div>
                     <div>
-                        <div class="hero-stat-number">61<span>%</span></div>
-                        <div class="hero-stat-label">Win Rate</div>
+                        <div class="hero-stat-number">30<span>+</span></div>
+                        <div class="hero-stat-label">Workflows Built</div>
                     </div>
                     <div>
-                        <div class="hero-stat-number">1<span>d</span></div>
-                        <div class="hero-stat-label">Median Time-to-Rank</div>
+                        <div class="hero-stat-number">3<span>×</span></div>
+                        <div class="hero-stat-label">Startup Ops Teams Led</div>
                     </div>
                 </div>
             </div>
@@ -3428,7 +3205,7 @@
     </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ========== ABOUT ========== -->
 <section class="about" id="about">
     <div class="container">
         <div class="about-inner">
@@ -3436,7 +3213,7 @@
                 <div class="section-label">About Me</div>
                 <h2 class="section-title dark">I build systems that make<br>startups run smoother.</h2>
                 <p>Most early-stage companies don't have an ops problem because they're failing. They have one because they're growing too fast for the duct tape to hold. That's where I come in. I find the bottlenecks, write the SOPs nobody had time to write, and build the workflows that let founders stop being the bottleneck themselves.</p>
-                <p>Most recently I built and shipped an internal Operations Dashboard in React and Supabase, covering Reddit ops, blog content production, and SEO tracking in one place, replacing a tangle of spreadsheets for an AI search startup. Before that, at Cascade Web Solutions, I started as the first VA hire and grew into the senior manager keeping 30+ accounts on rails.</p>
+                <p>Most recently I built and shipped an internal Operations Dashboard in React and Supabase, covering Reddit ops, blog content production, and SEO tracking in one place, replacing a tangle of spreadsheets for an AI search startup. Before that, at Cascade Web Solutions, I started as the first VA hire and grew into the senior manager keeping 30+ accounts on rails, hiring, onboarding, training, SOPs, client comms, the whole backend of the agency.</p>
                 <p>You focus on growth. I'll build the backend that keeps it running.</p>
             </div>
             <div class="reveal reveal-delay-2">
@@ -3446,10 +3223,10 @@
                     <div class="skill-tag">Workflow Design</div>
                     <div class="skill-tag">Team Operations</div>
                     <div class="skill-tag">VA Management</div>
-                    <div class="skill-tag">AEO / GEO</div>
-                    <div class="skill-tag">Content Strategy</div>
+                    <div class="skill-tag">Process Automation</div>
                     <div class="skill-tag">AI Tool Building</div>
                     <div class="skill-tag">Technical SEO</div>
+                    <div class="skill-tag">Project Management</div>
                 </div>
                 <div class="tools-section">
                     <div class="tools-title">Tools & Platforms</div>
@@ -3457,15 +3234,22 @@
                         <span class="tool-pill">Linear</span>
                         <span class="tool-pill">Slack</span>
                         <span class="tool-pill">Notion</span>
+                        <span class="tool-pill">ClickUp</span>
+                        <span class="tool-pill">Asana</span>
                         <span class="tool-pill">Claude</span>
+                        <span class="tool-pill">ChatGPT</span>
+                        <span class="tool-pill">Gemini</span>
                         <span class="tool-pill">Cursor</span>
                         <span class="tool-pill">React</span>
                         <span class="tool-pill">Supabase</span>
                         <span class="tool-pill">Vercel</span>
                         <span class="tool-pill">GitHub</span>
                         <span class="tool-pill">Webflow</span>
+                        <span class="tool-pill">WordPress</span>
                         <span class="tool-pill">Ahrefs</span>
+                        <span class="tool-pill">SEMrush</span>
                         <span class="tool-pill">GSC</span>
+                        <span class="tool-pill">Canva</span>
                     </div>
                 </div>
             </div>
@@ -3473,69 +3257,81 @@
     </div>
 </section>
 
-<!-- HIGHLIGHTS -->
-<section class="highlights" id="highlights">
-    <div class="container">
-        <div class="highlights-header reveal">
-            <div class="section-label">Top Wins</div>
-            <h2 class="section-title light">Results, not decks.</h2>
-            <p class="highlights-lead">Across <strong>250 keyword-linked blog publishes</strong> (Apr–Jul 2026), <strong>119 ranked within 2 weeks</strong> of going live &mdash; 104 within one week. Median time-to-rank among those fast wins: <strong>1 day</strong>.</p>
+<!-- ========== HIGHLIGHTS / AEO GEO RESULTS ========== -->
+<section class="highlights" id="highlights" style="background: var(--ink); color: var(--cream); padding: 8rem 0; position: relative; overflow: hidden;">
+    <div class="container" style="position: relative; z-index: 2;">
+        <div style="text-align: center; max-width: 780px; margin: 0 auto 3.5rem;" class="reveal">
+            <div class="section-label" style="justify-content: center; color: var(--coral);">
+                <span style="display:inline-block; width:32px; height:1px; background: var(--coral); margin-right: 0.6rem; vertical-align: middle;"></span>
+                AEO/GEO Results
+            </div>
+            <h2 class="section-title" style="color: var(--cream); margin-top: 1rem;">Real rankings,<br>real fast.</h2>
+            <p style="color: var(--ink-soft); font-size: 1.1rem; line-height: 1.7; margin-top: 1.5rem; opacity: 0.85;">Across 250 keyword-linked blog publishes (Apr–Jul 2026), 119 ranked within 2 weeks of going live, 104 within one week. Median time-to-rank: 1 day.</p>
         </div>
 
-        <div class="metrics-row reveal">
-            <div class="metric-cell">
-                <div class="metric-value">250<span class="u">kw</span></div>
-                <div class="metric-label">Blog Keywords Seeded</div>
+        <div class="highlights-metrics reveal" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 4rem;">
+            <div style="text-align: center; padding: 2.5rem 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: rgba(255,255,255,0.02);">
+                <div style="font-size: 3.5rem; font-weight: 800; color: var(--coral); line-height: 1;">250</div>
+                <div style="color: var(--ink-soft); margin-top: 0.75rem; font-size: 0.95rem; letter-spacing: 0.02em;">Blog Keywords Seeded</div>
             </div>
-            <div class="metric-cell">
-                <div class="metric-value">119<span class="u">/ 2wk</span></div>
-                <div class="metric-label">Ranked in 2 Weeks</div>
+            <div style="text-align: center; padding: 2.5rem 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: rgba(255,255,255,0.02);">
+                <div style="font-size: 3.5rem; font-weight: 800; color: var(--coral); line-height: 1;">119</div>
+                <div style="color: var(--ink-soft); margin-top: 0.75rem; font-size: 0.95rem; letter-spacing: 0.02em;">Ranked in 2 Weeks</div>
             </div>
-            <div class="metric-cell">
-                <div class="metric-value">61<span class="u">%</span></div>
-                <div class="metric-label">Campaign Win Rate</div>
+            <div style="text-align: center; padding: 2.5rem 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: rgba(255,255,255,0.02);">
+                <div style="font-size: 3.5rem; font-weight: 800; color: var(--coral); line-height: 1;">61%</div>
+                <div style="color: var(--ink-soft); margin-top: 0.75rem; font-size: 0.95rem; letter-spacing: 0.02em;">Campaign Win Rate</div>
             </div>
-            <div class="metric-cell">
-                <div class="metric-value">1<span class="u">day</span></div>
-                <div class="metric-label">Median Time-to-Rank</div>
-            </div>
-        </div>
-
-        <div class="highlights-wins reveal reveal-delay-1">
-            <div class="win-chip">
-                <div class="win-kw">"mac mini switch"</div>
-                <div class="win-meta">Client 1 · #1 · 0 days</div>
-            </div>
-            <div class="win-chip">
-                <div class="win-kw">"screen AI-fluent VA"</div>
-                <div class="win-meta">Client 2 · #1 · 0 days</div>
-            </div>
-            <div class="win-chip">
-                <div class="win-kw">"best AI agent hosting under $5"</div>
-                <div class="win-meta">Client 1 · #1 · 1 day</div>
-            </div>
-            <div class="win-chip">
-                <div class="win-kw">"best POS for small business"</div>
-                <div class="win-meta">Client 4 · #2 · 1 day</div>
-            </div>
-            <div class="win-chip">
-                <div class="win-kw">city "best energy broker" cluster</div>
-                <div class="win-meta">Client 6 · #1 · 1 day</div>
-            </div>
-            <div class="win-chip">
-                <div class="win-kw">"worth it / vs competitor"</div>
-                <div class="win-meta">Client 7 · #1 · 1 day</div>
+            <div style="text-align: center; padding: 2.5rem 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: rgba(255,255,255,0.02);">
+                <div style="font-size: 3.5rem; font-weight: 800; color: var(--coral); line-height: 1;">1 day</div>
+                <div style="color: var(--ink-soft); margin-top: 0.75rem; font-size: 0.95rem; letter-spacing: 0.02em;">Median Time-to-Rank</div>
             </div>
         </div>
 
-        <div class="highlights-cta reveal">
-            <a href="results.html">See full case studies <span>→</span></a>
+        <div class="reveal" style="margin-bottom: 2.5rem;">
+            <div style="text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.8rem; color: var(--coral); margin-bottom: 1.25rem; text-align: center;">Top Wins</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center;">
+                <div style="padding: 0.85rem 1.25rem; border: 1px solid rgba(181,107,74,0.35); border-radius: 999px; background: rgba(181,107,74,0.08); font-size: 0.92rem;">
+                    <strong style="color: var(--cream);">"mac mini switch"</strong>
+                    <span style="color: var(--ink-soft); margin-left: 0.5rem;">Client 1 · #1 · 0 days</span>
+                </div>
+                <div style="padding: 0.85rem 1.25rem; border: 1px solid rgba(181,107,74,0.35); border-radius: 999px; background: rgba(181,107,74,0.08); font-size: 0.92rem;">
+                    <strong style="color: var(--cream);">"screen AI-fluent VA"</strong>
+                    <span style="color: var(--ink-soft); margin-left: 0.5rem;">Client 2 · #1 · 0 days</span>
+                </div>
+                <div style="padding: 0.85rem 1.25rem; border: 1px solid rgba(181,107,74,0.35); border-radius: 999px; background: rgba(181,107,74,0.08); font-size: 0.92rem;">
+                    <strong style="color: var(--cream);">"best AI agent hosting under $5"</strong>
+                    <span style="color: var(--ink-soft); margin-left: 0.5rem;">Client 1 · #1 · 1 day</span>
+                </div>
+                <div style="padding: 0.85rem 1.25rem; border: 1px solid rgba(181,107,74,0.35); border-radius: 999px; background: rgba(181,107,74,0.08); font-size: 0.92rem;">
+                    <strong style="color: var(--cream);">"best POS for small business"</strong>
+                    <span style="color: var(--ink-soft); margin-left: 0.5rem;">Client 3 · #2 · 1 day</span>
+                </div>
+                <div style="padding: 0.85rem 1.25rem; border: 1px solid rgba(181,107,74,0.35); border-radius: 999px; background: rgba(181,107,74,0.08); font-size: 0.92rem;">
+                    <strong style="color: var(--cream);">"best energy broker [city]"</strong>
+                    <span style="color: var(--ink-soft); margin-left: 0.5rem;">Client 4 · #1 · 1 day</span>
+                </div>
+                <div style="padding: 0.85rem 1.25rem; border: 1px solid rgba(181,107,74,0.35); border-radius: 999px; background: rgba(181,107,74,0.08); font-size: 0.92rem;">
+                    <strong style="color: var(--cream);">"worth it vs competitor"</strong>
+                    <span style="color: var(--ink-soft); margin-left: 0.5rem;">Client 5 · #1 · 1 day</span>
+                </div>
+            </div>
         </div>
-        <p class="highlights-note">Days to win = first Campaign Win Rate check that flagged a blog win minus first publish date.</p>
+
+        <div class="reveal" style="text-align: center; margin-top: 2.5rem;">
+            <a href="work.html" style="display: inline-block; color: var(--coral); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--coral); padding-bottom: 2px;">See full case studies →</a>
+            <p style="color: var(--ink-mid); font-size: 0.82rem; margin-top: 2rem; max-width: 640px; margin-left: auto; margin-right: auto; opacity: 0.7;">Days to win = first Campaign Win Rate check that flagged a blog win minus first publish date.</p>
+        </div>
     </div>
 </section>
 
-<!-- TESTIMONIALS -->
+<style>
+@media (max-width: 768px) {
+    .highlights-metrics { grid-template-columns: repeat(2, 1fr) !important; }
+}
+</style>
+
+<!-- ========== TESTIMONIALS ========== -->
 <section class="testimonials" id="testimonials">
     <div class="container">
         <div style="text-align: center;" class="reveal">
@@ -3604,7 +3400,7 @@
                 </div>
             </div>
             <div class="testimonial-card reveal reveal-delay-2">
-                <p class="testimonial-text">"Karen completely transformed our social media game. Our engagement went through the roof, and she brought a level of creativity and consistency that we didn't have before."</p>
+                <p class="testimonial-text">"Karen completely transformed our social media game. Our engagement went through the roof, and she brought a level of creativity and consistency that we didn't have before. She just gets what works online."</p>
                 <div class="testimonial-author">
                     <div class="testimonial-avatar">MJ</div>
                     <div>
@@ -3627,7 +3423,11 @@
     </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ========== TEAM SAYS ========== -->
+
+<!-- ========== WHO I WORK WITH ========== -->
+
+<!-- ========== CONTACT ========== -->
 <section class="contact" id="contact">
     <div class="container">
         <div class="contact-inner">
@@ -3639,7 +3439,7 @@
                     <div class="contact-detail-icon">✉</div>
                     <div>
                         <div class="contact-detail-label">Email</div>
-                        <div class="contact-detail-value">kpearl099@gmail.com</div>
+                        <div class="contact-detail-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2c475c494d5e401c15156c4b414d4540024f4341">[email&#160;protected]</a></div>
                     </div>
                 </div>
                 <div class="contact-detail">
@@ -3651,6 +3451,7 @@
                 </div>
             </div>
             <form class="contact-form reveal reveal-delay-2" action="https://formsubmit.co/kpearl099@gmail.com" method="POST">
+                <!-- FormSubmit config -->
                 <input type="hidden" name="_subject" value="New Portfolio Contact!">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_next" value="#">
@@ -3665,7 +3466,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="subject">Subject</label>
-                    <input class="form-input" type="text" id="subject" name="subject" placeholder="Let's talk about ops..." required>
+                    <input class="form-input" type="text" id="subject" name="subject" placeholder="Let's talk about SEO..." required>
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="message">Message</label>
@@ -3677,29 +3478,46 @@
     </div>
 </section>
 
+<!-- ========== FOOTER ========== -->
 <footer class="footer">
     <div class="container">
         <p class="footer-text">© 2026 Karen Pearl Ong. Built with <span>♥</span> and lots of coffee.</p>
     </div>
 </footer>
 
-<script>
+<!-- ========== JAVASCRIPT ========== -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Navigation scroll effect
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
         nav.classList.toggle('scrolled', window.scrollY > 50);
     });
+
+    // Mobile menu toggle
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
-    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+    });
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => navLinks.classList.remove('open'));
     });
+
+    // Scroll reveal - only enable JS-driven hidden state if IntersectionObserver exists
+    if ('IntersectionObserver' in window) {
+        document.documentElement.classList.add('js-reveal');
+    }
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
         });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // (Removed work tabs, lightbox, and team chip handlers — sections no longer present)
 </script>
 </body>
 </html>
