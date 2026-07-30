@@ -3368,15 +3368,284 @@
 .work-section.dark .section-title { color: var(--white); }
 
 
-/* ========== FINAL OVERRIDES: dark theme sanity fixes ========== */
-.work-hero {
-    background: #0a0614 !important;
-    color: #f5f0ff !important;
+/* ============================================================
+   UNIFIED THEME — matches homepage
+   Dark purple #0a0614 + neon orange #ff6b1a + white/cream sections
+   Sits last, wins all cascades.
+   ============================================================ */
+:root {
+    --u-dark: #0a0614;
+    --u-dark-surface: #14092a;
+    --u-cream: #ffffff;
+    --u-cream-warm: #f7f5fa;
+    --u-border-light: #ece8f2;
+    --u-border-dark: rgba(245, 240, 255, 0.1);
+    --u-accent: #ff6b1a;
+    --u-accent-deep: #ff5e00;
+    --u-text-dark: #2a2a2a;
+    --u-text-muted-dark: #6f6878;
+    --u-text-light: #f5f0ff;
+    --u-text-muted-light: #d4c8e8;
+    --u-text-faint-light: #9b8bb8;
 }
-.work-hero h1 { color: #f5f0ff !important; }
-.work-hero h1 em { color: #ff6b1a !important; }
-.work-hero-lead { color: #d4c8e8 !important; }
-.work-hero .section-label { color: #ff6b1a !important; }
+
+/* Body baseline */
+body {
+    background: var(--u-cream) !important;
+    color: var(--u-text-dark) !important;
+}
+
+/* Nav - stays dark, matches homepage nav */
+.nav {
+    background: transparent !important;
+}
+.nav.scrolled,
+.nav[class*="scrolled"] {
+    background: rgba(10, 6, 20, 0.92) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3) !important;
+}
+.nav-logo { color: var(--u-text-light) !important; }
+.nav-logo span { color: var(--u-accent) !important; }
+.nav-links a {
+    color: var(--u-text-muted-light) !important;
+    position: relative;
+    padding: 4px 0;
+    transition: color 0.3s ease;
+}
+.nav-links a:hover { color: var(--u-accent) !important; }
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 100%; height: 1px;
+    background: var(--u-accent);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-links a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Hero - dark purple */
+.work-hero {
+    background: var(--u-dark) !important;
+    color: var(--u-text-light) !important;
+    padding: 160px 0 100px !important;
+    position: relative;
+    overflow: hidden;
+}
+.work-hero::before {
+    content: '';
+    position: absolute;
+    top: -30%; right: -20%;
+    width: 60%; height: 130%;
+    background: radial-gradient(circle, rgba(255,107,26,0.12) 0%, transparent 60%);
+    pointer-events: none;
+    animation: work-aura 20s ease-in-out infinite;
+}
+.work-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%; left: -15%;
+    width: 55%; height: 130%;
+    background: radial-gradient(circle, rgba(155,139,184,0.08) 0%, transparent 60%);
+    pointer-events: none;
+    animation: work-aura 26s ease-in-out infinite reverse;
+}
+@keyframes work-aura {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(4%, -3%) scale(1.06); }
+}
+.work-hero .container { position: relative; z-index: 1; }
+.work-hero h1 { color: var(--u-text-light) !important; font-weight: 400; }
+.work-hero h1 em { color: var(--u-accent) !important; font-style: italic; }
+.work-hero-lead { color: var(--u-text-muted-light) !important; }
+.work-hero .section-label { color: var(--u-accent) !important; }
+.work-hero .section-label::before { background: var(--u-accent) !important; }
+
+/* Work cards / hub section - light */
+.work-cards {
+    background: var(--u-cream) !important;
+    color: var(--u-text-dark) !important;
+    padding: 100px 0 80px !important;
+}
+.work-hub-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 24px !important;
+}
+.work-hub-card {
+    background: var(--u-cream-warm) !important;
+    border: 1px solid var(--u-border-light) !important;
+    color: var(--u-text-dark) !important;
+    border-radius: 24px !important;
+    padding: 44px 40px !important;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.4s ease,
+                border-color 0.3s ease !important;
+}
+.work-hub-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 24px 60px rgba(10, 6, 20, 0.1) !important;
+    border-color: var(--u-accent) !important;
+}
+.work-hub-tag {
+    color: var(--u-accent) !important;
+    font-family: 'Geist Mono', ui-monospace, monospace !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+}
+.work-hub-title {
+    color: var(--u-text-dark) !important;
+    font-family: 'Instrument Serif', serif !important;
+    font-weight: 400 !important;
+    font-size: 1.8rem !important;
+}
+.work-hub-desc {
+    color: var(--u-text-muted-dark) !important;
+}
+.work-hub-arrow {
+    color: var(--u-accent) !important;
+    font-family: 'Instrument Serif', serif !important;
+}
+
+/* All work sections - baseline light */
+.work-section {
+    background: var(--u-cream) !important;
+    color: var(--u-text-dark) !important;
+    border-top: 1px solid var(--u-border-light) !important;
+    padding: 100px 0 !important;
+}
+.work-section .section-title,
+.work-section .section-title.dark {
+    color: var(--u-text-dark) !important;
+}
+.work-section .section-label {
+    color: var(--u-accent) !important;
+}
+.work-section .section-label::before {
+    background: var(--u-accent) !important;
+}
+
+/* Deliverables section - subtle cream */
+#deliverables {
+    background: var(--u-cream-warm) !important;
+}
+
+/* Work link cards - light with orange accents */
+.work-link-cards {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 24px !important;
+}
+.work-link-card {
+    background: var(--u-cream) !important;
+    border: 1px solid var(--u-border-light) !important;
+    border-radius: 20px !important;
+    padding: 36px 30px !important;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.4s ease,
+                border-color 0.3s ease !important;
+    color: var(--u-text-dark) !important;
+}
+#deliverables .work-link-card {
+    background: var(--u-cream) !important;
+}
+.work-link-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 20px 50px rgba(10, 6, 20, 0.08) !important;
+    border-color: var(--u-accent) !important;
+}
+.work-link-icon {
+    width: 56px !important;
+    height: 56px !important;
+    border-radius: 16px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.7rem !important;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.work-link-card:hover .work-link-icon {
+    transform: scale(1.08) rotate(-4deg);
+}
+.work-link-icon.teal { background: rgba(255,107,26,0.12) !important; color: var(--u-accent) !important; }
+.work-link-icon.orange { background: rgba(255,140,66,0.15) !important; color: var(--u-accent-deep) !important; }
+.work-link-icon.blue { background: rgba(155,139,184,0.15) !important; color: #6a5591 !important; }
+.work-link-title {
+    color: var(--u-text-dark) !important;
+    font-family: 'Instrument Serif', serif !important;
+    font-weight: 400 !important;
+    font-size: 1.2rem !important;
+}
+.work-link-desc {
+    color: var(--u-text-muted-dark) !important;
+    font-size: 0.94rem !important;
+    line-height: 1.65 !important;
+}
+.work-link-btn {
+    color: var(--u-accent) !important;
+    font-family: 'Instrument Serif', serif !important;
+    font-weight: 600 !important;
+    transition: gap 0.3s ease;
+}
+.work-link-card:hover .work-link-btn { gap: 12px; }
+
+/* SEO results grid on light background */
+#seo-results {
+    background: var(--u-cream) !important;
+}
+.results-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 24px !important;
+}
+.result-card {
+    background: var(--u-cream) !important;
+    border: 1px solid var(--u-border-light) !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.4s ease !important;
+}
+.result-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 20px 50px rgba(10, 6, 20, 0.1) !important;
+}
+.result-card-label {
+    color: var(--u-text-dark) !important;
+    font-family: 'Instrument Serif', serif !important;
+    font-weight: 700 !important;
+}
+.result-highlight {
+    background: rgba(255, 107, 26, 0.12) !important;
+    color: var(--u-accent-deep) !important;
+    font-family: 'Instrument Serif', serif !important;
+}
+@media (max-width: 900px) {
+    .work-hub-grid { grid-template-columns: 1fr !important; }
+    .work-link-cards { grid-template-columns: 1fr !important; }
+    .results-grid { grid-template-columns: 1fr !important; }
+}
+
+/* Footer - dark */
+.footer {
+    background: var(--u-dark) !important;
+    color: var(--u-text-muted-light) !important;
+    padding: 40px 0 !important;
+}
+.footer-text { color: var(--u-text-muted-light) !important; }
+.footer-text span { color: var(--u-accent) !important; }
+
+@media (prefers-reduced-motion: reduce) {
+    .work-hero::before, .work-hero::after { animation: none !important; }
+    * { transition-duration: 0.01ms !important; }
+}
 </style>
 </head>
 <body>
@@ -3402,8 +3671,8 @@
     <div class="container">
         <div class="work-hero-inner">
             <div class="section-label">Work</div>
-            <h1>Projects, results, and <em>the systems behind them</em>.</h1>
-            <p class="work-hero-lead">A hub for everything I've built and shipped: campaign case studies, internal tools, agency deliverables, and SEO wins across client work.</p>
+            <h1>Projects, results, and <em>the stuff behind them</em>.</h1>
+            <p class="work-hero-lead">One place for everything I've built. Case studies, internal tools, client work, and SEO wins.</p>
         </div>
     </div>
 </section>
@@ -3415,25 +3684,25 @@
             <a href="results.html" class="work-hub-card">
                 <span class="work-hub-tag">Featured Campaign</span>
                 <div class="work-hub-title">Case Studies</div>
-                <p class="work-hub-desc">Full breakdown of the AEO/GEO blog campaign: 250 keywords seeded, 61% win rate, and a median time-to-rank of 1 day across nine anonymized clients.</p>
+                <p class="work-hub-desc">Full look at the blog campaign. 250 keywords posted, 61% won, and half ranked in a single day across nine clients.</p>
                 <span class="work-hub-arrow">Open case studies <span>→</span></span>
             </a>
             <a href="#tools" class="work-hub-card">
                 <span class="work-hub-tag">Systems</span>
                 <div class="work-hub-title">Internal Tools</div>
-                <p class="work-hub-desc">Operations dashboards, SOP libraries, and AI-assisted internal tooling built with React, Supabase, Vercel, and prompt-engineered workflows.</p>
+                <p class="work-hub-desc">Dashboards, guides, and AI tools I built with React, Supabase, Vercel, and smart prompts.</p>
                 <span class="work-hub-arrow">See tools <span>↓</span></span>
             </a>
             <a href="#deliverables" class="work-hub-card">
                 <span class="work-hub-tag">Client Work</span>
                 <div class="work-hub-title">Deliverables</div>
-                <p class="work-hub-desc">Site audits, Figma web designs, and SEO proposals. Production-ready client deliverables from years of agency ops.</p>
+                <p class="work-hub-desc">Site audits, Figma web designs, and SEO plans. Ready-to-use work from years at agencies.</p>
                 <span class="work-hub-arrow">Browse deliverables <span>↓</span></span>
             </a>
             <a href="#seo-results" class="work-hub-card">
                 <span class="work-hub-tag">Screenshots</span>
                 <div class="work-hub-title">SEO Results</div>
-                <p class="work-hub-desc">GeoGrid transformations, GBP interaction growth, keyword rank movement, and organic traffic gains &mdash; captured straight from the tools.</p>
+                <p class="work-hub-desc">Local map wins, GBP growth, keyword jumps, and traffic gains &mdash; straight from the tools.</p>
                 <span class="work-hub-arrow">View results <span>↓</span></span>
             </a>
         </div>
@@ -3451,25 +3720,25 @@
             <div class="work-link-card" style="text-align:left; align-items:flex-start;">
                 <div class="work-link-icon teal">⚙️</div>
                 <div class="work-link-title">Operations Dashboard</div>
-                <div class="work-link-desc" style="text-align:left;">Built for an AI search startup in React + Supabase, deployed on Vercel. One internal tool covering Reddit ops, blog content production, and SEO tracking, replacing a tangle of spreadsheets. Centralized scheduling, status, and reporting; review time dropped and missed work went near-zero.</div>
+                <div class="work-link-desc" style="text-align:left;">Built for an AI search startup in React and Supabase, deployed on Vercel. One tool for Reddit work, blog content, and SEO tracking. It replaced a mess of spreadsheets. Review time dropped and missed work went near zero.</div>
                 <div class="work-link-btn">React · Supabase · Vercel</div>
             </div>
             <div class="work-link-card" style="text-align:left; align-items:flex-start;">
                 <div class="work-link-icon orange">📐</div>
-                <div class="work-link-title">SOP & Workflow Library</div>
-                <div class="work-link-desc" style="text-align:left;">A living set of SOPs covering onboarding, blog production, Reddit ops, QA, client comms, and reporting. Originally built for 30+ agency accounts and refined across engagements. Written so a new hire can take a task from zero to done without pinging the founder.</div>
+                <div class="work-link-title">Steps & Playbooks</div>
+                <div class="work-link-desc" style="text-align:left;">A living set of step-by-step guides for onboarding, blog work, Reddit, QA, client chats, and reports. First built for 30+ agency accounts. Written so a new hire can finish a task without pinging the founder.</div>
                 <div class="work-link-btn">Notion · Linear · Slack</div>
             </div>
             <div class="work-link-card" style="text-align:left; align-items:flex-start;">
                 <div class="work-link-icon blue">🤖</div>
-                <div class="work-link-title">AI-Assisted Internal Tools</div>
-                <div class="work-link-desc" style="text-align:left;">Prompt-engineered workflows and small internal tools using Claude, ChatGPT, Gemini, and Cursor. Anything from QA checklists and content briefs to one-off scripts that save the team hours a week.</div>
+                <div class="work-link-title">AI Tools for the Team</div>
+                <div class="work-link-desc" style="text-align:left;">Smart prompts and small tools using Claude, ChatGPT, Gemini, and Cursor. QA checklists, content briefs, or one-off scripts that save the team hours a week.</div>
                 <div class="work-link-btn">Claude · ChatGPT · Cursor</div>
             </div>
             <a href="https://feelingly-curtly-just-takin.kitten.space" target="_blank" class="work-link-card" style="text-align:left; align-items:flex-start;">
                 <div class="work-link-icon teal">📚</div>
                 <div class="work-link-title">The Book Vault PH</div>
-                <div class="work-link-desc" style="text-align:left;">Full-stack e-commerce site for a preloved bookstore. Vanilla HTML/CSS/JS, Supabase backend, custom admin panel. Real-time inventory sync, order flow, content creator tools, session auth. Shipped in a day.</div>
+                <div class="work-link-desc" style="text-align:left;">Full online bookstore for used books. Plain HTML, CSS, and JS with a Supabase backend and custom admin. Live stock updates, orders, tools for posting, and login. Shipped in a day.</div>
                 <div class="work-link-btn">Visit Site <span>→</span></div>
             </a>
         </div>
@@ -3481,26 +3750,26 @@
     <div class="container">
         <div class="work-section-head reveal">
             <div class="section-label">Deliverables</div>
-            <h2 class="section-title dark">Audits, designs, and<br>proposals from client work.</h2>
+            <h2 class="section-title dark">Audits, designs, and<br>plans from client work.</h2>
         </div>
         <div class="work-link-cards reveal">
             <a href="https://drive.google.com/drive/u/1/folders/1Y2qAPkH9u-9Rua8IkWlhB0mRT0fLUBRK" target="_blank" class="work-link-card">
                 <div class="work-link-icon teal">📊</div>
                 <div class="work-link-title">Site Audits</div>
-                <div class="work-link-desc">Comprehensive technical SEO audits covering site health, on-page issues, backlink profiles, and actionable recommendations.</div>
+                <div class="work-link-desc">Full SEO audits covering site health, on-page issues, backlinks, and clear next steps.</div>
                 <div class="work-link-btn">View Audits <span>→</span></div>
             </a>
             <a href="https://www.figma.com/design/j1xfWpbLq0wsA9aUpWLF8N/PORTFOLIO---WEB-DESIGN?node-id=0-1&p=f" target="_blank" class="work-link-card">
                 <div class="work-link-icon orange">🎨</div>
                 <div class="work-link-title">Website Designs</div>
-                <div class="work-link-desc">Custom Figma web designs for client sites &mdash; from wireframes to high-fidelity mockups ready for development.</div>
+                <div class="work-link-desc">Figma designs for client sites, from rough layouts to polished mockups ready to build.</div>
                 <div class="work-link-btn">View Designs <span>→</span></div>
             </a>
             <a href="https://drive.google.com/drive/u/1/folders/1YcbBIrb_-tLCB2UiKjs-HiHi0pkv7CRW" target="_blank" class="work-link-card">
                 <div class="work-link-icon blue">📋</div>
-                <div class="work-link-title">SEO Proposals</div>
-                <div class="work-link-desc">Strategic SEO proposals outlining campaign roadmaps, keyword targets, competitive analysis, and projected outcomes.</div>
-                <div class="work-link-btn">View Proposals <span>→</span></div>
+                <div class="work-link-title">SEO Plans</div>
+                <div class="work-link-desc">Full SEO plans with roadmaps, target keywords, a look at rivals, and expected results.</div>
+                <div class="work-link-btn">View Plans <span>→</span></div>
             </a>
         </div>
     </div>
@@ -3512,6 +3781,7 @@
         <div class="work-section-head reveal">
             <div class="section-label">SEO Results</div>
             <h2 class="section-title dark">Rankings, growth, and<br>numbers that moved.</h2>
+            <p style="color:#6f6878;margin-top:12px;font-size:1rem;max-width:640px;">Real screenshots from client work. Local map wins, business profile growth, keyword jumps.</p>
         </div>
         <div class="results-grid reveal">
             <div class="result-card">

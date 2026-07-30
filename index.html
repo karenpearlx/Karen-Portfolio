@@ -11,19 +11,19 @@
     <style>
         /* ========== CSS VARIABLES ========== */
         :root {
-            /* Minimalist palette — near-black, off-white, single muted accent */
-            --ink: #0a0a0a;             /* near black */
-            --ink-soft: #2a2a2a;        /* charcoal */
-            --ink-mid: #5a5a55;         /* soft gray */
+            /* Unified palette — deep purple-black + neon orange accent */
+            --ink: #0a0614;             /* deep purple-black (dark sections) */
+            --ink-soft: #1a1130;        /* raised dark surface */
+            --ink-mid: #5a5a55;         /* soft gray text */
             --cream: #ffffff;           /* pure white */
-            --cream-warm: #f5f5f5;      /* neutral light gray */
-            --blush: #e5e5e5;           /* neutral border */
-            --peach: #999999;           /* neutral mid gray */
-            --coral: #b56b4a;           /* terracotta (single accent) */
-            --lavender: #e5e5e5;        /* neutral */
-            --plum: #8a5a3a;            /* deeper terracotta */
-            --plum-deep: #0a0a0a;       /* near-black panels */
-            --mint: #e5e5e5;            /* neutral */
+            --cream-warm: #f7f5fa;      /* off-white with hint of lavender */
+            --blush: #ece8f2;           /* soft neutral border */
+            --peach: #ff8c42;           /* lighter neon orange */
+            --coral: #ff6b1a;           /* NEON ORANGE accent */
+            --lavender: #ece8f2;        /* neutral */
+            --plum: #ff5e00;            /* deeper neon orange */
+            --plum-deep: #0a0614;       /* deep purple-black panels */
+            --mint: #ece8f2;            /* neutral */
             --sage: #7a7a7a;            /* neutral gray */
 
             /* Semantic remaps for legacy vars */
@@ -34,13 +34,13 @@
             --light-mid: var(--cream-warm);
             --white: #ffffff;
             --teal: var(--coral);
-            --teal-dark: #e85a3f;
+            --teal-dark: #ff5e00;
             --orange: var(--plum);
-            --orange-light: var(--lavender);
-            --gray-400: #9b94aa;
+            --orange-light: var(--peach);
+            --gray-400: #9b8bb8;
             --gray-500: #6f6878;
             --gray-600: #4d4658;
-            --gray-700: var(--ink-soft);
+            --gray-700: #2a2a2a;
             --gray-800: var(--ink);
 
             /* Glass tokens */
@@ -145,8 +145,8 @@
             50% { transform: translateY(-12px); }
         }
         @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 170, 0.15); }
-            50% { box-shadow: 0 0 40px rgba(0, 212, 170, 0.3); }
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 26, 0.15); }
+            50% { box-shadow: 0 0 40px rgba(255, 107, 26, 0.3); }
         }
         @keyframes gradient-shift {
             0% { background-position: 0% 50%; }
@@ -238,7 +238,7 @@
             right: -20%;
             width: 800px;
             height: 800px;
-            background: radial-gradient(circle, rgba(0, 212, 170, 0.08) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 107, 26, 0.08) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
         }
@@ -249,7 +249,7 @@
             left: -10%;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(255, 107, 53, 0.06) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 140, 66, 0.06) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
         }
@@ -264,8 +264,8 @@
             position: absolute;
             inset: 0;
             background-image:
-                linear-gradient(rgba(0, 212, 170, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 212, 170, 0.03) 1px, transparent 1px);
+                linear-gradient(rgba(255, 107, 26, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 107, 26, 0.03) 1px, transparent 1px);
             background-size: 60px 60px;
             pointer-events: none;
         }
@@ -326,8 +326,8 @@
             gap: 10px;
             padding: 8px 16px;
             margin-bottom: 28px;
-            background: rgba(0, 212, 170, 0.08);
-            border: 1px solid rgba(0, 212, 170, 0.25);
+            background: rgba(255, 107, 26, 0.08);
+            border: 1px solid rgba(255, 107, 26, 0.25);
             border-radius: 50px;
             font-size: 0.88rem;
             color: var(--white);
@@ -362,7 +362,7 @@
         }
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 212, 170, 0.35);
+            box-shadow: 0 8px 30px rgba(255, 107, 26, 0.35);
         }
         .btn-outline {
             background: transparent;
@@ -410,7 +410,7 @@
             right: -40px;
             width: 80px;
             height: 80px;
-            border: 2px solid rgba(0, 212, 170, 0.2);
+            border: 2px solid rgba(255, 107, 26, 0.2);
             border-radius: 16px;
             transform: rotate(45deg);
             animation: float 6s ease-in-out infinite;
@@ -422,7 +422,7 @@
             left: -30px;
             width: 50px;
             height: 50px;
-            background: rgba(255, 107, 53, 0.1);
+            background: rgba(255, 140, 66, 0.1);
             border-radius: 50%;
             animation: float 5s ease-in-out infinite 1s;
             z-index: 0;
@@ -489,7 +489,7 @@
             border-color: var(--teal);
             color: var(--teal);
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 212, 170, 0.1);
+            box-shadow: 0 4px 15px rgba(255, 107, 26, 0.1);
         }
         .tools-section { margin-top: 40px; }
         .tools-title {
@@ -562,7 +562,7 @@
             transform: translateX(-50%);
             width: 1px;
             height: 100%;
-            background: linear-gradient(to bottom, transparent, rgba(0, 212, 170, 0.15), transparent);
+            background: linear-gradient(to bottom, transparent, rgba(255, 107, 26, 0.15), transparent);
             pointer-events: none;
         }
         .timeline {
@@ -595,7 +595,7 @@
             height: 14px;
             border-radius: 50%;
             background: var(--teal);
-            box-shadow: 0 0 20px rgba(0, 212, 170, 0.4);
+            box-shadow: 0 0 20px rgba(255, 107, 26, 0.4);
         }
         .timeline-date {
             font-family: var(--font-display);
@@ -726,8 +726,8 @@
             justify-content: center;
             font-size: 1.8rem;
         }
-        .work-link-icon.teal { background: rgba(0, 212, 170, 0.1); color: var(--teal); }
-        .work-link-icon.orange { background: rgba(255, 107, 53, 0.1); color: var(--orange); }
+        .work-link-icon.teal { background: rgba(255, 107, 26, 0.1); color: var(--teal); }
+        .work-link-icon.orange { background: rgba(255, 140, 66, 0.1); color: var(--orange); }
         .work-link-icon.blue { background: rgba(99, 102, 241, 0.1); color: #6366f1; }
         .work-link-title {
             font-family: var(--font-display);
@@ -788,7 +788,7 @@
             font-weight: 700;
             padding: 4px 12px;
             border-radius: 50px;
-            background: rgba(0, 212, 170, 0.1);
+            background: rgba(255, 107, 26, 0.1);
             color: var(--teal);
             margin-left: 8px;
         }
@@ -796,8 +796,8 @@
         /* Featured testimonial */
         .testimonial-card.featured {
             grid-column: 1 / -1;
-            background: linear-gradient(135deg, rgba(0, 212, 170, 0.08), rgba(255, 107, 53, 0.06)), var(--dark-light);
-            border: 1px solid rgba(0, 212, 170, 0.25);
+            background: linear-gradient(135deg, rgba(255, 107, 26, 0.08), rgba(255, 140, 66, 0.06)), var(--dark-light);
+            border: 1px solid rgba(255, 107, 26, 0.25);
             padding: 44px 40px;
         }
         .testimonial-card.featured .testimonial-text {
@@ -818,7 +818,7 @@
             text-transform: uppercase;
             padding: 5px 12px;
             border-radius: 50px;
-            background: rgba(0, 212, 170, 0.15);
+            background: rgba(255, 107, 26, 0.15);
             color: var(--teal);
             margin-bottom: 18px;
         }
@@ -838,7 +838,7 @@
             font-family: var(--font-display);
             font-size: 20rem;
             font-weight: 800;
-            color: rgba(0, 212, 170, 0.03);
+            color: rgba(255, 107, 26, 0.03);
             line-height: 1;
             pointer-events: none;
         }
@@ -858,7 +858,7 @@
         }
         .testimonial-card:hover {
             transform: translateY(-6px);
-            border-color: rgba(0, 212, 170, 0.2);
+            border-color: rgba(255, 107, 26, 0.2);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
         }
         .testimonial-card::before {
@@ -927,7 +927,7 @@
             left: -10%;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(255, 107, 53, 0.05) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 140, 66, 0.05) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
         }
@@ -948,7 +948,7 @@
         }
         .team-card:hover {
             transform: translateY(-4px);
-            border-color: rgba(0, 212, 170, 0.15);
+            border-color: rgba(255, 107, 26, 0.15);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
         }
         .team-card-label {
@@ -963,11 +963,11 @@
             margin-bottom: 20px;
         }
         .team-card-label.seo {
-            background: rgba(0, 212, 170, 0.1);
+            background: rgba(255, 107, 26, 0.1);
             color: var(--teal);
         }
         .team-card-label.social {
-            background: rgba(255, 107, 53, 0.1);
+            background: rgba(255, 140, 66, 0.1);
             color: var(--orange);
         }
         .team-card-quote {
@@ -1020,11 +1020,11 @@
             transform: translateY(-2px);
         }
         .team-member-chip.clickable.selected {
-            background: rgba(0, 212, 170, 0.15);
+            background: rgba(255, 107, 26, 0.15);
             border-color: var(--teal);
         }
         .team-card[data-has-social] .team-member-chip.clickable.selected {
-            background: rgba(255, 107, 53, 0.15);
+            background: rgba(255, 140, 66, 0.15);
             border-color: var(--orange);
         }
         .team-quote-display {
@@ -1104,7 +1104,7 @@
             width: 48px;
             height: 48px;
             border-radius: 12px;
-            background: rgba(0, 212, 170, 0.1);
+            background: rgba(255, 107, 26, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1156,7 +1156,7 @@
         }
         .form-input:focus, .form-textarea:focus {
             border-color: var(--teal);
-            box-shadow: 0 0 0 4px rgba(0, 212, 170, 0.1);
+            box-shadow: 0 0 0 4px rgba(255, 107, 26, 0.1);
             background: var(--white);
         }
         .form-textarea { min-height: 140px; resize: vertical; }
@@ -1176,7 +1176,7 @@
         }
         .form-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 212, 170, 0.35);
+            box-shadow: 0 8px 30px rgba(255, 107, 26, 0.35);
         }
 
         /* ========== FOOTER ========== */
@@ -1291,7 +1291,7 @@
             position: absolute;
             top: -20%; left: -10%;
             width: 60%; height: 140%;
-            background: radial-gradient(ellipse at center, rgba(0, 212, 170, 0.12), transparent 60%);
+            background: radial-gradient(ellipse at center, rgba(255, 107, 26, 0.12), transparent 60%);
             pointer-events: none;
         }
         .geo::after {
@@ -1299,7 +1299,7 @@
             position: absolute;
             bottom: -30%; right: -15%;
             width: 55%; height: 140%;
-            background: radial-gradient(ellipse at center, rgba(255, 107, 53, 0.1), transparent 60%);
+            background: radial-gradient(ellipse at center, rgba(255, 140, 66, 0.1), transparent 60%);
             pointer-events: none;
         }
         .geo-inner { position: relative; z-index: 1; }
@@ -1307,8 +1307,8 @@
         .geo-tag {
             display: inline-flex; align-items: center; gap: 8px;
             padding: 6px 14px;
-            background: rgba(0, 212, 170, 0.12);
-            border: 1px solid rgba(0, 212, 170, 0.3);
+            background: rgba(255, 107, 26, 0.12);
+            border: 1px solid rgba(255, 107, 26, 0.3);
             color: var(--teal);
             font-family: var(--font-display);
             font-size: 0.72rem;
@@ -1436,8 +1436,8 @@
         .geo-placeholder {
             margin-top: 22px;
             padding: 18px 20px;
-            background: rgba(0, 212, 170, 0.06);
-            border: 1px dashed rgba(0, 212, 170, 0.3);
+            background: rgba(255, 107, 26, 0.06);
+            border: 1px dashed rgba(255, 107, 26, 0.3);
             border-radius: 14px;
             font-size: 0.85rem;
             color: var(--gray-400);
@@ -1446,8 +1446,8 @@
         .geo-edge {
             margin-top: 70px;
             padding: 36px 40px;
-            background: linear-gradient(135deg, rgba(0, 212, 170, 0.08), rgba(255, 107, 53, 0.05));
-            border: 1px solid rgba(0, 212, 170, 0.2);
+            background: linear-gradient(135deg, rgba(255, 107, 26, 0.08), rgba(255, 140, 66, 0.05));
+            border: 1px solid rgba(255, 107, 26, 0.2);
             border-radius: 24px;
             display: flex;
             gap: 24px;
@@ -1498,7 +1498,7 @@
         .service-card.featured {
             background: var(--dark);
             color: var(--white);
-            border: 1px solid rgba(0, 212, 170, 0.3);
+            border: 1px solid rgba(255, 107, 26, 0.3);
             transform: translateY(-12px);
             box-shadow: 0 30px 60px rgba(10, 15, 28, 0.18);
         }
@@ -1573,7 +1573,7 @@
             flex-shrink: 0;
             width: 22px; height: 22px;
             border-radius: 50%;
-            background: rgba(0, 212, 170, 0.12);
+            background: rgba(255, 107, 26, 0.12);
             color: var(--teal);
             display: flex; align-items: center; justify-content: center;
             font-size: 0.75rem;
@@ -1597,7 +1597,7 @@
             background: var(--teal);
             color: var(--dark);
         }
-        .service-card.featured .service-cta:hover { box-shadow: 0 14px 30px rgba(0, 212, 170, 0.35); }
+        .service-card.featured .service-cta:hover { box-shadow: 0 14px 30px rgba(255, 107, 26, 0.35); }
         .services-note {
             text-align: center;
             margin-top: 50px;
@@ -1792,7 +1792,7 @@
             top: -120px; right: -120px;
             width: 380px; height: 380px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(0, 212, 170, 0.18), transparent 70%);
+            background: radial-gradient(circle, rgba(255, 107, 26, 0.18), transparent 70%);
         }
         .audience::after {
             content: '';
@@ -1800,7 +1800,7 @@
             bottom: -100px; left: -80px;
             width: 320px; height: 320px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 107, 53, 0.15), transparent 70%);
+            background: radial-gradient(circle, rgba(255, 140, 66, 0.15), transparent 70%);
         }
         .audience-inner { position: relative; z-index: 1; }
         .audience-header { max-width: 760px; margin-bottom: 60px; }
@@ -1820,14 +1820,14 @@
             transition: background .3s var(--ease-out), border-color .3s var(--ease-out);
         }
         .audience-item:hover {
-            background: rgba(0, 212, 170, 0.06);
-            border-color: rgba(0, 212, 170, 0.3);
+            background: rgba(255, 107, 26, 0.06);
+            border-color: rgba(255, 107, 26, 0.3);
         }
         .audience-check {
             flex-shrink: 0;
             width: 38px; height: 38px;
             border-radius: 50%;
-            background: rgba(0, 212, 170, 0.15);
+            background: rgba(255, 107, 26, 0.15);
             color: var(--teal);
             display: flex; align-items: center; justify-content: center;
             font-size: 1.1rem;
@@ -1848,8 +1848,8 @@
         .audience-cta {
             text-align: center;
             padding: 40px;
-            background: rgba(0, 212, 170, 0.08);
-            border: 1px solid rgba(0, 212, 170, 0.25);
+            background: rgba(255, 107, 26, 0.08);
+            border: 1px solid rgba(255, 107, 26, 0.25);
             border-radius: 24px;
         }
         .audience-cta p {
@@ -1871,7 +1871,7 @@
             font-size: 0.95rem;
             transition: transform .3s var(--ease-out), box-shadow .3s var(--ease-out);
         }
-        .audience-cta .btn:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0, 212, 170, 0.35); }
+        .audience-cta .btn:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(255, 107, 26, 0.35); }
         @media (max-width: 700px) {
             .audience-grid { grid-template-columns: 1fr; }
             .audience-cta p { font-size: 1.15rem; }
@@ -3170,7 +3170,7 @@
                 <p class="hero-greeting">Hello, I'm</p>
                 <h1 class="hero-name">Karen Pearl <span class="accent">Ong</span></h1>
                 <p class="hero-role">Operations Lead · Systems Builder · Problem Solver</p>
-                <p class="hero-desc">I help early-stage startups build the operational backbone they're missing. Hand me the chaos, and I'll hand you back SOPs, clean workflows, a team that runs without you, and the internal tools to keep it all moving.</p>
+                <p class="hero-desc">I help small startups get their stuff running smoothly. Hand me the mess. I'll hand you back clear steps, a team that runs itself, and tools that keep it all moving.</p>
                 <div class="hero-availability">
                     <span class="hero-availability-dot"></span>
                     <span>Open to full-time remote roles · <strong>$20/hr</strong></span>
@@ -3212,9 +3212,9 @@
             <div class="about-text reveal">
                 <div class="section-label">About Me</div>
                 <h2 class="section-title dark">I build systems that make<br>startups run smoother.</h2>
-                <p>Most early-stage companies don't have an ops problem because they're failing. They have one because they're growing too fast for the duct tape to hold. That's where I come in. I find the bottlenecks, write the SOPs nobody had time to write, and build the workflows that let founders stop being the bottleneck themselves.</p>
-                <p>Most recently I built and shipped an internal Operations Dashboard in React and Supabase, covering Reddit ops, blog content production, and SEO tracking in one place, replacing a tangle of spreadsheets for an AI search startup. Before that, at Cascade Web Solutions, I started as the first VA hire and grew into the senior manager keeping 30+ accounts on rails, hiring, onboarding, training, SOPs, client comms, the whole backend of the agency.</p>
-                <p>You focus on growth. I'll build the backend that keeps it running.</p>
+                <p>Most young startups don't have an ops problem because they're failing. They have one because they're growing too fast for the duct tape to hold. That's where I come in. I find what's slow, write the steps no one had time to write, and set up the flow so founders stop being the slow part.</p>
+                <p>Most recently I built an internal dashboard in React and Supabase for an AI search startup. One place for Reddit work, blog content, and SEO tracking. It replaced a mess of spreadsheets. Before that, at Cascade Web Solutions, I started as the first VA and grew into the senior manager running 30+ accounts. I hired, trained, wrote the steps, handled client chats, all of it.</p>
+                <p>You focus on growth. I'll build the stuff that keeps it running.</p>
             </div>
             <div class="reveal reveal-delay-2">
                 <div class="tools-title">Core Skills</div>
@@ -3263,18 +3263,18 @@
         <div class="hl-header reveal">
             <div class="hl-eyebrow"><span></span> AEO/GEO Results</div>
             <h2 class="hl-title">Real rankings,<br>real fast.</h2>
-            <p class="hl-lead">Across 250 keyword-linked blog publishes (Apr–Jul 2026), 119 ranked within 2 weeks of going live, 104 within one week. Median time-to-rank: 1 day.</p>
+            <p class="hl-lead">From April to July 2026, I posted 250 blogs tied to keywords. 119 ranked within 2 weeks. 104 hit page one in just a week. Half of the winners landed in a single day.</p>
         </div>
 
         <div class="hl-metrics reveal">
-            <div class="hl-metric"><div class="hl-num">250</div><div class="hl-label">Blog Keywords Seeded</div></div>
-            <div class="hl-metric"><div class="hl-num">119</div><div class="hl-label">Ranked in 2 Weeks</div></div>
-            <div class="hl-metric"><div class="hl-num">61%</div><div class="hl-label">Campaign Win Rate</div></div>
-            <div class="hl-metric"><div class="hl-num">1 day</div><div class="hl-label">Median Time-to-Rank</div></div>
+            <div class="hl-metric"><div class="hl-num" data-count="250" data-suffix="">0</div><div class="hl-label">Blogs Posted</div></div>
+            <div class="hl-metric"><div class="hl-num" data-count="119" data-suffix="">0</div><div class="hl-label">Ranked in 2 Weeks</div></div>
+            <div class="hl-metric"><div class="hl-num" data-count="61" data-suffix="%">0%</div><div class="hl-label">Win Rate</div></div>
+            <div class="hl-metric"><div class="hl-num" data-count="1" data-suffix=" day">0 day</div><div class="hl-label">Median Time to Rank</div></div>
         </div>
 
         <div class="hl-wins reveal">
-            <div class="hl-eyebrow-sm">Top Wins</div>
+            <div class="hl-eyebrow-sm">Top Winners</div>
             <div class="hl-chips">
                 <div class="hl-chip"><strong>"mac mini switch"</strong><span>Client 1 · #1 · 0 days</span></div>
                 <div class="hl-chip"><strong>"screen AI-fluent VA"</strong><span>Client 2 · #1 · 0 days</span></div>
@@ -3367,6 +3367,209 @@
 }
 @media (max-width: 768px) {
     .highlights .hl-metrics { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ============================================================
+   POLISH & INTERACTIONS
+   ============================================================ */
+
+/* Hero parallax + softer blob motion */
+.hero::before,
+.hero::after {
+    will-change: transform;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hero::before {
+    transform: translateY(calc(var(--parallax-y-slow, 0px) * -0.5));
+}
+.hero::after {
+    transform: translateY(calc(var(--parallax-y, 0px) * -0.4));
+}
+.hero-image-container {
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+}
+.hero-float-1, .hero-float-2 {
+    will-change: transform;
+}
+
+/* Nav link underline sweep */
+.nav-links a {
+    position: relative;
+    padding: 4px 0;
+}
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--teal);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-links a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Buttons: nicer lift */
+.btn {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                background 0.3s ease;
+}
+.btn-primary {
+    box-shadow: 0 4px 14px rgba(255, 107, 26, 0.25);
+}
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(255, 107, 26, 0.4);
+}
+.btn-outline:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(255, 107, 26, 0.18);
+}
+
+/* Skill tag micro-interaction */
+.skill-tag {
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                border-color 0.3s ease,
+                color 0.3s ease,
+                box-shadow 0.3s ease,
+                background 0.3s ease;
+}
+.skill-tag:hover {
+    transform: translateY(-3px) scale(1.02);
+}
+.tool-pill {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                background 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease;
+}
+.tool-pill:hover {
+    transform: translateY(-2px);
+}
+
+/* Highlights metric cards - lift + accent border on hover */
+.highlights .hl-metric {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.3s ease,
+                background 0.3s ease;
+    cursor: default;
+}
+.highlights .hl-metric:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 107, 26, 0.4);
+    background: rgba(255, 107, 26, 0.04);
+}
+.highlights .hl-num {
+    display: inline-block;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.highlights .hl-metric:hover .hl-num {
+    transform: scale(1.06);
+}
+
+/* Win chip pop on hover */
+.highlights .hl-chip {
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                background 0.3s ease,
+                border-color 0.3s ease;
+}
+.highlights .hl-chip:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 107, 26, 0.15);
+    border-color: rgba(255, 107, 26, 0.6);
+}
+
+/* Slow-drifting background aura for highlights section */
+@keyframes aura-drift {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(4%, -2%) scale(1.05); }
+    66% { transform: translate(-3%, 3%) scale(0.98); }
+}
+.highlights::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -20%;
+    width: 60%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(255, 107, 26, 0.08) 0%, transparent 60%);
+    animation: aura-drift 22s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+.highlights::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -20%;
+    width: 55%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(155, 139, 184, 0.08) 0%, transparent 60%);
+    animation: aura-drift 28s ease-in-out infinite reverse;
+    pointer-events: none;
+    z-index: 0;
+}
+.highlights .container { position: relative; z-index: 1; }
+
+/* Testimonial cards - lift and tilt-in accent */
+.testimonial-card {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.3s ease,
+                box-shadow 0.4s ease,
+                background 0.3s ease;
+}
+.testimonial-card:hover {
+    transform: translateY(-8px);
+}
+.testimonial-avatar {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.testimonial-card:hover .testimonial-avatar {
+    transform: scale(1.1) rotate(-4deg);
+}
+
+/* Form inputs - warmer focus */
+.form-input, .form-textarea {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, transform 0.2s ease;
+}
+.form-input:focus, .form-textarea:focus {
+    transform: translateY(-1px);
+}
+.form-submit {
+    box-shadow: 0 4px 14px rgba(255, 107, 26, 0.25);
+}
+.form-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 34px rgba(255, 107, 26, 0.4);
+}
+
+/* Section title subtle character */
+.section-title {
+    letter-spacing: -0.015em;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .highlights::before,
+    .highlights::after,
+    .hero-name .accent,
+    .hero-image-container::before,
+    .hero-float-1,
+    .hero-float-2 {
+        animation: none !important;
+    }
+    * {
+        transition-duration: 0.01ms !important;
+    }
 }
 </style>
 
@@ -3473,7 +3676,7 @@
             <div class="reveal">
                 <div class="section-label">Get In Touch</div>
                 <h2 class="section-title dark">Let's work<br>together.</h2>
-                <p class="contact-info-text">Building something that's outgrowing your duct tape? Need an ops layer, an SOP-shaped lifeline, or someone to run the backend so you can focus on growth? Send me a message and I'll get back to you fast.</p>
+                <p class="contact-info-text">Building something that's outgrowing your setup? Need clear steps, someone to run the backend, or just a person who gets things done? Send me a note. I'll get back fast.</p>
                 <div class="contact-detail">
                     <div class="contact-detail-icon">✉</div>
                     <div>
@@ -3556,7 +3759,66 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // (Removed work tabs, lightbox, and team chip handlers — sections no longer present)
+    // Counter animation for highlights metrics
+    const easeOutQuart = (t) => 1 - Math.pow(1 - t, 4);
+    const animateCount = (el) => {
+        const target = parseFloat(el.dataset.count);
+        const suffix = el.dataset.suffix || '';
+        const duration = 1600;
+        const start = performance.now();
+        const isInt = Number.isInteger(target);
+        const step = (now) => {
+            const p = Math.min((now - start) / duration, 1);
+            const eased = easeOutQuart(p);
+            const val = target * eased;
+            el.textContent = (isInt ? Math.round(val) : val.toFixed(1)) + suffix;
+            if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+    };
+    const countObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.dataset.counted) {
+                entry.target.dataset.counted = 'true';
+                animateCount(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-count]').forEach(el => countObserver.observe(el));
+
+    // Subtle parallax on hero background blobs
+    const hero = document.getElementById('hero');
+    if (hero && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        let ticking = false;
+        const updateParallax = () => {
+            const y = window.scrollY;
+            if (y < window.innerHeight) {
+                hero.style.setProperty('--parallax-y', y * 0.3 + 'px');
+                hero.style.setProperty('--parallax-y-slow', y * 0.15 + 'px');
+            }
+            ticking = false;
+        };
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        }, { passive: true });
+
+        // Mouse parallax on hero image
+        const heroImage = document.querySelector('.hero-image-container');
+        if (heroImage) {
+            hero.addEventListener('mousemove', (e) => {
+                const rect = hero.getBoundingClientRect();
+                const x = (e.clientX - rect.width / 2) / rect.width;
+                const y = (e.clientY - rect.height / 2) / rect.height;
+                heroImage.style.transform = `translate(${x * 12}px, ${y * 12}px)`;
+            });
+            hero.addEventListener('mouseleave', () => {
+                heroImage.style.transform = '';
+            });
+        }
+    }
 </script>
 </body>
 </html>

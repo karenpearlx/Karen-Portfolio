@@ -11,9 +11,9 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
 :root{
-  --ink:#0a0a0a;--ink-soft:#2a2a2a;--ink-mid:#5a5a55;
-  --cream:#ffffff;--cream-warm:#f5f5f5;--blush:#e5e5e5;
-  --coral:#b56b4a;--plum:#8a5a3a;
+  --ink:#0a0614;--ink-soft:#2a2a2a;--ink-mid:#6f6878;
+  --cream:#ffffff;--cream-warm:#f7f5fa;--blush:#ece8f2;
+  --coral:#ff6b1a;--plum:#ff5e00;
   --r-sm:18px;--r-md:28px;--r-lg:40px;--r-pill:999px;
   --shadow-1:0 2px 8px rgba(10,10,10,.04),0 1px 2px rgba(10,10,10,.03);
   --shadow-2:0 8px 24px rgba(10,10,10,.06),0 2px 6px rgba(10,10,10,.04);
@@ -140,6 +140,62 @@ footer{padding:40px 0;text-align:center;font-family:var(--font-mono);font-size:.
   .hero{padding:130px 0 60px}
   .case{padding:80px 0}
 }
+
+/* ============================================================
+   POLISH — matches homepage feel
+   ============================================================ */
+.hero::after {
+  content:'';
+  position:absolute;
+  top:-30%;right:-15%;
+  width:55%;height:130%;
+  background:radial-gradient(circle,rgba(255,107,26,.08) 0%,transparent 60%);
+  animation:results-aura 22s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes results-aura {
+  0%,100% { transform:translate(0,0) scale(1); }
+  50% { transform:translate(4%,-3%) scale(1.06); }
+}
+
+/* Nav link underline sweep */
+.nav-links a {
+  position:relative;padding:4px 0;
+}
+.nav-links a::after {
+  content:'';position:absolute;left:0;bottom:0;
+  width:100%;height:1px;background:var(--coral);
+  transform:scaleX(0);transform-origin:right;
+  transition:transform .4s cubic-bezier(.22,1,.36,1);
+}
+.nav-links a:hover::after { transform:scaleX(1);transform-origin:left; }
+
+/* Metric numbers pop as they enter */
+.metric-num { display:inline-block; transition:transform .35s cubic-bezier(.34,1.56,.64,1); }
+.metric:hover .metric-num { transform:scale(1.05); }
+
+/* Chart card lift */
+.chart-card { transition:transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s ease; }
+.chart-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-3); }
+
+/* Hero tag hover */
+.hero-tag { transition:transform .3s cubic-bezier(.34,1.56,.64,1), border-color .3s ease, color .3s ease; }
+.hero-tag:hover { transform:translateY(-2px); border-color:var(--coral); color:var(--coral); }
+
+/* Back link polish */
+.back a { transition:all .3s cubic-bezier(.22,1,.36,1); }
+.back a:hover { transform:translateY(-3px); box-shadow:0 12px 30px rgba(255,107,26,.28); }
+
+/* Systems card icons */
+.sys-card { transition:transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s ease, border-color .3s ease; }
+.sys-card:hover { border-color:var(--coral); }
+.sys-num { transition:letter-spacing .3s ease; }
+.sys-card:hover .sys-num { letter-spacing:4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::after { animation:none !important; }
+  * { transition-duration:.01ms !important; }
+}
 </style>
 </head>
 <body>
@@ -162,8 +218,8 @@ footer{padding:40px 0;text-align:center;font-family:var(--font-mono);font-size:.
   <div class="container">
     <div class="hero-inner reveal">
       <div class="section-label">Case Studies</div>
-      <h1>250 keywords seeded. 119 ranked in <em>two weeks</em>.</h1>
-      <p class="hero-lead">Across 250 keyword-linked blog publishes from April to July 2026, 119 posts ranked within two weeks of going live and 104 within a single week. Median time-to-rank among those fast wins: one day. A snapshot of an AEO/GEO content campaign across nine anonymized clients.</p>
+      <h1>250 blogs posted. 119 ranked in <em>two weeks</em>.</h1>
+      <p class="hero-lead">From April to July 2026, I posted 250 blogs tied to keywords. 119 hit the top pages in two weeks. 104 did it in one week. Half of those fast wins landed in a single day. A quick look at the content work I ran for nine clients.</p>
       <div class="hero-tags">
         <span class="hero-tag">AEO</span>
         <span class="hero-tag">GEO</span>
@@ -178,10 +234,10 @@ footer{padding:40px 0;text-align:center;font-family:var(--font-mono);font-size:.
 <section class="metrics">
   <div class="container">
     <div class="metrics-grid">
-      <div class="metric reveal"><div class="metric-num">250<span class="u">kw</span></div><div class="metric-lbl">Keywords seeded</div></div>
-      <div class="metric reveal reveal-d1"><div class="metric-num">119<span class="u">/2wk</span></div><div class="metric-lbl">Ranked in 2 weeks</div></div>
-      <div class="metric reveal reveal-d2"><div class="metric-num">61<span class="u">%</span></div><div class="metric-lbl">Campaign win rate</div></div>
-      <div class="metric reveal reveal-d3"><div class="metric-num">1<span class="u">day</span></div><div class="metric-lbl">Median time-to-rank</div></div>
+      <div class="metric reveal"><div class="metric-num"><span data-count="250">0</span><span class="u">kw</span></div><div class="metric-lbl">Keywords posted</div></div>
+      <div class="metric reveal reveal-d1"><div class="metric-num"><span data-count="119">0</span><span class="u">/2wk</span></div><div class="metric-lbl">Ranked in 2 weeks</div></div>
+      <div class="metric reveal reveal-d2"><div class="metric-num"><span data-count="61">0</span><span class="u">%</span></div><div class="metric-lbl">Win rate</div></div>
+      <div class="metric reveal reveal-d3"><div class="metric-num"><span data-count="1">0</span><span class="u">day</span></div><div class="metric-lbl">Median time to rank</div></div>
     </div>
   </div>
 </section>
@@ -192,8 +248,8 @@ footer{padding:40px 0;text-align:center;font-family:var(--font-mono);font-size:.
     <div class="case-head reveal">
       <div class="section-label">Case Study 01</div>
       <div class="case-client">Campaign · 250 publishes · Apr–Jul 2026</div>
-      <h2 class="case-title">Speed to rank: 104 posts in the top 20 within a week.</h2>
-      <p class="case-desc">The bulk of the campaign's wins hit fast. Of the 119 posts that ranked inside a two-week window, 87% crossed the line in seven days or less. The distribution below is every winning post grouped by how quickly the first Campaign Win Rate check flagged it.</p>
+      <h2 class="case-title">Fast wins: 104 posts hit the top in one week.</h2>
+      <p class="case-desc">Most wins came fast. Of the 119 posts that ranked in two weeks, 87% did it in seven days or less. The chart below shows every winner grouped by how fast it hit.</p>
     </div>
     <div class="case-body">
       <div class="chart-card reveal">
@@ -204,11 +260,11 @@ footer{padding:40px 0;text-align:center;font-family:var(--font-mono);font-size:.
       <div class="case-side reveal reveal-d1">
         <h5>What I did</h5>
         <ul>
-          <li>Owned campaign strategy end to end</li>
-          <li>Selected keyword-linked publishes by intent</li>
-          <li>Wrote briefs tuned for AI Overview capture</li>
-          <li>Ran two-week win checks via internal tooling</li>
-          <li>Cut underperformers early, doubled down on winners</li>
+          <li>Owned the whole plan from start to end</li>
+          <li>Picked keywords tied to real search intent</li>
+          <li>Wrote briefs tuned for AI Overviews</li>
+          <li>Ran two-week win checks with my own tool</li>
+          <li>Cut losers early, doubled down on winners</li>
         </ul>
         <h5>Stack</h5>
         <div class="stack">
@@ -229,8 +285,8 @@ footer{padding:40px 0;text-align:center;font-family:var(--font-mono);font-size:.
     <div class="case-head reveal">
       <div class="section-label">Case Study 02</div>
       <div class="case-client">Portfolio · 9 anonymized clients</div>
-      <h2 class="case-title">Wins spread across the book, not just one lucky account.</h2>
-      <p class="case-desc">The playbook held up across categories: an AI-hosting startup led the count with 30 wins, but home services, VA, and energy accounts all cleared double digits. Nothing here depended on one hero account carrying the number.</p>
+      <h2 class="case-title">Wins spread across clients, not just one lucky account.</h2>
+      <p class="case-desc">The playbook worked across niches. An AI hosting startup led with 30 wins, but home services, VA, and energy clients all hit double digits too. No single account was carrying the numbers.</p>
     </div>
     <div class="case-body">
       <div class="chart-card reveal">
@@ -241,11 +297,11 @@ footer{padding:40px 0;text-align:center;font-family:var(--font-mono);font-size:.
       <div class="case-side reveal reveal-d1">
         <h5>What I did</h5>
         <ul>
-          <li>Ran the shared brief + AEO framework across clients</li>
-          <li>Adapted tone and disclosures per brand</li>
-          <li>Kept CMS + schema patterns consistent</li>
-          <li>Weekly cross-client win-rate reporting</li>
-          <li>Standardized what worked so wins repeated</li>
+          <li>Used the same brief and AEO setup across clients</li>
+          <li>Shifted tone to match each brand</li>
+          <li>Kept CMS and schema patterns the same</li>
+          <li>Sent weekly win-rate reports across clients</li>
+          <li>Locked in what worked so wins kept coming</li>
         </ul>
         <h5>Stack</h5>
         <div class="stack">
@@ -265,8 +321,8 @@ footer{padding:40px 0;text-align:center;font-family:var(--font-mono);font-size:.
     <div class="case-head reveal">
       <div class="section-label">Case Study 03</div>
       <div class="case-client">Featured wins · 10 highlight posts</div>
-      <h2 class="case-title">A closer look at ten posts that landed at the top of the page.</h2>
-      <p class="case-desc">Comparison intent, alternative queries, category "best of" posts, and a few surprise local plays. All either hit #1 or the top three within two days of publish.</p>
+      <h2 class="case-title">A closer look at ten posts that landed at the top.</h2>
+      <p class="case-desc">Compare posts, "best of" lists, alternative searches, and a few surprise local wins. All hit #1 or the top three within two days.</p>
     </div>
 
     <div class="case-body" style="grid-template-columns:1fr;gap:24px">
@@ -304,8 +360,8 @@ footer{padding:40px 0;text-align:center;font-family:var(--font-mono);font-size:.
     <div class="case-head reveal">
       <div class="section-label">Case Study 04</div>
       <div class="case-client">Rollup · 250 publishes</div>
-      <h2 class="case-title">61% of the campaign hit the win criteria.</h2>
-      <p class="case-desc">Win = post ranked inside the two-week check window at a position that generated impressions or citations. Not every publish had to win. The system just had to make winning the default, not the accident.</p>
+      <h2 class="case-title">61% of posts hit the win mark.</h2>
+      <p class="case-desc">A win = a post that ranked in the two-week check at a spot that got clicks or citations. Not every post had to win. The setup just had to make winning normal, not luck.</p>
     </div>
     <div class="case-body">
       <div class="chart-card reveal">
@@ -314,13 +370,13 @@ footer{padding:40px 0;text-align:center;font-family:var(--font-mono);font-size:.
         <div class="chart-wrap"><canvas id="winrateChart"></canvas></div>
       </div>
       <div class="case-side reveal reveal-d1">
-        <h5>What made it repeatable</h5>
+        <h5>What made it repeat</h5>
         <ul>
-          <li>Every publish tied to a scored keyword</li>
-          <li>Briefs written for AI Overview + top-of-page capture</li>
-          <li>Two-week win-rate check as the truth source</li>
-          <li>Loss retros fed the next brief round</li>
-          <li>No campaign shipped without a measurement plan</li>
+          <li>Every post tied to a scored keyword</li>
+          <li>Briefs made for AI Overviews and top page spots</li>
+          <li>The two-week check was the source of truth</li>
+          <li>Losses fed into the next round of briefs</li>
+          <li>Nothing shipped without a way to measure it</li>
         </ul>
         <h5>Stack</h5>
         <div class="stack">
@@ -339,16 +395,16 @@ footer{padding:40px 0;text-align:center;font-family:var(--font-mono);font-size:.
   <div class="container">
     <div class="reveal" style="max-width:720px">
       <div class="section-label">Systems Behind the Numbers</div>
-      <h2 class="section-title">The scaffolding, not just the outcome.</h2>
-      <p class="case-desc">Wins repeat when the system holds. Here's what I built alongside the campaign so the results didn't depend on me being awake.</p>
+      <h2 class="section-title">The setup, not just the result.</h2>
+      <p class="case-desc">Wins repeat when the setup holds. Here's what I built next to the campaign so results didn't rely on me being awake.</p>
     </div>
     <div class="sys-grid">
-      <div class="sys-card reveal"><div class="sys-num">01</div><h4>Campaign Win Rate</h4><p>Internal analytics tool that scores every content campaign on rank, clicks, and citation lift so we know what to kill and what to double down on.</p></div>
-      <div class="sys-card reveal reveal-d1"><div class="sys-num">02</div><h4>Operator SOPs</h4><p>Playbooks and training guides for blog QA, briefs, and publishing so new operators ramp in days, not weeks.</p></div>
-      <div class="sys-card reveal reveal-d2"><div class="sys-num">03</div><h4>AEO/GEO Guides</h4><p>Structural guidance for quick-answer capsules, comparison tables, and FAQ blocks tuned to how AI Overviews actually cite pages.</p></div>
-      <div class="sys-card reveal"><div class="sys-num">04</div><h4>Publish Checklists</h4><p>CMS-specific checklists for Webflow, Notion, and Framer so nothing ships with a broken schema, missing meta, or bad canonical.</p></div>
-      <div class="sys-card reveal reveal-d1"><div class="sys-num">05</div><h4>Client Reporting</h4><p>Lightweight GSC + win-rate reporting cadence that surfaces momentum, not vanity, to founders on a weekly rhythm.</p></div>
-      <div class="sys-card reveal reveal-d2"><div class="sys-num">06</div><h4>AI Workflow Tooling</h4><p>Cursor and Claude workflows to speed up briefs, audits, and outline generation without losing editorial control.</p></div>
+      <div class="sys-card reveal"><div class="sys-num">01</div><h4>Campaign Win Rate</h4><p>My own tool that scores each content push on rank, clicks, and citations. Tells me what to kill and what to double down on.</p></div>
+      <div class="sys-card reveal reveal-d1"><div class="sys-num">02</div><h4>Operator Guides</h4><p>Step-by-step guides for blog QA, briefs, and publishing so new hires get up to speed in days, not weeks.</p></div>
+      <div class="sys-card reveal reveal-d2"><div class="sys-num">03</div><h4>AEO/GEO Playbook</h4><p>Layouts for quick answers, compare tables, and FAQs tuned to how AI Overviews actually pick pages to cite.</p></div>
+      <div class="sys-card reveal"><div class="sys-num">04</div><h4>Publish Checklists</h4><p>Checklists for Webflow, Notion, and Framer so nothing ships with a broken schema, missing meta, or wrong canonical.</p></div>
+      <div class="sys-card reveal reveal-d1"><div class="sys-num">05</div><h4>Client Reports</h4><p>Simple weekly reports mixing GSC and win rate. Shows real progress, not vanity numbers.</p></div>
+      <div class="sys-card reveal reveal-d2"><div class="sys-num">06</div><h4>AI Workflows</h4><p>Cursor and Claude flows that speed up briefs, audits, and outlines without losing the editorial touch.</p></div>
     </div>
   </div>
 </section>
@@ -356,8 +412,8 @@ footer{padding:40px 0;text-align:center;font-family:var(--font-mono);font-size:.
 <section class="method">
   <div class="container">
     <div class="method-card reveal">
-      <h5>Method note</h5>
-      <p>Days to win = first Campaign Win Rate check that flagged a blog win minus first publish date. Client names have been anonymized. Distribution counts reflect mapped wins by client (top nine + others).</p>
+      <h5>How it works</h5>
+      <p>Days to win = the first check that flagged the post as a win, minus the day it was posted. Client names are hidden. Counts show mapped wins per client (top nine plus others).</p>
     </div>
   </div>
 </section>
@@ -375,13 +431,33 @@ if('IntersectionObserver' in window){document.documentElement.classList.add('js-
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
+// Counter animation for metrics
+const easeOutQuart=t=>1-Math.pow(1-t,4);
+const animateCount=el=>{
+  const target=parseFloat(el.dataset.count);
+  const dur=1600;const start=performance.now();
+  const step=now=>{
+    const p=Math.min((now-start)/dur,1);
+    el.textContent=Math.round(target*easeOutQuart(p));
+    if(p<1)requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+};
+const countIO=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting && !e.target.dataset.counted){
+    e.target.dataset.counted='1';
+    animateCount(e.target);
+  }
+}),{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el=>countIO.observe(el));
+
 Chart.defaults.font.family="'Geist', system-ui, sans-serif";
 Chart.defaults.font.size=12;
 Chart.defaults.color='#5a5a55';
 
-const CORAL='#b56b4a';
-const CORAL_SOFT='rgba(181,107,74,.18)';
-const NEUTRAL='#e5e5e5';
+const CORAL='#ff6b1a';
+const CORAL_SOFT='rgba(255,107,26,.18)';
+const NEUTRAL='#ece8f2';
 
 // Case 1: Time-to-rank distribution (winning posts only, n=119)
 // Buckets sum to 119, with median at 1 day and 104 within week 1
@@ -409,7 +485,7 @@ new Chart(document.getElementById('clientChart'),{
     labels:['Client 1','Client 8','Client 2','Client 6','Client 3','Client 4','Client 9','Client 5','Others'],
     datasets:[{label:'Winning posts',
       data:[30,18,14,14,7,6,5,5,20],
-      backgroundColor:['#b56b4a','#b56b4a','#b56b4a','#b56b4a','#8a5a3a','#8a5a3a','#8a5a3a','#8a5a3a','#c8b8a8'],
+      backgroundColor:['#ff6b1a','#ff6b1a','#ff6b1a','#ff6b1a','#ff8c42','#ff8c42','#ff8c42','#ff8c42','#c8b8a8'],
       borderRadius:6,barPercentage:.72}]
   },
   options:{
