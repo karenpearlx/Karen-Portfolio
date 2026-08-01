@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karen Pearl Ong — Operations, SEO, and internal tools</title>
-    <meta name="description" content="Most recently Operations Lead at an AI search startup. Ran content and Reddit programs for five clients, published 250 blogs with 119 ranking inside two weeks, and built the internal dashboards the team worked out of.">
+    <meta name="description" content="Most recently Operations Lead at an AI search startup. Ran content programs for five clients, published 250 blogs with 119 ranking inside two weeks, and built the internal dashboards the team worked out of.">
     <meta property="og:title" content="Karen Pearl Ong — Operations, SEO, and internal tools">
     <meta property="og:description" content="Operations, SEO and internal tools. 250 blogs published, 119 ranked in two weeks. I built the dashboards the team worked out of.">
     <meta property="og:type" content="website">
@@ -3176,7 +3176,7 @@
                 <p class="hero-greeting">Karen Pearl Ong</p>
                 <h1 class="hero-name">Ops, SEO, and the<br><span class="accent">tools</span> in between.</h1>
                 <p class="hero-role">Most recently Operations Lead at an AI search startup</p>
-                <p class="hero-desc">I ran the content and Reddit programs for five clients — briefs, publishing, tracking, and the people doing the work. When the spreadsheets stopped holding up I built the thing that replaced them. 250 blogs out the door, 119 of them ranking inside two weeks, and a dashboard the team opened every morning.</p>
+                <p class="hero-desc">I ran the content programs for five clients — keywords, briefs, publishing, tracking, and the people doing the work. When the spreadsheets stopped holding up I built the thing that replaced them. 250 blogs out the door, 119 of them ranking inside two weeks, and a dashboard the team opened every morning.</p>
                 <div class="hero-availability">
                     <span class="hero-availability-dot"></span>
                     <span>Available for new work · <strong>$20/hr</strong> · US hours</span>
@@ -3218,10 +3218,10 @@
             <div class="about-text reveal">
                 <div class="section-label">About</div>
                 <h2 class="section-title dark">What I actually do.</h2>
-                <p>Day to day I owned the blog and Reddit workflow for five clients. Keyword research and briefs, a writing and posting queue, QA, and a small team of contractors I hired, trained and checked on. I was the person who noticed a client hadn't had a post go up in nine days.</p>
-                <p>The other half was building. My first week there I put together a React and Supabase dashboard because tracking was spread across six spreadsheets and nobody trusted any of them. The team switched to it and never went back. I built three more after that, mostly with Cursor and Claude.</p>
-                <p>Before that I spent a few years at an SEO agency. Started as their first VA, ended up managing 30+ accounts. Technical audits, on-page, local, GBP, schema — I've done the boring parts, not just the strategy deck version.</p>
-                <p>I'm not a developer by training and I don't pretend to be. I'm good at figuring out what needs to exist and then making it exist.</p>
+                <p>I started as a VA at an SEO agency and left a few years later running 30+ accounts. Audits, on-page, local, GBP, schema. The boring parts, not the strategy deck version.</p>
+                <p>Then operations at an AI search startup. Five clients, their whole content workflow, and the contractors behind it. 250 blogs published. 119 ranked inside two weeks.</p>
+                <p>My first week there I built a React and Supabase dashboard because tracking lived in six spreadsheets nobody trusted. The team switched and never went back. Three more apps followed.</p>
+                <p>I'm not a developer by training. I'm just good at working out what needs to exist, then making it exist.</p>
             </div>
             <div class="reveal reveal-delay-2">
                 <div class="tools-title">Core Skills</div>
@@ -3289,7 +3289,7 @@
                 <div class="ch-body">
                     <div class="ch-when">Most recent</div>
                     <h3 class="ch-name">Operations Lead, AI search startup</h3>
-                    <p>Content and Reddit programs for five clients. I owned the workflow and the contractors running it. 250 blogs published, 119 ranked within two weeks, about half of those on the same day they went up.</p>
+                    <p>Content programs for five clients. I owned the workflow and the contractors running it. 250 blogs published, 119 ranked within two weeks, about half of those on the same day they went up.</p>
                 </div>
                 <div class="ch-stat"><strong>119</strong><span>Ranked in 14 days</span></div>
             </article>
@@ -3872,6 +3872,67 @@ button, input, textarea, select,
 .ch-name { font-size: 1.5rem !important; }
 .val-card h3 { font-size: 1.32rem !important; }
 
+/* ---- sent confirmation toast ---- */
+.sent-toast {
+    position: fixed;
+    top: 88px;
+    left: 50%;
+    transform: translate(-50%, -16px);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    max-width: min(92vw, 460px);
+    padding: 0.95rem 1.1rem 0.95rem 1.15rem;
+    border-radius: 14px;
+    background: rgba(26, 16, 44, 0.94);
+    border: 1px solid rgba(255, 126, 95, 0.35);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(14px);
+    color: #fbf7f2;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.sent-toast.show { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+.sent-toast-dot {
+    flex: 0 0 auto;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    background: linear-gradient(135deg, #ff7e5f, #ffb27a);
+    color: #1a102c;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+.sent-toast p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.45;
+    color: #fbf7f2 !important;
+}
+.sent-toast button {
+    flex: 0 0 auto;
+    margin-left: 0.35rem;
+    background: none;
+    border: none;
+    color: rgba(251, 247, 242, 0.5);
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 6px;
+}
+.sent-toast button:hover { color: #fbf7f2; background: rgba(255,255,255,0.08); }
+.sent-toast button:focus-visible { outline: 2px solid #ff7e5f; outline-offset: 2px; }
+@media (max-width: 600px) {
+    .sent-toast { top: 76px; padding: 0.85rem 0.9rem; }
+    .sent-toast p { font-size: 0.88rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .sent-toast { transition: none; }
+}
+
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
     .highlights::before,
@@ -4134,6 +4195,40 @@ button, input, textarea, select,
             });
         }
     }
+
+// ---- ?sent=true confirmation ----
+function initSentToast() {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('sent') !== 'true') return;
+    var toast = document.getElementById('sentToast');
+    if (!toast) return;
+    var timer;
+    function hide() { clearTimeout(timer); toast.classList.remove('show'); }
+    toast.querySelector('button').addEventListener('click', hide);
+    setTimeout(function () {
+        toast.classList.add('show');
+        var contact = document.getElementById('contact');
+        if (contact) {
+            var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            contact.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+        }
+    }, 400);
+    timer = setTimeout(hide, 9000);
+    params.delete('sent');
+    var q = params.toString();
+    history.replaceState(null, '', window.location.pathname + (q ? '?' + q : ''));
+}
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSentToast);
+} else {
+    initSentToast();
+}
 </script>
+<div class="sent-toast" id="sentToast" role="status" aria-live="polite">
+    <span class="sent-toast-dot" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+    <p>Message sent. I&rsquo;ll get back to you soon.</p>
+    <button type="button" aria-label="Dismiss">&times;</button>
+</div>
+
 </body>
 </html>
