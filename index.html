@@ -3269,25 +3269,15 @@
     <div class="container">
         <div class="ch-header reveal">
             <div class="hl-eyebrow"><span></span> Background</div>
-            <h2 class="ch-title">Four jobs so far,<br>same kind of problem.</h2>
-            <p class="ch-lead">Every role I've had came down to the same thing. Find what's slowing everyone down, go fix it, write down how so it stays fixed.</p>
+            <h2 class="ch-title">Two roles, and<br>the same problem in both.</h2>
+            <p class="ch-lead">Find what's slowing everyone down, go fix it, then write down how so it stays fixed.</p>
         </div>
 
         <div class="ch-list">
             <article class="ch-item reveal">
                 <div class="ch-index">01</div>
                 <div class="ch-body">
-                    <div class="ch-when">First ops job</div>
-                    <h3 class="ch-name">Executive Assistant, freight company</h3>
-                    <p>Calendars, invoices, driver problems, whatever landed that day. First time I noticed how much of a mess is really just nobody writing anything down.</p>
-                </div>
-                <div class="ch-stat"></div>
-            </article>
-
-            <article class="ch-item reveal">
-                <div class="ch-index">02</div>
-                <div class="ch-body">
-                    <div class="ch-when">The agency years</div>
+                    <div class="ch-when">Previous</div>
                     <h3 class="ch-name">Operations Manager, SEO agency</h3>
                     <p>Hired as their first VA. Left running 30+ client accounts and the team behind them. Hiring, training, QA, client calls, and every SOP the team worked off.</p>
                 </div>
@@ -3295,7 +3285,7 @@
             </article>
 
             <article class="ch-item reveal">
-                <div class="ch-index">03</div>
+                <div class="ch-index">02</div>
                 <div class="ch-body">
                     <div class="ch-when">Current</div>
                     <h3 class="ch-name">Operations Lead, AI search startup</h3>
@@ -3305,7 +3295,7 @@
             </article>
 
             <article class="ch-item reveal">
-                <div class="ch-index">04</div>
+                <div class="ch-index">03</div>
                 <div class="ch-body">
                     <div class="ch-when">Alongside all of it</div>
                     <h3 class="ch-name">Internal tools</h3>
@@ -3807,6 +3797,82 @@
     letter-spacing: -0.015em;
 }
 
+/* ============================================================
+   TYPE SYSTEM — three fonts, fixed roles
+   1. Instrument Serif  -> H1, H2, H3, big numbers
+   2. Geist Mono        -> small eyebrow labels only
+   3. Geist             -> body, taglines, buttons, everything else
+   ============================================================ */
+h1, h2, h3, h4,
+.hero-name,
+.section-title,
+.ch-title, .ch-name,
+.hl-title,
+.val-card h3,
+.work-hub-title,
+.hero-stat-number,
+.hl-num,
+.ch-stat strong,
+.testimonial-text {
+    font-family: var(--font-display) !important;
+    font-style: normal !important;
+}
+.hero-name .accent { font-style: italic !important; }
+
+.section-label,
+.hl-eyebrow, .hl-eyebrow-sm,
+.ch-when,
+.val-num,
+.hero-greeting {
+    font-family: var(--font-mono) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.72rem !important;
+    font-weight: 500 !important;
+}
+
+body,
+p, li, span, a, small, strong, em, label,
+button, input, textarea, select,
+.hero-role,
+.hero-desc,
+.hero-availability,
+.hero-stat-label,
+.btn,
+.skill-tag, .tool-pill, .tools-title,
+.ch-lead, .ch-body p, .ch-stat span,
+.val-card p,
+.hl-lead, .hl-label, .hl-chip, .hl-chip strong, .hl-chip span, .hl-cta, .hl-fine,
+.testimonial-name, .testimonial-author div,
+.contact-info-text, .contact-detail-label, .contact-detail-value,
+.form-label, .form-input, .form-textarea, .form-submit,
+.nav-links a, .nav-logo,
+.footer-text {
+    font-family: var(--font-body) !important;
+}
+/* keep the display font winning inside headings */
+.hero-name span, .section-title span, .ch-title span, .hl-title span,
+.hero-stat-number span, .hl-num span, .ch-stat strong span {
+    font-family: var(--font-display) !important;
+}
+.hero-role {
+    text-transform: none !important;
+    letter-spacing: 0.01em !important;
+    font-size: 1.02rem !important;
+    font-weight: 500 !important;
+}
+.hero-stat-label, .tools-title {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.74rem !important;
+    font-weight: 600 !important;
+}
+.tool-pill, .skill-tag { letter-spacing: 0.01em !important; text-transform: none !important; }
+.testimonial-avatar { font-family: var(--font-body) !important; letter-spacing: 0.04em; }
+.footer-text { letter-spacing: 0.02em !important; }
+.ch-name { font-size: 1.5rem !important; }
+.val-card h3 { font-size: 1.32rem !important; }
+
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
     .highlights::before,
@@ -3946,7 +4012,7 @@
                 <!-- FormSubmit config -->
                 <input type="hidden" name="_subject" value="New Portfolio Contact!">
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="#">
+                <input type="hidden" name="_next" value="https://unwillingly-meekly-intense-nilgai.kitten.space/?sent=true">
                 <input type="text" name="_honey" style="display:none">
                 <div class="form-group">
                     <label class="form-label" for="name">Your Name</label>
