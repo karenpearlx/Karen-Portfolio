@@ -196,6 +196,33 @@ footer{padding:40px 0;text-align:center;font-family:var(--font-mono);font-size:.
   .hero::after { animation:none !important; }
   * { transition-duration:.01ms !important; }
 }
+
+/* ============================================================
+   TYPE SYSTEM — three fonts, fixed roles
+   Instrument Serif -> headings + big numbers
+   Geist Mono -> small eyebrow labels only
+   Geist -> body and everything else
+   ============================================================ */
+h1, h2, h3, h4,
+.section-title, .work-hub-title, .case-metric-value,
+.metric-value, .stat-number {
+    font-family: var(--font-display) !important;
+    font-style: normal !important;
+}
+.section-label, .work-hub-tag, .case-tag, .case-block-label, .timeline-date {
+    font-family: var(--font-mono) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-weight: 500 !important;
+}
+body, p, li, span, a, small, strong, em, label,
+button, input, textarea, select,
+.work-hero-lead, .work-hub-desc, .work-link-desc,
+.case-stack span, .timeline-company, .testimonial-text,
+.nav-links a, .nav-logo, .footer-text, .tool-pill, .skill-tag {
+    font-family: var(--font-body) !important;
+}
+h1 span, h2 span, h3 span, .section-title span { font-family: var(--font-display) !important; }
 </style>
 </head>
 <body>
@@ -220,7 +247,7 @@ footer{padding:40px 0;text-align:center;font-family:var(--font-mono);font-size:.
     <div class="hero-inner reveal">
       <div class="section-label">Case Studies</div>
       <h1>250 blogs posted. 119 ranked in <em>two weeks</em>.</h1>
-      <p class="hero-lead">From April to July 2026, I posted 250 blogs tied to keywords. 119 hit the top pages in two weeks. 104 did it in one week. Half of those fast wins landed in a single day. A quick look at the content work I ran for nine clients.</p>
+      <p class="hero-lead">From April to July 2026 I posted 250 blogs tied to keywords. 119 hit the top pages within two weeks, 104 of those inside one week, and half the fast wins landed the same day. This is the content work I ran for nine clients.</p>
       <div class="hero-tags">
         <span class="hero-tag">AEO</span>
         <span class="hero-tag">GEO</span>
@@ -397,11 +424,11 @@ footer{padding:40px 0;text-align:center;font-family:var(--font-mono);font-size:.
     <div class="reveal" style="max-width:720px">
       <div class="section-label">Systems Behind the Numbers</div>
       <h2 class="section-title">The setup, not just the result.</h2>
-      <p class="case-desc">Wins repeat when the setup holds. Here's what I built next to the campaign so results didn't rely on me being awake.</p>
+      <p class="case-desc">Wins repeat when the setup holds. Here's what I built alongside the campaign so the results didn't depend on me being awake.</p>
     </div>
     <div class="sys-grid">
-      <div class="sys-card reveal"><div class="sys-num">01</div><h4>Campaign Win Rate</h4><p>My own tool that scores each content push on rank, clicks, and citations. Tells me what to kill and what to double down on.</p></div>
-      <div class="sys-card reveal reveal-d1"><div class="sys-num">02</div><h4>Operator Guides</h4><p>Step-by-step guides for blog QA, briefs, and publishing so new hires get up to speed in days, not weeks.</p></div>
+      <div class="sys-card reveal"><div class="sys-num">01</div><h4>Campaign Win Rate</h4><p>A tool I built to score each content push on rank, clicks and citations. It told me what to kill and what to double down on.</p></div>
+      <div class="sys-card reveal reveal-d1"><div class="sys-num">02</div><h4>Operator Guides</h4><p>Step-by-step guides for blog QA, briefs and publishing so new hires got up to speed in days, not weeks.</p></div>
       <div class="sys-card reveal reveal-d2"><div class="sys-num">03</div><h4>AEO/GEO Playbook</h4><p>Layouts for quick answers, compare tables, and FAQs tuned to how AI Overviews actually pick pages to cite.</p></div>
       <div class="sys-card reveal"><div class="sys-num">04</div><h4>Publish Checklists</h4><p>Checklists for Webflow, Notion, and Framer so nothing ships with a broken schema, missing meta, or wrong canonical.</p></div>
       <div class="sys-card reveal reveal-d1"><div class="sys-num">05</div><h4>Client Reports</h4><p>Simple weekly reports mixing GSC and win rate. Shows real progress, not vanity numbers.</p></div>

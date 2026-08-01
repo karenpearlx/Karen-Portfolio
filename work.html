@@ -3646,6 +3646,33 @@ body {
     .work-hero::before, .work-hero::after { animation: none !important; }
     * { transition-duration: 0.01ms !important; }
 }
+
+/* ============================================================
+   TYPE SYSTEM — three fonts, fixed roles
+   Instrument Serif -> headings + big numbers
+   Geist Mono -> small eyebrow labels only
+   Geist -> body and everything else
+   ============================================================ */
+h1, h2, h3, h4,
+.section-title, .work-hub-title, .case-metric-value,
+.metric-value, .stat-number {
+    font-family: var(--font-display) !important;
+    font-style: normal !important;
+}
+.section-label, .work-hub-tag, .case-tag, .case-block-label, .timeline-date {
+    font-family: var(--font-mono) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-weight: 500 !important;
+}
+body, p, li, span, a, small, strong, em, label,
+button, input, textarea, select,
+.work-hero-lead, .work-hub-desc, .work-link-desc,
+.case-stack span, .timeline-company, .testimonial-text,
+.nav-links a, .nav-logo, .footer-text, .tool-pill, .skill-tag {
+    font-family: var(--font-body) !important;
+}
+h1 span, h2 span, h3 span, .section-title span { font-family: var(--font-display) !important; }
 </style>
 </head>
 <body>
@@ -3673,7 +3700,7 @@ body {
         <div class="work-hero-inner">
             <div class="section-label">Work</div>
             <h1>Projects, results, and <em>the stuff behind them</em>.</h1>
-            <p class="work-hero-lead">One place for everything I've built. Case studies, internal tools, client work, and SEO wins.</p>
+            <p class="work-hero-lead">Everything I've built in one place. Case studies, internal tools, client work, and SEO results.</p>
         </div>
     </div>
 </section>
@@ -3691,7 +3718,7 @@ body {
             <a href="#tools" class="work-hub-card">
                 <span class="work-hub-tag">Systems</span>
                 <div class="work-hub-title">Internal Tools</div>
-                <p class="work-hub-desc">Dashboards, guides, and AI tools I built with React, Supabase, Vercel, and smart prompts.</p>
+                <p class="work-hub-desc">Dashboards, guides and AI tools I built with React, Supabase, Vercel and a lot of prompting.</p>
                 <span class="work-hub-arrow">See tools <span>↓</span></span>
             </a>
             <a href="#deliverables" class="work-hub-card">
@@ -3727,13 +3754,13 @@ body {
             <div class="work-link-card" style="text-align:left; align-items:flex-start;">
                 <div class="work-link-icon orange">📐</div>
                 <div class="work-link-title">Steps & Playbooks</div>
-                <div class="work-link-desc" style="text-align:left;">A living set of step-by-step guides for onboarding, blog work, Reddit, QA, client chats, and reports. First built for 30+ agency accounts. Written so a new hire can finish a task without pinging the founder.</div>
+                <div class="work-link-desc" style="text-align:left;">Step-by-step guides for onboarding, blog work, Reddit, QA, client chats and reports. First written for 30+ agency accounts. Written so a new hire could finish a task without pinging the founder.</div>
                 <div class="work-link-btn">Notion · Linear · Slack</div>
             </div>
             <div class="work-link-card" style="text-align:left; align-items:flex-start;">
                 <div class="work-link-icon blue">🤖</div>
                 <div class="work-link-title">AI Tools for the Team</div>
-                <div class="work-link-desc" style="text-align:left;">Smart prompts and small tools using Claude, ChatGPT, Gemini, and Cursor. QA checklists, content briefs, or one-off scripts that save the team hours a week.</div>
+                <div class="work-link-desc" style="text-align:left;">Prompts and small tools built with Claude, ChatGPT, Gemini and Cursor. QA checklists, content briefs and one-off scripts that saved the team hours a week.</div>
                 <div class="work-link-btn">Claude · ChatGPT · Cursor</div>
             </div>
             <a href="https://feelingly-curtly-just-takin.kitten.space" target="_blank" class="work-link-card" style="text-align:left; align-items:flex-start;">
@@ -3861,7 +3888,7 @@ body {
 
 <footer class="footer">
     <div class="container">
-        <p class="footer-text">© 2026 Karen Pearl Ong. Built with <span>♥</span> and lots of coffee.</p>
+        <p class="footer-text">© 2026 Karen Pearl Ong <span>·</span> kpearl099@gmail.com</p>
     </div>
 </footer>
 
