@@ -210,6 +210,15 @@ for (const file of PAGES) {
     if (file === 'work.html') {
       const shots = await page.evaluate(() => document.querySelectorAll('.shot').length);
       ok(shots === 10, `${tag}: expected 10 SEO screenshots, got ${shots}`);
+      const navInfo = await page.evaluate(() => {
+        const items = [...document.querySelectorAll('#navLinks > li > a')];
+        return { labels: items.map(a => a.textContent.trim()), hrefs: items.map(a => a.getAttribute('href')) };
+      });
+      const EXPECTED_NAV = ['Builds', 'About', 'Background', 'Work', 'Case studies', 'Get in touch'];
+      ok(JSON.stringify(navInfo.labels) === JSON.stringify(EXPECTED_NAV),
+        `${tag}: nav labels differ -> ${JSON.stringify(navInfo.labels)}`);
+      ok(!navInfo.labels.includes('Vision'), `${tag}: nav still contains "Vision"`);
+
       const tools = await page.evaluate(() => document.querySelectorAll('.tool').length);
       ok(tools === 4, `${tag}: expected 4 tool cards, got ${tools}`);
 
@@ -241,13 +250,72 @@ for (const file of PAGES) {
         ok(vision.bars[0] < vision.bars[1], `${tag}: LinkedIn bars inverted`);
         ok(vision.bars[3] < vision.bars[2], `${tag}: payload bars inverted`);
         ok(vision.bars[5] < vision.bars[4], `${tag}: load-time bars inverted`);
-        ok(vision.drs.length === 2, `${tag}: expected 2 DR charts, got ${vision.drs.length}`);
+        ok(vision.drs.length === 1 && vision.drs[0].src.includes('dr-chart-1'),
+          `${tag}: Vision should show only the vson.ai chart, got ${JSON.stringify(vision.drs.map(d => d.src))}`);
         vision.drs.forEach(d => ok(d.okd, `${tag}: DR chart failed to load ${d.src}`));
         vision.drs.forEach(d => ok(d.w > 200, `${tag}: DR chart too small (${d.w}px)`));
         ok(vision.ships === 6, `${tag}: expected 6 shipped/system bullets, got ${vision.ships}`);
         ok(vision.chips >= 14, `${tag}: stack chips missing (${vision.chips})`);
-        ['145 KB', '100% full', '$26', '451', 'Calendly', 'Drizzle', 'BullMQ', '304%'].forEach(t =>
+        ['145 KB', '100% full', '$26', '451', 'Calendly', 'Drizzle', 'BullMQ'].forEach(t =>
           ok(vision.text.includes(t), `${tag}: Vision content missing "${t}"`));
+        ok(!vision.text.includes('claimkit'), `${tag}: claimkit should now live in the OGTool section`);
+      }
+
+      // integration logos
+      const logos = await page.evaluate(() => [...document.querySelectorAll('.logo-row img')].map(i => ({
+        alt: i.alt, src: i.getAttribute('src'), loaded: i.naturalWidth > 0,
+        w: Math.round(i.getBoundingClientRect().width)
+      })));
+      ok(logos.length === 4, `${tag}: expected 4 integration logos, got ${logos.length}`);
+      ['Calendly', 'Fireflies', 'Fathom', 'LinkedIn'].forEach(n =>
+        ok(logos.some(l => l.alt === n), `${tag}: missing logo for ${n}`));
+      logos.forEach(l => ok(l.loaded, `${tag}: logo failed to load ${l.src}`));
+      logos.forEach(l => ok(l.w >= 18, `${tag}: logo ${l.alt} too small (${l.w}px)`));
+
+      // OGTool case study
+      const og = await page.evaluate(() => {
+        const sec = document.getElementById('ogtool');
+        if (!sec) return null;
+        const seg = [...sec.querySelectorAll('.stackbar span')].map(s => Math.round(s.getBoundingClientRect().width));
+        const ring = sec.querySelector('.ring-fg');
+        return {
+          h: Math.round(sec.getBoundingClientRect().height),
+          metrics: sec.querySelectorAll('.vmetric').length,
+          seg,
+          barW: Math.round(sec.querySelector('.stackbar').getBoundingClientRect().width),
+          spots: sec.querySelectorAll('.spot').length,
+          dots: sec.querySelectorAll('.dotgrid span').length,
+          dotsOn: sec.querySelectorAll('.dotgrid span.on').length,
+          ringDash: ring && ring.getAttribute('stroke-dasharray'),
+          ringW: ring ? Math.round(ring.getBoundingClientRect().width) : 0,
+          ogtools: sec.querySelectorAll('.ogtool').length,
+          drs: [...sec.querySelectorAll('.dr img')].map(i => ({ src: i.getAttribute('src'), okd: i.naturalWidth > 0 })),
+          text: sec.innerText
+        };
+      });
+      ok(og, `${tag}: #ogtool section missing`);
+      if (og) {
+        ok(og.h > 1200, `${tag}: #ogtool collapsed (${og.h}px)`);
+        ok(og.metrics === 4, `${tag}: expected 4 OGTool scale metrics, got ${og.metrics}`);
+        ok(og.spots === 4, `${tag}: expected 4 client spotlights, got ${og.spots}`);
+        ok(og.ogtools === 8, `${tag}: expected 8 tool cards, got ${og.ogtools}`);
+        ok(og.dots === 75, `${tag}: dot grid should be 75 dots, got ${og.dots}`);
+        ok(og.dotsOn === 13, `${tag}: dot grid should have 13 filled, got ${og.dotsOn}`);
+        ok(og.ringDash === '79.1 326.7', `${tag}: ring dash wrong (${og.ringDash})`);
+        ok(og.ringW > 60, `${tag}: ring not rendered (${og.ringW}px)`);
+        ok(og.seg.length === 4, `${tag}: stack bar should have 4 segments, got ${og.seg.length}`);
+        og.seg.forEach((w, i) => ok(w >= 3, `${tag}: stack segment ${i} invisible (${w}px)`));
+        // segments must be ordered largest to smallest and sum to the bar
+        ok(og.seg[0] > og.seg[1] && og.seg[1] > og.seg[2] && og.seg[2] > og.seg[3],
+          `${tag}: stack segments out of order ${JSON.stringify(og.seg)}`);
+        const sum = og.seg.reduce((a, b) => a + b, 0);
+        ok(Math.abs(sum - og.barW) <= 4, `${tag}: stack segments sum ${sum} vs bar ${og.barW}`);
+        ok(og.drs.length === 1 && og.drs[0].src.includes('dr-chart-2'),
+          `${tag}: OGTool should show the claimkit chart`);
+        og.drs.forEach(d => ok(d.okd, `${tag}: OGTool chart failed to load ${d.src}`));
+        ['14', '~800', '155', '178', '111', '1,082', '93', '515', '135', '71', '24.2', '105', '304%',
+         'Playwright', 'DataForSEO', 'Outrank'].forEach(t =>
+          ok(og.text.includes(t), `${tag}: OGTool content missing "${t}"`));
       }
       // lightbox: scroll it into the middle, prove nothing is covering it, then click
       const clickable = await page.evaluate(() => {

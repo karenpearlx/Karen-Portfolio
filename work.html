@@ -21,11 +21,10 @@
   <div class="container nav-inner">
     <a href="index.html" class="nav-logo"><span class="nav-mark">KP</span>Karen Pearl Ong</a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#builds">Builds</a></li>
-      <li><a href="#vision">Vision</a></li>
-      <li><a href="#tools">Tools</a></li>
-      <li><a href="#deliverables">Deliverables</a></li>
-      <li><a href="#seo-results">SEO results</a></li>
+      <li><a href="index.html#builds">Builds</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#background">Background</a></li>
+      <li><a href="work.html" aria-current="page">Work</a></li>
       <li><a href="results.html">Case studies</a></li>
       <li class="nav-cta"><a href="index.html#contact">Get in touch</a></li>
     </ul>
@@ -53,11 +52,17 @@
   <div class="container">
     <div class="jump-grid">
       <a class="jump jump-wide reveal" href="#vision">
-        <div>
-          <span class="jump-lab">Featured role</span>
-          <h3>Vision · app.vson.ai</h3>
-          <p>Four production integrations, a job that catches integrations failing silently, a vendor migration nobody noticed, and a 7 MB page cut to 145 KB.</p>
-        </div>
+        <span class="jump-lab">Product &amp; platform</span>
+        <h3>Vision</h3>
+        <p>Four integrations, alerting that catches silent failures, and a 7 MB page cut to 145 KB.</p>
+        <span class="jump-go">See the numbers
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></svg>
+        </span>
+      </a>
+      <a class="jump jump-wide reveal d1" href="#ogtool">
+        <span class="jump-lab">Content, AEO &amp; GEO</span>
+        <h3>OGTool</h3>
+        <p>14 clients, ~800 blogs, and 1,082 times ChatGPT named a client back.</p>
         <span class="jump-go">See the numbers
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></svg>
         </span>
@@ -175,10 +180,10 @@
 <section class="band-tight" id="vision">
   <div class="container">
     <div class="case-head reveal">
-      <span class="eyebrow">Featured role</span>
-      <p class="case-meta">Vision · app.vson.ai · product + platform work</p>
+      <span class="eyebrow">Product &amp; platform</span>
+      <p class="case-meta">Vision · app.vson.ai</p>
       <h2 class="h-sec">Shipping integrations, and fixing what breaks quietly.</h2>
-      <p class="lede">Four production integrations, a vendor migration nobody noticed, and a page that was shipping seven megabytes to every visitor. Numbers below are measured, not estimated.</p>
+      <p class="lede">Integrations, alerting, and a page that was shipping seven megabytes to every visitor.</p>
     </div>
 
     <!-- headline metrics -->
@@ -201,8 +206,17 @@
       <div class="vmetric reveal d3">
         <b>4</b>
         <span class="vmetric-lab">Production integrations shipped</span>
-        <span class="vmetric-sub">Calendly, Fireflies, Fathom, LinkedIn</span>
       </div>
+    </div>
+
+    <div class="logos reveal">
+      <span class="logos-lab">Integrations I built and shipped</span>
+      <ul class="logo-row">
+        <li><span class="logo-tile"><img src="assets/logos/calendly.png" alt="Calendly" width="96" height="96" loading="lazy"></span><b>Calendly</b><span>OAuth</span></li>
+        <li><span class="logo-tile"><img src="assets/logos/fireflies.png" alt="Fireflies" width="96" height="96" loading="lazy"></span><b>Fireflies</b><span>API key</span></li>
+        <li><span class="logo-tile"><img src="assets/logos/fathom.png" alt="Fathom" width="96" height="96" loading="lazy"></span><b>Fathom</b><span>API key</span></li>
+        <li><span class="logo-tile"><img src="assets/logos/linkedin.png" alt="LinkedIn" width="96" height="96" loading="lazy"></span><b>LinkedIn</b><span>data pipeline</span></li>
+      </ul>
     </div>
 
     <!-- before / after -->
@@ -212,7 +226,7 @@
           <h3>LinkedIn search results</h3>
           <span class="ba-tag">vendor migration</span>
         </div>
-        <p class="ba-note">Roughly 88% of searches came back blank. I benchmarked replacement providers side by side, swapped the vendor behind our own API with no customer-facing change, and kept the 20% billing margin intact.</p>
+        <p class="ba-note">Roughly 88% of searches came back blank. I benchmarked replacements and swapped the vendor behind our API. Nothing changed for customers.</p>
         <div class="bars">
           <div class="bar-row">
             <span class="bar-lab">before</span>
@@ -233,7 +247,7 @@
           <h3>Endpoint payload</h3>
           <span class="ba-tag">production incident</span>
         </div>
-        <p class="ba-note">One endpoint was serving its entire dataset on every request. On a 715-record table that meant 3–7 MB down the wire and 10+ second loads. Paginated and trimmed to what the page actually renders.</p>
+        <p class="ba-note">An endpoint was sending its whole table on every request. Paginated it down to what the page actually shows.</p>
         <div class="bars">
           <div class="bar-row">
             <span class="bar-lab">before</span>
@@ -254,7 +268,7 @@
           <h3>Page load time</h3>
           <span class="ba-tag">same fix</span>
         </div>
-        <p class="ba-note">The same change took the page from unusable to instant. Measured on the full 715-record dataset, not a trimmed test fixture.</p>
+        <p class="ba-note">Same fix. Measured on the full 715 records, not a small test set.</p>
         <div class="bars">
           <div class="bar-row">
             <span class="bar-lab">before</span>
@@ -275,7 +289,7 @@
           <h3>Incident to resolution</h3>
           <span class="ba-tag">one hour</span>
         </div>
-        <p class="ba-note">Found, fixed, migrated and verified inside the hour, with the outage window announced up front rather than discovered by customers.</p>
+        <p class="ba-note">Found, fixed and verified inside the hour. The outage was announced up front, not discovered by customers.</p>
         <div class="timeline">
           <div class="tl-track">
             <div class="tl-down" style="left:58%;width:20%"></div>
@@ -293,7 +307,7 @@
       <div class="wix-copy">
         <span class="eyebrow on-dark">Wix site import</span>
         <h3>Whole Wix sites, cloned into real codebases.</h3>
-        <p>Prompt engineering plus the UI around it. Point it at a Wix site and it comes back as an actual repository you can edit, not an export. Cost per clone below is the AI spend, measured across real runs.</p>
+        <p>Point it at a Wix site and it comes back as a real codebase you can edit. I built the prompting and the interface. Costs below are actual AI spend.</p>
       </div>
       <div class="wix-stats">
         <div><b>$26–56</b><span>AI cost per site</span></div>
@@ -308,17 +322,17 @@
       <div class="ship reveal">
         <span class="ship-lab">Features shipped</span>
         <ul>
-          <li><b>Four production integrations.</b> Calendly over OAuth, Fireflies, Fathom on API keys, and a LinkedIn data pipeline.</li>
-          <li><b>In-chat connection cards.</b> Connect a tool in the middle of a conversation instead of leaving for a settings page.</li>
+          <li><b>Four production integrations.</b> Calendly on OAuth, Fireflies and Fathom on API keys, plus a LinkedIn data pipeline.</li>
+          <li><b>In-chat connection cards.</b> Connect a tool mid-conversation instead of hunting for a settings page.</li>
           <li><b>Wix site import.</b> Prompt engineering and the interface around it.</li>
-          <li><b>Multi-image template preview.</b> Full stack, from the database schema through to the hover slideshow.</li>
+          <li><b>Multi-image template preview.</b> Database schema through to the hover slideshow.</li>
         </ul>
       </div>
       <div class="ship reveal d1">
         <span class="ship-lab">Internal systems</span>
         <ul>
-          <li><b>Daily API-key re-validation.</b> A scheduled job probes every stored integration key. Dead keys used to fail silently; now they fire a Slack alert, an owner email and an in-app notice, and drop the user into a reconnect flow.</li>
-          <li><b>LinkedIn vendor migration.</b> Providers benchmarked in a side-by-side demo, swapped behind our API with zero customer-facing change, then wired to usage-based billing with margin tracking and low-balance alerts.</li>
+          <li><b>Daily API-key re-validation.</b> Dead integration keys used to fail silently. A nightly job now finds them and fires a Slack alert, an email and an in-app prompt to reconnect.</li>
+          <li><b>LinkedIn vendor migration.</b> Benchmarked providers, swapped ours out invisibly, then wired up usage billing with margin tracking and low-balance alerts.</li>
         </ul>
       </div>
     </div>
@@ -339,7 +353,7 @@
     <div class="reveal" style="margin-top:56px">
       <span class="eyebrow">Domain rating growth</span>
       <h3 class="h-sub">Authority built from close to nothing.</h3>
-      <p class="lede" style="margin-top:12px">Two domains over 90 days, straight out of the trend tool. Domain Rating here is the DataForSEO 0–1000 scale.</p>
+      <p class="lede" style="margin-top:12px">Straight out of the trend tool. Domain Rating here is the DataForSEO 0–1000 scale.</p>
     </div>
     <div class="dr-grid">
       <figure class="dr reveal">
@@ -351,16 +365,185 @@
           <span class="dr-note">vson.ai · 25 Jun to 22 Aug 2026</span>
         </figcaption>
       </figure>
-      <figure class="dr reveal d1">
-        <img src="assets/dr-chart-2.jpg" alt="claimkit.co domain rating trend rising from 26 to 105 between May and August 2026" loading="lazy" width="1200" height="473">
-        <figcaption>
-          <span class="dr-move"><i>26</i>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
-            <b>105</b><em>+304%</em></span>
-          <span class="dr-note">claimkit.co · 26 May to 22 Aug 2026</span>
-        </figcaption>
-      </figure>
     </div>
+  </div>
+</section>
+
+<!-- OGTOOL CASE STUDY -->
+<section class="band-tight" id="ogtool">
+  <div class="container">
+    <div class="case-head reveal">
+      <span class="eyebrow">Content, AEO &amp; GEO</span>
+      <p class="case-meta">OGTool</p>
+      <h2 class="h-sec">Getting 14 clients cited by AI, not just ranked.</h2>
+      <p class="lede">Ranking in Google is table stakes now. The job was getting client names to come out of ChatGPT and AI Overviews, at volume, across a whole book of business.</p>
+    </div>
+
+    <span class="grp-lab reveal">Programme scale</span>
+    <div class="vmetrics">
+      <div class="vmetric reveal">
+        <b>14</b>
+        <span class="vmetric-lab">Enterprise clients with live keyword tracking</span>
+      </div>
+      <div class="vmetric reveal d1">
+        <b>~800</b>
+        <span class="vmetric-lab">Blog posts published</span>
+      </div>
+      <div class="vmetric reveal d2">
+        <b>155</b>
+        <span class="vmetric-lab">Reddit seeds published</span>
+      </div>
+      <div class="vmetric reveal d3">
+        <b>100<span class="u">+</span></b>
+        <span class="vmetric-lab">Automation scripts written</span>
+      </div>
+    </div>
+
+    <span class="grp-lab reveal">Where it landed</span>
+    <div class="ba-grid">
+      <div class="ba reveal">
+        <div class="ba-head">
+          <h3>Google rankings</h3>
+          <span class="ba-tag">SEO</span>
+        </div>
+        <p class="ba-note">Tracked daily across all 14 clients.</p>
+        <div class="bars">
+          <div class="bar-row">
+            <span class="bar-lab">top 10</span>
+            <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+            <span class="bar-val strong">178</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-lab">new</span>
+            <div class="bar-track"><div class="bar-fill soft" style="width:62%"></div></div>
+            <span class="bar-val">111</span>
+          </div>
+        </div>
+        <p class="ba-foot">Keywords in the Google top 10, and keywords newly ranking.</p>
+      </div>
+
+      <div class="ba reveal d1">
+        <div class="ba-head">
+          <h3>AI citations</h3>
+          <span class="ba-tag">AEO + GEO</span>
+        </div>
+        <p class="ba-note">Every time a client got named back by an AI system.</p>
+        <div class="cite-pair">
+          <div>
+            <b>1,082</b>
+            <span>ChatGPT citation events</span>
+          </div>
+          <div>
+            <b>93</b>
+            <span>AI Overview citations</span>
+          </div>
+        </div>
+        <p class="ba-foot">AEO is answer engines, GEO is Google's AI Overviews.</p>
+      </div>
+    </div>
+
+    <div class="ba reveal wide-ba">
+      <div class="ba-head">
+        <h3>Who those 1,082 ChatGPT citations belonged to</h3>
+        <span class="ba-tag">by client</span>
+      </div>
+      <div class="stackbar">
+        <span style="width:47.6%;background:var(--teal)" title="Kea AI"></span>
+        <span style="width:33.4%;background:#7fcdb8" title="Other clients"></span>
+        <span style="width:12.5%;background:#0b5d4a" title="Termina"></span>
+        <span style="width:6.6%;background:#123f36" title="Agent 37"></span>
+      </div>
+      <ul class="legend">
+        <li><i style="background:var(--teal)"></i>Kea AI <b>515</b></li>
+        <li><i style="background:#7fcdb8"></i>Other clients <b>361</b></li>
+        <li><i style="background:#0b5d4a"></i>Termina <b>135</b></li>
+        <li><i style="background:#123f36"></i>Agent 37 <b>71</b></li>
+      </ul>
+    </div>
+
+    <span class="grp-lab reveal">Client spotlights</span>
+    <div class="spot-grid">
+      <div class="spot reveal">
+        <span class="spot-name">Termina</span>
+        <div class="ring-wrap">
+          <svg class="ring" viewBox="0 0 120 120" role="img" aria-label="24.2 percent ChatGPT visibility">
+            <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
+            <circle class="ring-fg" cx="60" cy="60" r="52" stroke-dasharray="79.1 326.7"></circle>
+          </svg>
+          <span class="ring-val">24.2<i>%</i></span>
+        </div>
+        <p class="spot-note">Share of tracked prompts where ChatGPT mentioned them. 135 citation events.</p>
+      </div>
+
+      <div class="spot reveal d1">
+        <span class="spot-name">Agent 37</span>
+        <div class="dotgrid" role="img" aria-label="13 of 75 keywords in the top 10"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <p class="spot-stat"><b>13</b> of 75 keywords in the top 10</p>
+        <p class="spot-note">71 ChatGPT citation events from a young domain.</p>
+      </div>
+
+      <div class="spot reveal d2">
+        <span class="spot-name">Kea AI</span>
+        <div class="big-stat"><b>515</b><span>citation events</span></div>
+        <p class="spot-note">Nearly half of everything ChatGPT cited across the whole book of clients.</p>
+      </div>
+
+      <div class="spot reveal d3">
+        <span class="spot-name">ClaimKit</span>
+        <div class="big-stat dr-jump"><i>26</i>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          <b>105</b>
+        </div>
+        <p class="spot-stat">Domain Rating, 90 days</p>
+        <p class="spot-note">Up 304%. Chart at the bottom of this section.</p>
+      </div>
+    </div>
+
+    <span class="grp-lab reveal">What I built to run it</span>
+    <div class="og-tools">
+      <div class="ogtool reveal">
+        <h4>Campaign Win Rate dashboard</h4>
+        <p>Win rates per campaign, plus cards showing AI Overview impact.</p>
+      </div>
+      <div class="ogtool reveal d1">
+        <h4>Outrank webhook pipeline</h4>
+        <p>Incoming content routed automatically to the right client.</p>
+      </div>
+      <div class="ogtool reveal d2">
+        <h4>GitHub-markdown publishing</h4>
+        <p>Blogs written as markdown, published straight from the repo.</p>
+      </div>
+      <div class="ogtool reveal d3">
+        <h4>DataForSEO SERP migration</h4>
+        <p>Moved rank tracking onto DataForSEO across every client.</p>
+      </div>
+      <div class="ogtool reveal">
+        <h4>Operator SOPs and playbooks</h4>
+        <p>Blog, AEO and GEO processes written down so anyone could run them.</p>
+      </div>
+      <div class="ogtool reveal d1">
+        <h4>Per-client brand kits</h4>
+        <p>Voice and rules the AI had to follow, one set per client.</p>
+      </div>
+      <div class="ogtool reveal d2">
+        <h4>Playwright image rendering</h4>
+        <p>HTML and CSS rendered to images. Replaced AI image generation entirely.</p>
+      </div>
+      <div class="ogtool reveal d3">
+        <h4>100+ automation scripts</h4>
+        <p>Bulk AEO revisions and blog syncing, so nobody did it by hand.</p>
+      </div>
+    </div>
+
+    <figure class="dr reveal" style="margin-top:26px">
+      <img src="assets/dr-chart-2.jpg" alt="claimkit.co domain rating trend rising from 26 to 105 between May and August 2026" loading="lazy" width="1200" height="473">
+      <figcaption>
+        <span class="dr-move"><i>26</i>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          <b>105</b><em>+304%</em></span>
+        <span class="dr-note">claimkit.co · Domain Rating (DataForSEO 0–1000) · 26 May to 22 Aug 2026</span>
+      </figcaption>
+    </figure>
   </div>
 </section>
 
