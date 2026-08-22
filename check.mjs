@@ -313,7 +313,7 @@ for (const file of PAGES) {
         ok(og.drs.length === 1 && og.drs[0].src.includes('dr-chart-2'),
           `${tag}: OGTool should show the claimkit chart`);
         og.drs.forEach(d => ok(d.okd, `${tag}: OGTool chart failed to load ${d.src}`));
-        ['14', '~800', '155', '178', '111', '1,082', '93', '515', '135', '71', '24.2', '105', '304%',
+        ['14', '~800', '155', '134', '812', '111', '1,082', '93', '515', '135', '71', '24.2', '105', '304%',
          'Playwright', 'DataForSEO', 'Outrank'].forEach(t =>
           ok(og.text.includes(t), `${tag}: OGTool content missing "${t}"`));
       }
