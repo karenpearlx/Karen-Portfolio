@@ -72,4 +72,44 @@
       animation: reduce ? false : { animateRotate: true, duration: 1200, easing: 'easeOutQuart' }
     }
   });
+
+  var rank = document.getElementById('rankChart');
+  if (rank) new Chart(rank, {
+    type: 'doughnut',
+    data: {
+      labels: ['Top 10 (134)', 'Outside top 10 (678)'],
+      datasets: [{ data: [134, 678], backgroundColor: [TEAL, '#dfe3e0'], borderWidth: 0, cutout: '70%' }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom', labels: { padding: 16, boxWidth: 12, boxHeight: 12 } },
+        tooltip: { callbacks: { label: function (c) { return c.parsed + ' of 812 tracked keywords'; } } }
+      },
+      animation: reduce ? false : { animateRotate: true, duration: 1200, easing: 'easeOutQuart' }
+    }
+  });
+
+  var cite = document.getElementById('citeChart');
+  if (cite) new Chart(cite, {
+    type: 'bar',
+    data: {
+      labels: ['ChatGPT citation events', 'Google AI Overview citations'],
+      datasets: [{ data: [1082, 93], backgroundColor: [TEAL, TEAL_2], borderRadius: 6, borderSkipped: false, barThickness: 46 }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: function (c) { return c.parsed.x.toLocaleString() + ' citations'; } } }
+      },
+      scales: {
+        x: { beginAtZero: true, grid: { color: GRID_LIGHT }, ticks: { color: MUTED } },
+        y: { grid: { display: false }, ticks: { color: MUTED } }
+      },
+      animation: anim
+    }
+  });
+
 })();

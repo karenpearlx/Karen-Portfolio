@@ -35,7 +35,7 @@ function animateCount(el) {
   var start = performance.now();
   function step(now) {
     var p = Math.min((now - start) / 1500, 1);
-    el.textContent = Math.round(target * easeOutQuart(p)) + suffix;
+    el.textContent = Math.round(target * easeOutQuart(p)).toLocaleString('en-US') + suffix;
     if (p < 1) requestAnimationFrame(step);
   }
   requestAnimationFrame(step);
@@ -48,7 +48,7 @@ if ('IntersectionObserver' in window) {
   }, { threshold: 0.5 });
   document.querySelectorAll('[data-count]').forEach(function (el) { cObs.observe(el); });
 } else {
-  document.querySelectorAll('[data-count]').forEach(function (el) { el.textContent = el.dataset.count + (el.dataset.suffix || ''); });
+  document.querySelectorAll('[data-count]').forEach(function (el) { el.textContent = Number(el.dataset.count).toLocaleString('en-US') + (el.dataset.suffix || ''); });
 }
 
 // ?sent=true toast

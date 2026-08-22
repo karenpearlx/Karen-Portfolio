@@ -219,8 +219,63 @@ for (const file of PAGES) {
         `${tag}: nav labels differ -> ${JSON.stringify(navInfo.labels)}`);
       ok(!navInfo.labels.includes('Vision'), `${tag}: nav still contains "Vision"`);
 
-      const tools = await page.evaluate(() => document.querySelectorAll('.tool').length);
-      ok(tools === 4, `${tag}: expected 4 tool cards, got ${tools}`);
+      // Internal Tools section must be gone
+      ok(!(await page.evaluate(() => !!document.getElementById('tools'))), `${tag}: #tools section still present`);
+      ok((await page.evaluate(() => document.querySelectorAll('.tool').length)) === 0,
+        `${tag}: stray .tool cards remain`);
+      const bodyTxt = await page.evaluate(() => document.body.innerText);
+      for (const gone of ['Internal tools', 'Software I built to replace the spreadsheet mess',
+                          'Steps and playbooks', 'AI tools for the team']) {
+        ok(!bodyTxt.includes(gone), `${tag}: removed copy still on page -> "${gone}"`);
+      }
+
+      // Two clean groups + the standalone client case study, in order
+      const groups = await page.evaluate(() => [...document.querySelectorAll('.grouphead')].map(g => ({
+        id: g.id,
+        num: g.querySelector('.grouphead-num')?.textContent.trim(),
+        title: g.querySelector('.grouphead-t')?.textContent.replace(/\s+/g, ' ').trim(),
+        desc: (g.querySelector('.grouphead-d')?.textContent || '').trim().length,
+        top: Math.round(g.getBoundingClientRect().top + window.scrollY),
+        w: Math.round(g.getBoundingClientRect().width)
+      })));
+      ok(groups.length === 3, `${tag}: expected 3 group dividers, got ${groups.length}`);
+      const wantGroups = [
+        { id: 'client', num: '00', title: 'Product & platform' },
+        { id: 'search', num: '01', title: 'SEO, GEO & AEO' },
+        { id: 'personal', num: '02', title: 'Personal builds' }
+      ];
+      wantGroups.forEach((w, i) => {
+        const g = groups[i] || {};
+        ok(g.id === w.id && g.num === w.num && g.title === w.title,
+          `${tag}: group ${i} -> ${JSON.stringify(g)} expected ${JSON.stringify(w)}`);
+        ok(g.desc > 40, `${tag}: group ${w.id} description too short (${g.desc})`);
+        ok(g.w > 200, `${tag}: group ${w.id} collapsed (w=${g.w})`);
+      });
+      ok(groups[0].top < groups[1].top && groups[1].top < groups[2].top,
+        `${tag}: group dividers out of order ${JSON.stringify(groups.map(g => g.top))}`);
+
+      // section order: vision -> ogtool -> deliverables -> seo-results -> builds
+      const order = await page.evaluate(() => ['vision','ogtool','deliverables','seo-results','builds']
+        .map(id => { const e = document.getElementById(id); return e ? Math.round(e.getBoundingClientRect().top + window.scrollY) : -1; }));
+      ok(order.every(v => v > 0), `${tag}: a reordered section is missing ${JSON.stringify(order)}`);
+      ok(order.every((v, i) => i === 0 || v > order[i - 1]),
+        `${tag}: sections out of order ${JSON.stringify(order)}`);
+
+      // personal builds sit inside group 02, client SEO work above it
+      ok(order[4] > groups[2].top, `${tag}: #builds is not under the Personal builds divider`);
+      ok(order[1] > groups[1].top && order[3] > groups[1].top,
+        `${tag}: OGTool/SEO results not under the SEO group divider`);
+      ok(order[0] > groups[0].top && order[0] < groups[1].top,
+        `${tag}: Vision is not under its own divider`);
+
+      // jump cards must all resolve to real targets
+      const jumps = await page.evaluate(() => [...document.querySelectorAll('.jump')].map(a => {
+        const h = a.getAttribute('href');
+        return { h, okTarget: !h.startsWith('#') || !!document.getElementById(h.slice(1)) };
+      }));
+      ok(jumps.length === 6, `${tag}: expected 6 jump cards, got ${jumps.length}`);
+      jumps.forEach(j => ok(j.okTarget, `${tag}: jump card points at missing target ${j.h}`));
+      ok(!jumps.some(j => j.h === '#tools'), `${tag}: jump card still links to #tools`);
 
       // Vision case study
       const vision = await page.evaluate(() => {
@@ -251,14 +306,14 @@ for (const file of PAGES) {
         ok(vision.bars[3] < vision.bars[2], `${tag}: payload bars inverted`);
         ok(vision.bars[5] < vision.bars[4], `${tag}: load-time bars inverted`);
         ok(vision.drs.length === 1 && vision.drs[0].src.includes('dr-chart-1'),
-          `${tag}: Vision should show only the vson.ai chart, got ${JSON.stringify(vision.drs.map(d => d.src))}`);
+          `${tag}: Vision should show only the first DR chart, got ${JSON.stringify(vision.drs.map(d => d.src))}`);
         vision.drs.forEach(d => ok(d.okd, `${tag}: DR chart failed to load ${d.src}`));
         vision.drs.forEach(d => ok(d.w > 200, `${tag}: DR chart too small (${d.w}px)`));
         ok(vision.ships === 6, `${tag}: expected 6 shipped/system bullets, got ${vision.ships}`);
         ok(vision.chips >= 14, `${tag}: stack chips missing (${vision.chips})`);
         ['145 KB', '100% full', '$26', '451', 'Calendly', 'Drizzle', 'BullMQ'].forEach(t =>
           ok(vision.text.includes(t), `${tag}: Vision content missing "${t}"`));
-        ok(!vision.text.includes('claimkit'), `${tag}: claimkit should now live in the OGTool section`);
+        ok(!/claimkit|vson/i.test(vision.text), `${tag}: client domain leaked into Vision copy`);
       }
 
       // integration logos
@@ -296,7 +351,7 @@ for (const file of PAGES) {
       ok(og, `${tag}: #ogtool section missing`);
       if (og) {
         ok(og.h > 1200, `${tag}: #ogtool collapsed (${og.h}px)`);
-        ok(og.metrics === 4, `${tag}: expected 4 OGTool scale metrics, got ${og.metrics}`);
+        ok(og.metrics === 3, `${tag}: expected 3 OGTool scale metrics, got ${og.metrics}`);
         ok(og.spots === 4, `${tag}: expected 4 client spotlights, got ${og.spots}`);
         ok(og.ogtools === 8, `${tag}: expected 8 tool cards, got ${og.ogtools}`);
         ok(og.dots === 75, `${tag}: dot grid should be 75 dots, got ${og.dots}`);
@@ -311,12 +366,26 @@ for (const file of PAGES) {
         const sum = og.seg.reduce((a, b) => a + b, 0);
         ok(Math.abs(sum - og.barW) <= 4, `${tag}: stack segments sum ${sum} vs bar ${og.barW}`);
         ok(og.drs.length === 1 && og.drs[0].src.includes('dr-chart-2'),
-          `${tag}: OGTool should show the claimkit chart`);
+          `${tag}: OGTool should show the second DR chart`);
         og.drs.forEach(d => ok(d.okd, `${tag}: OGTool chart failed to load ${d.src}`));
-        ['14', '~800', '155', '134', '812', '111', '1,082', '93', '515', '135', '71', '24.2', '105', '304%',
+        ['14', '801', '134', '812', '111', '1,082', '93', '515', '135', '71', '24.2', '105', '304%',
          'Playwright', 'DataForSEO', 'Outrank'].forEach(t =>
           ok(og.text.includes(t), `${tag}: OGTool content missing "${t}"`));
+        ok(!/community placement/i.test(og.text), `${tag}: the removed placements metric is back`);
       }
+      // no client names anywhere on the page
+      const NAMES = ['ClaimKit', 'claimkit.co', 'Kea AI', 'Termina', 'Agent 37', 'vson.ai', 'app.vson.ai'];
+      const pageAll = await page.evaluate(() => ({
+        text: document.body.innerText,
+        attrs: [...document.querySelectorAll('[alt],[title],[aria-label]')]
+          .map(e => `${e.getAttribute('alt') || ''} ${e.getAttribute('title') || ''} ${e.getAttribute('aria-label') || ''}`).join(' ')
+      }));
+      NAMES.forEach(n => {
+        ok(!pageAll.text.includes(n), `${tag}: client name "${n}" visible on page`);
+        ok(!pageAll.attrs.includes(n), `${tag}: client name "${n}" in an alt/title/aria attribute`);
+      });
+      ok(/Top performer/.test(pageAll.text), `${tag}: anonymised spotlight labels missing`);
+
       // lightbox: scroll it into the middle, prove nothing is covering it, then click
       const clickable = await page.evaluate(() => {
         const el = document.querySelector('.shot');
@@ -337,26 +406,97 @@ for (const file of PAGES) {
       ok(await page.evaluate(() => document.getElementById('lightbox').hidden), `${tag}: lightbox didn't close on Escape`);
     }
 
+    if (file === 'index.html') {
+      const cta = await page.evaluate(() => {
+        const a = [...document.querySelectorAll('.hero-actions a')]
+          .find(e => /see what i've built/i.test(e.textContent));
+        if (!a) return null;
+        const r = a.getBoundingClientRect();
+        return { href: a.getAttribute('href'), w: Math.round(r.width), h: Math.round(r.height) };
+      });
+      ok(cta, `${tag}: "See what I've built" button is missing`);
+      const itxt = await page.evaluate(() => document.body.innerText);
+      ['OGTool', 'Vision', '14 clients', '801'].forEach(t =>
+        ok(itxt.includes(t), `${tag}: index hero missing "${t}"`));
+      ['15 clients', 'Most recently Operations Lead at an AI search startup'].forEach(t =>
+        ok(!itxt.includes(t), `${tag}: stale index copy "${t}" is back`));
+      // the 250/119 campaign figures may only appear inside the cohort-scoped section
+      ok(/250 of those publishes/.test(itxt), `${tag}: the 250 cohort is not scoped as a subset`);
+      // counters must render thousands separators, matching the prose elsewhere
+      const stats = await page.evaluate(() => [...document.querySelectorAll('.stat-num')]
+        .map(e => e.textContent.trim()));
+      ok(stats.some(v => v === '801'), `${tag}: hero stat 801 missing, got ${stats.join(', ')}`);
+      ok(stats.some(v => v === '1,082'), `${tag}: hero stat should read 1,082, got ${stats.join(', ')}`);
+      ok(!stats.some(v => v === '1082'), `${tag}: hero stat 1082 is missing its comma`);
+      if (cta) {
+        ok(cta.href === 'work.html', `${tag}: "See what I've built" points at ${cta.href}, expected work.html`);
+        ok(cta.w > 100 && cta.h > 30, `${tag}: "See what I've built" button box ${cta.w}x${cta.h}`);
+        const st = await page.evaluate(async (u) => {
+          try { return (await fetch(u, { method: 'GET' })).status; } catch { return 0; }
+        }, cta.href);
+        ok(st === 200, `${tag}: "See what I've built" target ${cta.href} returned HTTP ${st}`);
+      }
+    }
+
     if (file === 'results.html') {
       const charts = await page.evaluate(() => [...document.querySelectorAll('canvas')].map(c => ({ id: c.id, w: Math.round(c.getBoundingClientRect().width), h: Math.round(c.getBoundingClientRect().height) })));
-      ok(charts.length === 3, `${tag}: expected 3 charts, got ${charts.length}`);
+      const WANT_CHARTS = ['ttrChart', 'clientChart', 'rankChart', 'citeChart', 'winrateChart'];
+      ok(charts.length === WANT_CHARTS.length, `${tag}: expected ${WANT_CHARTS.length} charts, got ${charts.length}`);
+      WANT_CHARTS.forEach(id => ok(charts.some(c => c.id === id), `${tag}: missing chart #${id}`));
       charts.forEach(c => ok(c.w > 150 && c.h > 150, `${tag}: chart #${c.id} box ${c.w}x${c.h}`));
-      const painted = await page.evaluate(() => {
-        const c = document.getElementById('ttrChart');
-        if (!c) return false;
-        const ctx = c.getContext('2d');
-        const d = ctx.getImageData(0, 0, c.width, c.height).data;
-        for (let i = 3; i < d.length; i += 40) if (d[i] > 0) return true;
-        return false;
-      });
-      ok(painted, `${tag}: ttrChart canvas is blank`);
+      // every canvas must have actually painted pixels, not just ttrChart
+      const blank = await page.evaluate((ids) => ids.filter(id => {
+        const c = document.getElementById(id);
+        if (!c) return true;
+        const d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data;
+        for (let i = 3; i < d.length; i += 40) if (d[i] > 0) return false;
+        return true;
+      }), WANT_CHARTS);
+      ok(blank.length === 0, `${tag}: blank canvases -> ${blank.join(', ')}`);
+
+      // programme numbers must match the source document
+      const rtxt = await page.evaluate(() => document.body.innerText);
+      ['801', '134', '812', '1,082', '93', '111', '14 accounts'].forEach(t =>
+        ok(rtxt.includes(t), `${tag}: results.html missing programme figure "${t}"`));
+      // the 250 cohort must be labelled as a subset, never as the whole programme
+      ok(!/250 blogs posted/i.test(rtxt), `${tag}: stale "250 blogs posted" headline`);
+      ok(/250 of the 801/.test(rtxt), `${tag}: 250 cohort is not labelled as a subset of 801`);
+      const heroMetrics = await page.evaluate(() =>
+        [...document.querySelectorAll('.metrics .metric')].map(m => m.innerText.replace(/\s+/g, ' ').trim()));
+      ok(heroMetrics.length === 4, `${tag}: expected 4 hero metrics, got ${heroMetrics.length}`);
+      const cases = await page.evaluate(() =>
+        [...document.querySelectorAll('.eyebrow')].map(e => e.textContent.trim()).filter(t => /^Case study/.test(t)));
+      ok(JSON.stringify(cases) === JSON.stringify(['Case study 01','Case study 02','Case study 03','Case study 04','Case study 05']),
+        `${tag}: case study numbering broken -> ${JSON.stringify(cases)}`);
       const rows = await page.evaluate(() => document.querySelectorAll('.wins-table tbody tr').length);
       ok(rows === 10, `${tag}: expected 10 table rows, got ${rows}`);
       const sys = await page.evaluate(() => document.querySelectorAll('.sys').length);
       ok(sys === 6, `${tag}: expected 6 systems cards, got ${sys}`);
     }
 
+    const noReddit = await page.evaluate(() => {
+      const t = document.body.innerText;
+      const a = [...document.querySelectorAll('[alt],[title],[aria-label],[href]')]
+        .map(e => `${e.getAttribute('alt') || ''} ${e.getAttribute('title') || ''} ${e.getAttribute('aria-label') || ''} ${e.getAttribute('href') || ''}`).join(' ');
+      return { inText: /reddit/i.test(t), inAttrs: /reddit/i.test(a) };
+    });
+    ok(!noReddit.inText, `${tag}: "Reddit" still appears in page text`);
+    ok(!noReddit.inAttrs, `${tag}: "Reddit" still appears in an attribute or link`);
+
     ok(errs.length === 0, `${tag}: console/page errors: ${errs.join(' | ')}`);
+
+    // un-redacted client charts must not be reachable from the web root
+    if (file === 'work.html') {
+      const leaky = ['dr-chart-1.jpg', 'dr-chart-1.png', 'dr-chart-1-blurred.png',
+                     'dr-chart-2.jpg', 'dr-chart-2.png', 'dr-chart-2-blurred.png'];
+      for (const f of leaky) {
+        const st = await page.evaluate(async (u) => {
+          try { const r = await fetch(u, { method: 'GET' }); return r.status; } catch { return 0; }
+        }, `assets/${f}`);
+        ok(st === 404 || st === 403 || st === 0, `${tag}: un-redacted chart still served -> assets/${f} (HTTP ${st})`);
+      }
+    }
+
 
     await page.screenshot({ path: `${SHOTS}/${file.replace('.html', '')}-${vName}.png`, fullPage: true });
     if (vName === 'mobile' || vName === 'desktop') {

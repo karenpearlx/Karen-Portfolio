@@ -1,3 +1,7 @@
 
 # never publish internal client analytics
 assets/*.pdf
+# un-redacted client charts: they show client domains
+assets/dr-chart-1.*
+assets/dr-chart-2.*
+assets/*-blurred.png
