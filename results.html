@@ -1,291 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Case Studies — Karen Pearl Ong</title>
-<meta name="description" content="AEO/GEO campaign case studies: 250 keywords seeded, 61% win rate, median time-to-rank of 1 day across nine anonymized clients.">
+<title>Case studies — Karen Pearl Ong</title>
+<meta name="description" content="250 blogs posted against target keywords, 119 ranked inside two weeks, 61% win rate across nine clients. The full AEO/GEO campaign breakdown.">
+<meta name="theme-color" content="#fbfbfa">
+<meta property="og:title" content="Case studies — Karen Pearl Ong">
+<meta property="og:description" content="250 blogs posted, 119 ranked in two weeks, 61% win rate across nine clients.">
+<meta property="og:type" content="article">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-<style>
-:root{
-  --ink:#0a0614;--ink-soft:#2a2a2a;--ink-mid:#6f6878;
-  --cream:#ffffff;--cream-warm:#f7f5fa;--blush:#ece8f2;
-  --coral:#ff6b1a;--plum:#ff5e00;
-  --r-sm:18px;--r-md:28px;--r-lg:40px;--r-pill:999px;
-  --shadow-1:0 2px 8px rgba(10,10,10,.04),0 1px 2px rgba(10,10,10,.03);
-  --shadow-2:0 8px 24px rgba(10,10,10,.06),0 2px 6px rgba(10,10,10,.04);
-  --shadow-3:0 18px 48px rgba(10,10,10,.1),0 4px 12px rgba(10,10,10,.05);
-  --font-display:'Instrument Serif','Times New Roman',serif;
-  --font-body:'Geist',system-ui,sans-serif;
-  --font-mono:'Geist Mono',ui-monospace,monospace;
-  --ease-out:cubic-bezier(.22,1,.36,1);
-}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{font-family:var(--font-body);color:var(--ink-soft);background:var(--cream);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-a{text-decoration:none;color:inherit}
-img{max-width:100%;display:block}
-
-.container{max-width:1200px;margin:0 auto;padding:0 24px}
-
-.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--blush)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 24px}
-.nav-logo{font-family:var(--font-display);font-size:1.4rem;color:var(--ink);font-weight:400}
-.nav-logo span{color:var(--coral)}
-.nav-links{display:flex;gap:32px;list-style:none;font-size:.9rem;font-weight:500}
-.nav-links a{color:var(--ink-soft);transition:color .2s}
-.nav-links a:hover{color:var(--coral)}
-.nav-back{font-family:var(--font-mono);font-size:.8rem;color:var(--coral)}
-
-.section-label{
-  font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--coral);
-  display:inline-flex;align-items:center;gap:12px;margin-bottom:20px;
-}
-.section-label::before{content:"";width:28px;height:1px;background:var(--coral)}
-
-.reveal{opacity:1;transform:none;transition:opacity .8s var(--ease-out),transform .8s var(--ease-out)}
-html.js-reveal .reveal{opacity:0;transform:translateY(24px)}
-html.js-reveal .reveal.visible{opacity:1;transform:none}
-.reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}.reveal-d3{transition-delay:.3s}
-
-.hero{padding:160px 0 80px;background:linear-gradient(180deg,#fbf8f5 0%,#ffffff 100%);position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 20% 20%,rgba(181,107,74,.08),transparent 40%),radial-gradient(circle at 80% 60%,rgba(138,90,58,.06),transparent 40%);pointer-events:none}
-.hero-inner{position:relative;max-width:900px}
-.hero h1{font-family:var(--font-display);font-size:clamp(2.6rem,6vw,4.6rem);line-height:1.05;color:var(--ink);font-weight:400;margin:14px 0 24px;letter-spacing:-.02em}
-.hero h1 em{font-style:italic;color:var(--coral)}
-.hero-lead{font-size:1.15rem;color:var(--ink-mid);max-width:720px;margin-bottom:36px}
-.hero-tags{display:flex;flex-wrap:wrap;gap:10px}
-.hero-tag{font-family:var(--font-mono);font-size:.75rem;padding:8px 14px;border:1px solid var(--blush);border-radius:var(--r-pill);color:var(--ink-soft);background:#fff}
-
-.metrics{padding:64px 0;background:var(--ink);color:var(--cream)}
-.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-.metric{padding:24px;border-left:1px solid rgba(255,255,255,.08)}
-.metric:first-child{border-left:none}
-.metric-num{font-family:var(--font-display);font-size:clamp(2.4rem,4.6vw,3.6rem);line-height:1;color:var(--cream);font-weight:400}
-.metric-num .u{color:var(--coral);font-size:.55em;margin-left:6px}
-.metric-lbl{font-family:var(--font-mono);font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:12px}
-@media(max-width:820px){.metrics-grid{grid-template-columns:repeat(2,1fr)}.metric{border-left:none;border-top:1px solid rgba(255,255,255,.08);padding-top:24px}.metric:nth-child(-n+2){border-top:none}}
-
-.case{padding:110px 0;border-bottom:1px solid var(--blush)}
-.case.dark{background:var(--ink);color:var(--cream);border-bottom:none}
-.case.dark .section-label{color:#e0a07a}
-.case.dark .section-label::before{background:#e0a07a}
-.case-head{max-width:820px;margin-bottom:56px}
-.case-client{font-family:var(--font-mono);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--ink-mid);margin-bottom:14px}
-.case.dark .case-client{color:rgba(255,255,255,.55)}
-.case-title{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);line-height:1.1;color:var(--ink);font-weight:400;margin-bottom:20px;letter-spacing:-.01em}
-.case.dark .case-title{color:var(--cream)}
-.case-desc{font-size:1.05rem;color:var(--ink-mid);max-width:660px}
-.case.dark .case-desc{color:rgba(255,255,255,.7)}
-
-.case-body{display:grid;grid-template-columns:1.4fr 1fr;gap:56px;align-items:start}
-@media(max-width:900px){.case-body{grid-template-columns:1fr;gap:36px}}
-
-.chart-card{background:#fff;border:1px solid var(--blush);border-radius:var(--r-md);padding:28px;box-shadow:var(--shadow-2)}
-.case.dark .chart-card{background:#141414;border-color:rgba(255,255,255,.06)}
-.chart-card h4{font-family:var(--font-display);font-size:1.25rem;color:var(--ink);font-weight:400;margin-bottom:6px}
-.case.dark .chart-card h4{color:var(--cream)}
-.chart-card .sub{font-family:var(--font-mono);font-size:.72rem;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink-mid);margin-bottom:20px}
-.chart-wrap{position:relative;height:340px}
-
-.case-side h5{font-family:var(--font-mono);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--coral);margin-bottom:14px}
-.case-side ul{list-style:none;margin-bottom:28px}
-.case-side ul li{padding:10px 0;border-bottom:1px solid var(--blush);font-size:.95rem;color:var(--ink-soft);position:relative;padding-left:22px}
-.case.dark .case-side ul li{border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.75)}
-.case-side ul li::before{content:"→";position:absolute;left:0;color:var(--coral);font-family:var(--font-mono)}
-.stack{display:flex;flex-wrap:wrap;gap:8px}
-.pill{font-family:var(--font-mono);font-size:.72rem;padding:6px 12px;border:1px solid var(--blush);border-radius:var(--r-pill);color:var(--ink-soft);background:#fff}
-.case.dark .pill{background:transparent;border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.8)}
-
-/* wins table */
-.wins-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:.92rem}
-.wins-table th,.wins-table td{padding:16px 14px;text-align:left;border-bottom:1px solid var(--blush)}
-.wins-table th{font-family:var(--font-mono);font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-mid);font-weight:600}
-.wins-table td.kw{font-family:var(--font-display);font-size:1.05rem;color:var(--ink)}
-.wins-table td.client{font-family:var(--font-mono);font-size:.75rem;color:var(--ink-mid);letter-spacing:1px}
-.wins-table td.pos{font-family:var(--font-display);color:var(--coral);font-weight:400;font-size:1.05rem}
-.wins-table td.days{font-family:var(--font-mono);font-size:.85rem;color:var(--ink-soft)}
-.wins-table tr:hover td{background:var(--cream-warm)}
-@media(max-width:720px){.wins-table th:nth-child(3),.wins-table td:nth-child(3){display:none}}
-
-/* systems */
-.systems{padding:110px 0;background:var(--cream-warm)}
-.sys-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
-@media(max-width:900px){.sys-grid{grid-template-columns:1fr}}
-.sys-card{background:#fff;border-radius:var(--r-md);padding:32px;border:1px solid var(--blush);transition:transform .3s var(--ease-out),box-shadow .3s var(--ease-out)}
-.sys-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-3)}
-.sys-num{font-family:var(--font-mono);font-size:.75rem;color:var(--coral);letter-spacing:2px;margin-bottom:14px}
-.sys-card h4{font-family:var(--font-display);font-size:1.4rem;color:var(--ink);font-weight:400;margin-bottom:10px}
-.sys-card p{font-size:.95rem;color:var(--ink-mid)}
-
-/* method note */
-.method{padding:60px 0;background:var(--cream)}
-.method-card{max-width:820px;margin:0 auto;padding:32px 36px;border:1px dashed var(--blush);border-radius:var(--r-md);text-align:center}
-.method-card h5{font-family:var(--font-mono);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--coral);margin-bottom:12px}
-.method-card p{font-family:var(--font-mono);font-size:.85rem;color:var(--ink-mid);line-height:1.7}
-
-.back{padding:80px 0;text-align:center;background:var(--cream)}
-.back a{display:inline-flex;align-items:center;gap:12px;font-family:var(--font-mono);font-size:.9rem;color:var(--coral);padding:16px 32px;border:1px solid var(--coral);border-radius:var(--r-pill);transition:all .2s}
-.back a:hover{background:var(--coral);color:#fff}
-
-footer{padding:40px 0;text-align:center;font-family:var(--font-mono);font-size:.75rem;color:var(--ink-mid);border-top:1px solid var(--blush)}
-
-.section-title{font-family:var(--font-display);font-size:clamp(2rem,4vw,2.8rem);line-height:1.1;color:var(--ink);font-weight:400;margin-bottom:16px;letter-spacing:-.01em}
-
-@media(max-width:720px){
-  .nav-links{display:none}
-  .hero{padding:130px 0 60px}
-  .case{padding:80px 0}
-}
-
-/* ============================================================
-   POLISH — matches homepage feel
-   ============================================================ */
-.hero::after {
-  content:'';
-  position:absolute;
-  top:-30%;right:-15%;
-  width:55%;height:130%;
-  background:radial-gradient(circle,rgba(255,107,26,.08) 0%,transparent 60%);
-  animation:results-aura 22s ease-in-out infinite;
-  pointer-events:none;
-}
-@keyframes results-aura {
-  0%,100% { transform:translate(0,0) scale(1); }
-  50% { transform:translate(4%,-3%) scale(1.06); }
-}
-
-/* Nav link underline sweep */
-.nav-links a {
-  position:relative;padding:4px 0;
-}
-.nav-links a::after {
-  content:'';position:absolute;left:0;bottom:0;
-  width:100%;height:1px;background:var(--coral);
-  transform:scaleX(0);transform-origin:right;
-  transition:transform .4s cubic-bezier(.22,1,.36,1);
-}
-.nav-links a:hover::after { transform:scaleX(1);transform-origin:left; }
-
-/* Metric numbers pop as they enter */
-.metric-num { display:inline-block; transition:transform .35s cubic-bezier(.34,1.56,.64,1); }
-.metric:hover .metric-num { transform:scale(1.05); }
-
-/* Chart card lift */
-.chart-card { transition:transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s ease; }
-.chart-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-3); }
-
-/* Hero tag hover */
-.hero-tag { transition:transform .3s cubic-bezier(.34,1.56,.64,1), border-color .3s ease, color .3s ease; }
-.hero-tag:hover { transform:translateY(-2px); border-color:var(--coral); color:var(--coral); }
-
-/* Back link polish */
-.back a { transition:all .3s cubic-bezier(.22,1,.36,1); }
-.back a:hover { transform:translateY(-3px); box-shadow:0 12px 30px rgba(255,107,26,.28); }
-
-/* Systems card icons */
-.sys-card { transition:transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s ease, border-color .3s ease; }
-.sys-card:hover { border-color:var(--coral); }
-.sys-num { transition:letter-spacing .3s ease; }
-.sys-card:hover .sys-num { letter-spacing:4px; }
-
-@media (prefers-reduced-motion: reduce) {
-  .hero::after { animation:none !important; }
-  * { transition-duration:.01ms !important; }
-}
-
-/* ============================================================
-   TYPE SYSTEM — three fonts, fixed roles
-   Instrument Serif -> headings + big numbers
-   Geist Mono -> small eyebrow labels only
-   Geist -> body and everything else
-   ============================================================ */
-h1, h2, h3, h4,
-.section-title, .work-hub-title, .case-metric-value,
-.metric-value, .stat-number {
-    font-family: var(--font-display) !important;
-    font-style: normal !important;
-}
-.section-label, .work-hub-tag, .case-tag, .case-block-label, .timeline-date {
-    font-family: var(--font-mono) !important;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    font-weight: 500 !important;
-}
-body, p, li, span, a, small, strong, em, label,
-button, input, textarea, select,
-.work-hero-lead, .work-hub-desc, .work-link-desc,
-.case-stack span, .timeline-company, .testimonial-text,
-.nav-links a, .nav-logo, .footer-text, .tool-pill, .skill-tag {
-    font-family: var(--font-body) !important;
-}
-h1 span, h2 span, h3 span, .section-title span { font-family: var(--font-display) !important; }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
 
-<nav class="nav">
+<!-- NAV -->
+<nav class="nav" id="nav">
   <div class="container nav-inner">
-    <a href="index.html" class="nav-logo">K<span>.</span>Pearl</a>
-    <ul class="nav-links">
+    <a href="index.html" class="nav-logo"><span class="nav-mark">KP</span>Karen Pearl Ong</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#builds">Builds</a></li>
       <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#chapters">Chapters</a></li>
-      <li><a href="index.html#values">Values</a></li>
-      <li><a href="index.html#highlights">Results</a></li>
       <li><a href="work.html">Work</a></li>
-      <li><a href="index.html#contact">Connect</a></li>
+      <li><a href="#systems">Systems</a></li>
+      <li class="nav-cta"><a href="index.html#contact">Get in touch</a></li>
     </ul>
-    <a href="work.html" class="nav-back">← Back to Work</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
-<section class="hero">
+<!-- HERO -->
+<header class="hero sub-hero">
   <div class="container">
-    <div class="hero-inner reveal">
-      <div class="section-label">Case Studies</div>
-      <h1>250 blogs posted. 119 ranked in <em>two weeks</em>.</h1>
-      <p class="hero-lead">From April to July 2026 I posted 250 blogs tied to keywords. 119 hit the top pages within two weeks, 104 of those inside one week, and half the fast wins landed the same day. This is the content work I ran for nine clients.</p>
-      <div class="hero-tags">
-        <span class="hero-tag">AEO</span>
-        <span class="hero-tag">GEO</span>
-        <span class="hero-tag">Campaign Ops</span>
-        <span class="hero-tag">Content Systems</span>
-        <span class="hero-tag">Multi-Client</span>
-      </div>
+    <a href="work.html" class="backlink">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+      Back to work
+    </a>
+    <span class="eyebrow">Case studies</span>
+    <h1>250 blogs posted. 119 ranked in <em>two weeks</em>.</h1>
+    <p class="hero-desc">From April to July 2026 I posted 250 blogs tied to target keywords. 119 hit the top pages within two weeks, 104 of those inside one week, and half the fast wins landed the same day. This is the content work I ran for nine clients.</p>
+    <div class="chips" style="margin-top:24px">
+      <span class="chip">AEO</span>
+      <span class="chip">GEO</span>
+      <span class="chip">Campaign ops</span>
+      <span class="chip">Content systems</span>
+      <span class="chip">Multi-client</span>
+    </div>
+
+    <div class="metrics">
+      <div class="metric reveal"><b><span data-count="250">0</span><i class="metric-u">kw</i></b><span>Keywords posted</span></div>
+      <div class="metric reveal d1"><b><span data-count="119">0</span><i class="metric-u">/2wk</i></b><span>Ranked in 2 weeks</span></div>
+      <div class="metric reveal d2"><b><span data-count="61">0</span><i class="metric-u">%</i></b><span>Win rate</span></div>
+      <div class="metric reveal d3"><b><span data-count="1">0</span><i class="metric-u">day</i></b><span>Median time to rank</span></div>
     </div>
   </div>
-</section>
+</header>
 
-<section class="metrics">
-  <div class="container">
-    <div class="metrics-grid">
-      <div class="metric reveal"><div class="metric-num"><span data-count="250">0</span><span class="u">kw</span></div><div class="metric-lbl">Keywords posted</div></div>
-      <div class="metric reveal reveal-d1"><div class="metric-num"><span data-count="119">0</span><span class="u">/2wk</span></div><div class="metric-lbl">Ranked in 2 weeks</div></div>
-      <div class="metric reveal reveal-d2"><div class="metric-num"><span data-count="61">0</span><span class="u">%</span></div><div class="metric-lbl">Win rate</div></div>
-      <div class="metric reveal reveal-d3"><div class="metric-num"><span data-count="1">0</span><span class="u">day</span></div><div class="metric-lbl">Median time to rank</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- CASE 1: Speed to rank -->
-<section class="case">
+<!-- CASE 01 -->
+<section class="band-tight">
   <div class="container">
     <div class="case-head reveal">
-      <div class="section-label">Case Study 01</div>
-      <div class="case-client">Campaign · 250 publishes · Apr–Jul 2026</div>
-      <h2 class="case-title">Fast wins: 104 posts hit the top in one week.</h2>
-      <p class="case-desc">Most wins came fast. Of the 119 posts that ranked in two weeks, 87% did it in seven days or less. The chart below shows every winner grouped by how fast it hit.</p>
+      <span class="eyebrow">Case study 01</span>
+      <p class="case-meta">Campaign · 250 publishes · Apr–Jul 2026</p>
+      <h2 class="h-sec">Fast wins: 104 posts hit the top in one week.</h2>
+      <p class="lede">Most wins came fast. Of the 119 posts that ranked in two weeks, 87% did it in seven days or less. The chart shows every winner grouped by how fast it hit.</p>
     </div>
     <div class="case-body">
       <div class="chart-card reveal">
         <h4>Days to rank (winning posts only)</h4>
-        <p class="sub">n = 119 posts · Apr–Jul 2026</p>
+        <p class="chart-sub">n = 119 posts · Apr–Jul 2026</p>
         <div class="chart-wrap"><canvas id="ttrChart"></canvas></div>
       </div>
-      <div class="case-side reveal reveal-d1">
+      <div class="case-side reveal d1">
         <h5>What I did</h5>
         <ul>
           <li>Owned the whole plan from start to end</li>
@@ -295,123 +85,116 @@ h1 span, h2 span, h3 span, .section-title span { font-family: var(--font-display
           <li>Cut losers early, doubled down on winners</li>
         </ul>
         <h5>Stack</h5>
-        <div class="stack">
-          <span class="pill">AEO</span>
-          <span class="pill">GEO</span>
-          <span class="pill">GSC</span>
-          <span class="pill">Win-rate tooling</span>
-          <span class="pill">Multi-CMS</span>
+        <div class="chips">
+          <span class="chip">AEO</span><span class="chip">GEO</span><span class="chip">GSC</span>
+          <span class="chip">Win-rate tooling</span><span class="chip">Multi-CMS</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CASE 2: Wins by client -->
-<section class="case dark">
+<!-- CASE 02 (dark) -->
+<section class="band-tight">
   <div class="container">
-    <div class="case-head reveal">
-      <div class="section-label">Case Study 02</div>
-      <div class="case-client">Portfolio · 9 anonymized clients</div>
-      <h2 class="case-title">Wins spread across clients, not just one lucky account.</h2>
-      <p class="case-desc">The playbook worked across niches. An AI hosting startup led with 30 wins, but home services, VA, and energy clients all hit double digits too. No single account was carrying the numbers.</p>
-    </div>
-    <div class="case-body">
-      <div class="chart-card reveal">
-        <h4>Winning posts by client</h4>
-        <p class="sub">n = 99 mapped wins · nine anonymized clients + others</p>
-        <div class="chart-wrap"><canvas id="clientChart"></canvas></div>
-      </div>
-      <div class="case-side reveal reveal-d1">
-        <h5>What I did</h5>
-        <ul>
-          <li>Used the same brief and AEO setup across clients</li>
-          <li>Shifted tone to match each brand</li>
-          <li>Kept CMS and schema patterns the same</li>
-          <li>Sent weekly win-rate reports across clients</li>
-          <li>Locked in what worked so wins kept coming</li>
-        </ul>
-        <h5>Stack</h5>
-        <div class="stack">
-          <span class="pill">Campaign Ops</span>
-          <span class="pill">Editorial Systems</span>
-          <span class="pill">Reporting</span>
-          <span class="pill">Client Comms</span>
+    <div class="dark-band">
+      <div class="container">
+        <div class="case-head reveal">
+          <span class="eyebrow on-dark">Case study 02</span>
+          <p class="case-meta on-dark">Portfolio · 9 anonymized clients</p>
+          <h2 class="h-sec" style="color:#fff">Wins spread across clients, not one lucky account.</h2>
+          <p class="lede" style="color:var(--dark-text-2)">The playbook worked across niches. An AI hosting startup led with 30 wins, but home services, VA and energy clients all hit double digits. No single account was carrying the numbers.</p>
+        </div>
+        <div class="case-body">
+          <div class="chart-card on-dark reveal">
+            <h4>Winning posts by client</h4>
+            <p class="chart-sub">n = 99 mapped wins · nine anonymized clients plus others</p>
+            <div class="chart-wrap"><canvas id="clientChart"></canvas></div>
+          </div>
+          <div class="case-side on-dark reveal d1">
+            <h5>What I did</h5>
+            <ul>
+              <li>Used the same brief and AEO setup across clients</li>
+              <li>Shifted tone to match each brand</li>
+              <li>Kept CMS and schema patterns the same</li>
+              <li>Sent weekly win-rate reports across clients</li>
+              <li>Locked in what worked so wins kept coming</li>
+            </ul>
+            <h5>Stack</h5>
+            <div class="chips">
+              <span class="chip">Campaign ops</span><span class="chip">Editorial systems</span>
+              <span class="chip">Reporting</span><span class="chip">Client comms</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CASE 3: Featured wins table -->
-<section class="case">
+<!-- CASE 03 -->
+<section class="band-tight">
   <div class="container">
     <div class="case-head reveal">
-      <div class="section-label">Case Study 03</div>
-      <div class="case-client">Featured wins · 10 highlight posts</div>
-      <h2 class="case-title">A closer look at ten posts that landed at the top.</h2>
-      <p class="case-desc">Compare posts, "best of" lists, alternative searches, and a few surprise local wins. All hit #1 or the top three within two days.</p>
+      <span class="eyebrow">Case study 03</span>
+      <p class="case-meta">Featured wins · 10 highlight posts</p>
+      <h2 class="h-sec">A closer look at ten posts that landed at the top.</h2>
+      <p class="lede">Comparison posts, "best of" lists, alternative searches and a few surprise local wins. All hit #1 or the top three within two days.</p>
     </div>
-
-    <div class="case-body" style="grid-template-columns:1fr;gap:24px">
-      <div class="chart-card reveal" style="padding:8px 24px 24px">
-        <table class="wins-table">
-          <thead>
-            <tr>
-              <th>Keyword</th>
-              <th>Position</th>
-              <th>Client</th>
-              <th>Days to rank</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td class="kw">"mac mini switch"</td><td class="pos">#1</td><td class="client">Client 1</td><td class="days">0</td></tr>
-            <tr><td class="kw">"screen AI-fluent VA"</td><td class="pos">#1</td><td class="client">Client 2</td><td class="days">0</td></tr>
-            <tr><td class="kw">"best AI agent hosting under $5"</td><td class="pos">#1</td><td class="client">Client 1</td><td class="days">1</td></tr>
-            <tr><td class="kw">"Claude Cowork alternative"</td><td class="pos">#2</td><td class="client">Client 1</td><td class="days">1</td></tr>
-            <tr><td class="kw">"Upwork / Prialto alternatives"</td><td class="pos">#2–#3</td><td class="client">Client 2</td><td class="days">1</td></tr>
-            <tr><td class="kw">"R&D tax advisor / charging too much"</td><td class="pos">#2–#3</td><td class="client">Client 3</td><td class="days">1</td></tr>
-            <tr><td class="kw">"best POS for small business"</td><td class="pos">#2</td><td class="client">Client 4</td><td class="days">1</td></tr>
-            <tr><td class="kw">city "best energy broker" cluster</td><td class="pos">#1</td><td class="client">Client 6</td><td class="days">1</td></tr>
-            <tr><td class="kw">"worth it / vs competitor"</td><td class="pos">#1</td><td class="client">Client 7</td><td class="days">1</td></tr>
-            <tr><td class="kw">"cognitive support"</td><td class="pos">#1</td><td class="client">Client 5</td><td class="days">2</td></tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="table-card reveal">
+      <table class="wins-table">
+        <thead>
+          <tr><th>Keyword</th><th>Position</th><th>Client</th><th>Days to rank</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="kw">"mac mini switch"</td><td class="pos">#1</td><td>Client 1</td><td class="days">0</td></tr>
+          <tr><td class="kw">"screen AI-fluent VA"</td><td class="pos">#1</td><td>Client 2</td><td class="days">0</td></tr>
+          <tr><td class="kw">"best AI agent hosting under $5"</td><td class="pos">#1</td><td>Client 1</td><td class="days">1</td></tr>
+          <tr><td class="kw">"Claude Cowork alternative"</td><td class="pos">#2</td><td>Client 1</td><td class="days">1</td></tr>
+          <tr><td class="kw">"Upwork / Prialto alternatives"</td><td class="pos">#2–#3</td><td>Client 2</td><td class="days">1</td></tr>
+          <tr><td class="kw">"R&amp;D tax advisor / charging too much"</td><td class="pos">#2–#3</td><td>Client 3</td><td class="days">1</td></tr>
+          <tr><td class="kw">"best POS for small business"</td><td class="pos">#2</td><td>Client 4</td><td class="days">1</td></tr>
+          <tr><td class="kw">city "best energy broker" cluster</td><td class="pos">#1</td><td>Client 6</td><td class="days">1</td></tr>
+          <tr><td class="kw">"worth it / vs competitor"</td><td class="pos">#1</td><td>Client 7</td><td class="days">1</td></tr>
+          <tr><td class="kw">"cognitive support"</td><td class="pos">#1</td><td>Client 5</td><td class="days">2</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
 
-<!-- CASE 4: Win rate donut -->
-<section class="case dark">
+<!-- CASE 04 (dark) -->
+<section class="band-tight">
   <div class="container">
-    <div class="case-head reveal">
-      <div class="section-label">Case Study 04</div>
-      <div class="case-client">Rollup · 250 publishes</div>
-      <h2 class="case-title">61% of posts hit the win mark.</h2>
-      <p class="case-desc">A win = a post that ranked in the two-week check at a spot that got clicks or citations. Not every post had to win. The setup just had to make winning normal, not luck.</p>
-    </div>
-    <div class="case-body">
-      <div class="chart-card reveal">
-        <h4>Campaign win rate</h4>
-        <p class="sub">n = 250 keyword-linked publishes</p>
-        <div class="chart-wrap"><canvas id="winrateChart"></canvas></div>
-      </div>
-      <div class="case-side reveal reveal-d1">
-        <h5>What made it repeat</h5>
-        <ul>
-          <li>Every post tied to a scored keyword</li>
-          <li>Briefs made for AI Overviews and top page spots</li>
-          <li>The two-week check was the source of truth</li>
-          <li>Losses fed into the next round of briefs</li>
-          <li>Nothing shipped without a way to measure it</li>
-        </ul>
-        <h5>Stack</h5>
-        <div class="stack">
-          <span class="pill">Campaign Analytics</span>
-          <span class="pill">Editorial QA</span>
-          <span class="pill">Loss Retros</span>
-          <span class="pill">Standardization</span>
+    <div class="dark-band">
+      <div class="container">
+        <div class="case-head reveal">
+          <span class="eyebrow on-dark">Case study 04</span>
+          <p class="case-meta on-dark">Rollup · 250 publishes</p>
+          <h2 class="h-sec" style="color:#fff">61% of posts hit the win mark.</h2>
+          <p class="lede" style="color:var(--dark-text-2)">A win is a post that ranked in the two-week check at a spot that got clicks or citations. Not every post had to win. The setup just had to make winning normal instead of lucky.</p>
+        </div>
+        <div class="case-body">
+          <div class="chart-card on-dark reveal">
+            <h4>Campaign win rate</h4>
+            <p class="chart-sub">n = 250 keyword-linked publishes</p>
+            <div class="chart-wrap"><canvas id="winrateChart"></canvas></div>
+          </div>
+          <div class="case-side on-dark reveal d1">
+            <h5>What made it repeat</h5>
+            <ul>
+              <li>Every post tied to a scored keyword</li>
+              <li>Briefs made for AI Overviews and top page spots</li>
+              <li>The two-week check was the source of truth</li>
+              <li>Losses fed into the next round of briefs</li>
+              <li>Nothing shipped without a way to measure it</li>
+            </ul>
+            <h5>Stack</h5>
+            <div class="chips">
+              <span class="chip">Campaign analytics</span><span class="chip">Editorial QA</span>
+              <span class="chip">Loss retros</span><span class="chip">Standardization</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -419,26 +202,21 @@ h1 span, h2 span, h3 span, .section-title span { font-family: var(--font-display
 </section>
 
 <!-- SYSTEMS -->
-<section class="systems">
+<section class="band" id="systems">
   <div class="container">
-    <div class="reveal" style="max-width:720px">
-      <div class="section-label">Systems Behind the Numbers</div>
-      <h2 class="section-title">The setup, not just the result.</h2>
-      <p class="case-desc">Wins repeat when the setup holds. Here's what I built alongside the campaign so the results didn't depend on me being awake.</p>
+    <div class="reveal" style="max-width:62ch">
+      <span class="eyebrow">Systems behind the numbers</span>
+      <h2 class="h-sec">The setup, not just the result.</h2>
+      <p class="lede" style="margin-top:14px">Wins repeat when the setup holds. Here's what I built alongside the campaign so the results didn't depend on me being awake.</p>
     </div>
     <div class="sys-grid">
-      <div class="sys-card reveal"><div class="sys-num">01</div><h4>Campaign Win Rate</h4><p>A tool I built to score each content push on rank, clicks and citations. It told me what to kill and what to double down on.</p></div>
-      <div class="sys-card reveal reveal-d1"><div class="sys-num">02</div><h4>Operator Guides</h4><p>Step-by-step guides for blog QA, briefs and publishing so new hires got up to speed in days, not weeks.</p></div>
-      <div class="sys-card reveal reveal-d2"><div class="sys-num">03</div><h4>AEO/GEO Playbook</h4><p>Layouts for quick answers, compare tables, and FAQs tuned to how AI Overviews actually pick pages to cite.</p></div>
-      <div class="sys-card reveal"><div class="sys-num">04</div><h4>Publish Checklists</h4><p>Checklists for Webflow, Notion, and Framer so nothing ships with a broken schema, missing meta, or wrong canonical.</p></div>
-      <div class="sys-card reveal reveal-d1"><div class="sys-num">05</div><h4>Client Reports</h4><p>Simple weekly reports mixing GSC and win rate. Shows real progress, not vanity numbers.</p></div>
-      <div class="sys-card reveal reveal-d2"><div class="sys-num">06</div><h4>AI Workflows</h4><p>Cursor and Claude flows that speed up briefs, audits, and outlines without losing the editorial touch.</p></div>
+      <div class="sys reveal"><div class="sys-num">01</div><h3>Campaign win rate</h3><p>A tool I built to score each content push on rank, clicks and citations. It told me what to kill and what to double down on.</p></div>
+      <div class="sys reveal d1"><div class="sys-num">02</div><h3>Operator guides</h3><p>Step-by-step guides for blog QA, briefs and publishing, so new hires got up to speed in days instead of weeks.</p></div>
+      <div class="sys reveal d2"><div class="sys-num">03</div><h3>AEO/GEO playbook</h3><p>Layouts for quick answers, comparison tables and FAQs, tuned to how AI Overviews actually pick pages to cite.</p></div>
+      <div class="sys reveal"><div class="sys-num">04</div><h3>Publish checklists</h3><p>Checklists for Webflow, Notion and Framer so nothing ships with broken schema, missing meta or a wrong canonical.</p></div>
+      <div class="sys reveal d1"><div class="sys-num">05</div><h3>Client reports</h3><p>Simple weekly reports mixing Search Console and win rate. Real progress, not vanity numbers.</p></div>
+      <div class="sys reveal d2"><div class="sys-num">06</div><h3>AI workflows</h3><p>Cursor and Claude flows that speed up briefs, audits and outlines without losing the editorial touch.</p></div>
     </div>
-  </div>
-</section>
-
-<section class="method">
-  <div class="container">
     <div class="method-card reveal">
       <h5>How it works</h5>
       <p>Days to win = the first check that flagged the post as a win, minus the day it was posted. Client names are hidden. Counts show mapped wins per client (top nine plus others).</p>
@@ -446,104 +224,32 @@ h1 span, h2 span, h3 span, .section-title span { font-family: var(--font-display
   </div>
 </section>
 
-<section class="back">
+<!-- CTA -->
+<section class="band-tight">
   <div class="container">
-    <a href="work.html">← Back to Work</a>
+    <div class="cta-band reveal">
+      <div>
+        <h2 class="h-sec" style="color:#fff">Want numbers like these?</h2>
+        <p class="lede" style="margin-top:10px;color:var(--dark-text-2);max-width:46ch">Tell me what you're publishing and where it's stalling, and I'll let you know if I can help.</p>
+      </div>
+      <a href="index.html#contact" class="btn btn-primary">Get in touch</a>
+    </div>
   </div>
 </section>
 
-<footer>© 2026 Karen Pearl Ong · Case Studies</footer>
+<footer class="footer">
+  <div class="container footer-inner">
+    <p>© 2026 Karen Pearl Ong</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="work.html">Work</a>
+      <a href="mailto:kpearl099@gmail.com">kpearl099@gmail.com</a>
+    </nav>
+  </div>
+</footer>
 
-<script>
-if('IntersectionObserver' in window){document.documentElement.classList.add('js-reveal')}
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-// Counter animation for metrics
-const easeOutQuart=t=>1-Math.pow(1-t,4);
-const animateCount=el=>{
-  const target=parseFloat(el.dataset.count);
-  const dur=1600;const start=performance.now();
-  const step=now=>{
-    const p=Math.min((now-start)/dur,1);
-    el.textContent=Math.round(target*easeOutQuart(p));
-    if(p<1)requestAnimationFrame(step);
-  };
-  requestAnimationFrame(step);
-};
-const countIO=new IntersectionObserver(es=>es.forEach(e=>{
-  if(e.isIntersecting && !e.target.dataset.counted){
-    e.target.dataset.counted='1';
-    animateCount(e.target);
-  }
-}),{threshold:.5});
-document.querySelectorAll('[data-count]').forEach(el=>countIO.observe(el));
-
-Chart.defaults.font.family="'Geist', system-ui, sans-serif";
-Chart.defaults.font.size=12;
-Chart.defaults.color='#5a5a55';
-
-const CORAL='#ff6b1a';
-const CORAL_SOFT='rgba(255,107,26,.18)';
-const NEUTRAL='#ece8f2';
-
-// Case 1: Time-to-rank distribution (winning posts only, n=119)
-// Buckets sum to 119, with median at 1 day and 104 within week 1
-new Chart(document.getElementById('ttrChart'),{
-  type:'bar',
-  data:{labels:['0 days','1 day','2 days','3 days','4–7 days','8–14 days'],
-    datasets:[{label:'Winning posts',
-      data:[18,52,18,9,7,15],
-      backgroundColor:CORAL,borderRadius:6,barPercentage:.72}]},
-  options:{
-    responsive:true,maintainAspectRatio:false,
-    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.parsed.y} posts`}}},
-    scales:{
-      y:{beginAtZero:true,grid:{color:'rgba(0,0,0,.05)'},ticks:{stepSize:10}},
-      x:{grid:{display:false}}
-    },
-    animation:{duration:1400,easing:'easeOutQuart'}
-  }
-});
-
-// Case 2: Wins by client (horizontal bar)
-new Chart(document.getElementById('clientChart'),{
-  type:'bar',
-  data:{
-    labels:['Client 1','Client 8','Client 2','Client 6','Client 3','Client 4','Client 9','Client 5','Others'],
-    datasets:[{label:'Winning posts',
-      data:[30,18,14,14,7,6,5,5,20],
-      backgroundColor:['#ff6b1a','#ff6b1a','#ff6b1a','#ff6b1a','#ff8c42','#ff8c42','#ff8c42','#ff8c42','#c8b8a8'],
-      borderRadius:6,barPercentage:.72}]
-  },
-  options:{
-    indexAxis:'y',
-    responsive:true,maintainAspectRatio:false,
-    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.parsed.x} wins`}}},
-    scales:{
-      x:{beginAtZero:true,grid:{color:'rgba(255,255,255,.06)'},ticks:{color:'rgba(255,255,255,.65)'}},
-      y:{grid:{display:false},ticks:{color:'rgba(255,255,255,.85)',font:{size:12}}}
-    },
-    animation:{duration:1400,easing:'easeOutQuart'}
-  }
-});
-
-// Case 4: Win rate donut
-new Chart(document.getElementById('winrateChart'),{
-  type:'doughnut',
-  data:{
-    labels:['Winning posts (61%)','Non-winning (39%)'],
-    datasets:[{data:[153,97],backgroundColor:[CORAL,'#3a3a3a'],borderWidth:0,cutout:'70%'}]
-  },
-  options:{
-    responsive:true,maintainAspectRatio:false,
-    plugins:{
-      legend:{position:'bottom',labels:{padding:16,boxWidth:12,boxHeight:12,color:'rgba(255,255,255,.75)'}},
-      tooltip:{callbacks:{label:c=>`${c.parsed} of 250 posts`}}
-    },
-    animation:{animateRotate:true,duration:1400,easing:'easeOutQuart'}
-  }
-});
-</script>
+<script src="site.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+<script src="charts.js" defer></script>
 </body>
 </html>
