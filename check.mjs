@@ -212,6 +212,43 @@ for (const file of PAGES) {
       ok(shots === 10, `${tag}: expected 10 SEO screenshots, got ${shots}`);
       const tools = await page.evaluate(() => document.querySelectorAll('.tool').length);
       ok(tools === 4, `${tag}: expected 4 tool cards, got ${tools}`);
+
+      // Vision case study
+      const vision = await page.evaluate(() => {
+        const sec = document.getElementById('vision');
+        if (!sec) return null;
+        const num = (sel) => [...sec.querySelectorAll(sel)].map(e => e.textContent.replace(/\s+/g, ' ').trim());
+        const bars = [...sec.querySelectorAll('.bar-fill')].map(b => Math.round(b.getBoundingClientRect().width));
+        const drs = [...sec.querySelectorAll('.dr img')].map(i => ({ src: i.getAttribute('src'), okd: i.naturalWidth > 0, w: Math.round(i.getBoundingClientRect().width) }));
+        return {
+          h: Math.round(sec.getBoundingClientRect().height),
+          metrics: num('.vmetric b'),
+          bas: sec.querySelectorAll('.ba').length,
+          bars, drs,
+          ships: sec.querySelectorAll('.ship li').length,
+          chips: sec.querySelectorAll('.stack-block .chip').length,
+          text: sec.innerText
+        };
+      });
+      ok(vision, `${tag}: #vision section missing`);
+      if (vision) {
+        ok(vision.h > 1200, `${tag}: #vision collapsed (${vision.h}px tall)`);
+        ok(vision.metrics.length === 4, `${tag}: expected 4 headline metrics, got ${vision.metrics.length}`);
+        ok(vision.bas === 4, `${tag}: expected 4 before/after cards, got ${vision.bas}`);
+        ok(vision.bars.length === 6, `${tag}: expected 6 bars, got ${vision.bars.length}`);
+        vision.bars.forEach((w, i) => ok(w >= 4, `${tag}: bar ${i} invisible (${w}px)`));
+        // each pair: the "after" bar must not be wider than its "before" reference
+        ok(vision.bars[0] < vision.bars[1], `${tag}: LinkedIn bars inverted`);
+        ok(vision.bars[3] < vision.bars[2], `${tag}: payload bars inverted`);
+        ok(vision.bars[5] < vision.bars[4], `${tag}: load-time bars inverted`);
+        ok(vision.drs.length === 2, `${tag}: expected 2 DR charts, got ${vision.drs.length}`);
+        vision.drs.forEach(d => ok(d.okd, `${tag}: DR chart failed to load ${d.src}`));
+        vision.drs.forEach(d => ok(d.w > 200, `${tag}: DR chart too small (${d.w}px)`));
+        ok(vision.ships === 6, `${tag}: expected 6 shipped/system bullets, got ${vision.ships}`);
+        ok(vision.chips >= 14, `${tag}: stack chips missing (${vision.chips})`);
+        ['145 KB', '100% full', '$26', '451', 'Calendly', 'Drizzle', 'BullMQ', '304%'].forEach(t =>
+          ok(vision.text.includes(t), `${tag}: Vision content missing "${t}"`));
+      }
       // lightbox: scroll it into the middle, prove nothing is covering it, then click
       const clickable = await page.evaluate(() => {
         const el = document.querySelector('.shot');
