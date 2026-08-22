@@ -422,6 +422,11 @@ for (const file of PAGES) {
         ok(!itxt.includes(t), `${tag}: stale index copy "${t}" is back`));
       // the 250/119 campaign figures may only appear inside the cohort-scoped section
       ok(/250 of those publishes/.test(itxt), `${tag}: the 250 cohort is not scoped as a subset`);
+      // the site must not claim a current role anywhere
+      [/\bI run\b/, /\bI own\b/, /\bNow operations\b/, /works out of/, /opens every morning/]
+        .forEach(re => ok(!re.test(itxt), `${tag}: present-tense employment copy "${re}" is back`));
+      ok(/\bI ran\b/.test(itxt), `${tag}: hero should read in past tense`);
+      ok(/Ran operations at OGTool/.test(itxt), `${tag}: role line should be past tense`);
       // counters must render thousands separators, matching the prose elsewhere
       const stats = await page.evaluate(() => [...document.querySelectorAll('.stat-num')]
         .map(e => e.textContent.trim()));
@@ -472,6 +477,16 @@ for (const file of PAGES) {
       ok(rows === 10, `${tag}: expected 10 table rows, got ${rows}`);
       const sys = await page.evaluate(() => document.querySelectorAll('.sys').length);
       ok(sys === 6, `${tag}: expected 6 systems cards, got ${sys}`);
+    }
+
+    // nothing may imply a current role: past tense across the whole site
+    {
+      const tt = await page.evaluate(() => document.body.innerText);
+      [[/\bI run\b/, 'I run'], [/\bI own\b/, 'I own'], [/\bI manage\b/, 'I manage'],
+       [/\bI lead\b/, 'I lead'], [/\bI oversee\b/, 'I oversee'],
+       [/\bcurrently\b/i, 'currently'], [/\bNow operations\b/, 'Now operations'],
+       [/\bOperations Lead at\b/, 'Operations Lead at']].forEach(([re, label]) =>
+        ok(!re.test(tt), `${tag}: present-tense role copy "${label}" is on the page`));
     }
 
     const noReddit = await page.evaluate(() => {
