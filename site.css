@@ -270,7 +270,8 @@ section{position:relative}
 .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:38px 0 34px}
 .metric{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 22px 24px}
 .metric b{display:block;font-family:var(--mono);font-size:2rem;font-weight:500;color:var(--teal-deep);letter-spacing:-.045em;line-height:1.1}
-.metric span{display:block;font-size:.8125rem;color:var(--ink-4);margin-top:6px}
+.metric > span{display:block;font-size:.8125rem;color:var(--ink-4);margin-top:6px}
+.metric b span{display:inline;font-size:inherit;color:inherit;margin:0}
 
 .wins{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:26px}
 .win-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
