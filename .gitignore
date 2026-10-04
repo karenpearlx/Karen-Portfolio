@@ -1,4 +1,9 @@
 
+node_modules/
+.env
+*.sqlite*
+*.log
+
 # never publish internal client analytics
 assets/*.pdf
 # un-redacted client charts: they show client domains

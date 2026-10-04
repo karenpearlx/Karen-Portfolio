@@ -1,0 +1,28 @@
+{
+  "name": "karen-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Karen's portfolio and private first-party traffic analytics",
+  "scripts": {
+    "start": "NODE_ENV=production node server/index.cjs",
+    "check": "node --check server/index.cjs && node --check server/analytics.cjs && node --check tracking.js",
+    "test": "node --test server/test.cjs"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "better-sqlite3": "^13.0.3",
+    "bowser": "^2.14.1",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^18.0.5",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.7.0",
+    "express-session": "^1.19.0",
+    "express-session-better-sqlite3": "^1.2.1",
+    "geoip-lite": "^2.0.3",
+    "helmet": "^8.3.0",
+    "isbot": "^5.2.2"
+  }
+}
