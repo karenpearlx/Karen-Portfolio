@@ -8,7 +8,7 @@
   const dur = (s) => { s = Math.round(s || 0); if (s < 60) return s + 's'; const m = Math.floor(s / 60); return m < 60 ? m + 'm ' + (s % 60) + 's' : Math.floor(m / 60) + 'h ' + (m % 60) + 'm'; };
   const ago = (iso) => { const d = new Date(iso); if (isNaN(d)) return ''; const s = (Date.now() - d) / 1000;
     if (s < 60) return 'just now'; if (s < 3600) return Math.floor(s / 60) + ' min ago'; if (s < 86400) return Math.floor(s / 3600) + ' h ago';
-    return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) + ', ' + d.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }); };
+    return d.toLocaleString(undefined, { timeZone: 'Asia/Manila', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }); };
 
   async function api(path, opts = {}) {
     const headers = { 'Accept': 'application/json', ...(opts.body ? { 'Content-Type': 'application/json' } : {}), ...(csrf ? { 'X-CSRF-Token': csrf } : {}) };
@@ -31,7 +31,7 @@
     try {
       const r = await api('/api/admin/login', { method: 'POST', body: JSON.stringify({ password: $('pw').value }) });
       if (r.ok && r.data && r.data.authenticated) { csrf = r.data.csrf || ''; $('pw').value = ''; show(true); load(); }
-      else err.textContent = r.status === 429 ? 'Too many attempts. Try again later.' : 'Wrong password.';
+      else err.textContent = (r.data && typeof r.data.error === 'string' && r.data.error) || 'Unable to sign in. Try again later.';
     } catch (_) { err.textContent = 'Network error. Try again.'; }
     btn.disabled = false;
   });
@@ -76,7 +76,7 @@
     if (!series || !series.length || !series.some((d) => d.visitors || d.pageviews)) { box.append(el('p', 'empty', 'No visits in this period yet.')); return; }
     const NS = 'http://www.w3.org/2000/svg', W = 600, H = 180, pb = 20, pt = 8;
     const max = Math.max(...series.map((d) => Math.max(d.visitors || 0, d.pageviews || 0)), 1);
-    const svg = document.createElementNS(NS, 'svg'); svg.setAttribute('viewBox', `0 0 ${W} ${H}`); svg.setAttribute('preserveAspectRatio', 'none');
+    const svg = document.createElementNS(NS, 'svg'); svg.setAttribute('viewBox', `0 0 ${W} ${H}`); 
     svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', 'Daily visitors and pageviews');
     const slot = W / series.length, bw = Math.max(2, Math.min(28, slot * 0.6));
     series.forEach((d, i) => {
@@ -119,6 +119,8 @@
       meta.append(el('span', 'when', ago(v.startedAt)), el('span', 'src', v.source || 'Direct'),
         el('span', null, [v.city, v.country].filter(Boolean).join(', ') || 'Unknown location'),
         el('span', null, [v.device, v.browser].filter(Boolean).join(' · ')), el('span', null, dur(v.seconds)));
+      const camp = [v.utmCampaign, v.utmMedium].filter(Boolean).join(' / ');
+      if (camp) { const c = el('span', 'camp', camp); c.title = [['source', v.utmSource], ['medium', v.utmMedium], ['campaign', v.utmCampaign], ['term', v.utmTerm], ['content', v.utmContent]].filter((x) => x[1]).map((x) => x[0] + ': ' + x[1]).join('\n'); meta.append(c); }
       li.append(meta, el('div', 'path', (v.pages || []).join('  →  ') || '(no pages)'));
       ol.append(li);
     });

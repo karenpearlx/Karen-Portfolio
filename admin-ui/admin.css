@@ -36,7 +36,8 @@ input{font:inherit;font-size:16px;min-height:44px;padding:0 12px;border:1px soli
 .card-h{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px}
 .legend{font-size:12px;color:var(--ink-3);display:flex;align-items:center;gap:6px}
 .sw{display:inline-block;width:10px;height:10px;border-radius:3px}.sw.v{background:var(--teal)}.sw.p{background:#cfe9e1;margin-left:8px}
-.chart svg{width:100%;height:180px;display:block}
+.chart svg{width:100%;height:auto;max-height:240px;display:block}
+.camp{font-family:var(--mono);font-size:11px;padding:0 6px;border-radius:4px;background:#e8f5f0;color:#0b6f57;max-width:22ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .chart text{font-family:var(--mono);font-size:10px;fill:var(--ink-4)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
 .rows{list-style:none;margin:0;padding:0}
