@@ -100,10 +100,14 @@ app.get('/robots.txt',(req,res)=>res.type('text/plain').send('User-agent: *\nDis
 // Explicit allowlist, not express.static(root): source, secrets and git can never be served.
 const publicFiles=new Set(['index.html','work.html','results.html','site.css','site.js','charts.js','lightbox.js']);
 const staticFile=express.static(root,{dotfiles:'deny',index:false,redirect:false});
+const sendPublicPage=(file,res)=>{
+  const html=fs.readFileSync(path.join(root,file),'utf8');
+  res.set('Cache-Control','no-cache').type('html').send(html.replace('</body>','<script src="/tracking.js" defer></script>\n</body>'));
+};
 app.use((req,res,next)=>{
-  if(req.path==='/') {res.set('Cache-Control','no-cache');return res.sendFile(path.join(root,'index.html'));}
+  if(req.path==='/') return sendPublicPage('index.html',res);
   const name=req.path.slice(1);
-  if(publicFiles.has(name)) {if(name.endsWith('.html'))res.set('Cache-Control','no-cache');return staticFile(req,res,next);}
+  if(publicFiles.has(name)) {if(name.endsWith('.html'))return sendPublicPage(name,res);return staticFile(req,res,next);}
   if(/^\/(?:images|shots|assets)\/[a-zA-Z0-9_./-]+\.(?:jpg|jpeg|png|webp|gif|svg|woff2)$/i.test(req.path) && !req.path.includes('..') && !/\/assets\/dr-chart-[12]\.(?!.*redacted)/.test(req.path)) return staticFile(req,res,next);
   res.sendStatus(404);
 });
@@ -113,12 +117,5 @@ const cleanup=()=>{
   analytics.db.prepare('DELETE FROM login_attempts WHERE last<?').run(Date.now()-7*86400000);
 };
 cleanup();setInterval(cleanup,3600000).unref();
-if(process.env.TEST_MODE==='1') {
-  // Local-only cleanup/backup for integration tests, never enabled in production.
-  app.post('/__test/cleanup', (req,res)=>{
-    if(!['127.0.0.1','::1','::ffff:127.0.0.1'].includes(req.socket.remoteAddress))return res.sendStatus(403);
-    analytics.db.prepare('DELETE FROM visits WHERE utm_campaign=?').run(req.body.campaign);res.json({ok:true});
-  });
-}
 const server=app.listen(Number(process.env.PORT||8082),'0.0.0.0',()=>console.log('portfolio analytics listening on '+server.address().port));
 for(const signal of ['SIGTERM','SIGINT'])process.on(signal,()=>server.close(()=>{analytics.db.close();storeDb.close();process.exit(0);}));
