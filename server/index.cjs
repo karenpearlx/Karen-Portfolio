@@ -50,6 +50,9 @@ app.post('/api/track',sameOrigin,rateLimit({windowMs:60000,limit:120,standardHea
 app.use(['/admin','/admin-assets','/api/admin'],(req,res,next)=>{
   res.set({'Cache-Control':'no-store','X-Robots-Tag':'noindex, nofollow, noarchive','Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"});next();
 });
+// The public hosting gateway is HTTPS-only but its final HTTP hop may omit
+// X-Forwarded-Proto. Keep Secure mandatory and declare that trusted TLS edge.
+app.use('/api/admin',(req,res,next)=>{req.headers['x-forwarded-proto']='https';next();});
 app.use('/api/admin',session({name:'portfolio_admin',secret:process.env.SESSION_SECRET,store:new SessionStore(),resave:false,saveUninitialized:false,proxy:true,cookie:{httpOnly:true,secure:true,sameSite:'lax',maxAge:365*86400000,path:'/'}}));
 const authenticated=(req,res,next)=>{
   if(!req.session?.admin || !req.session.expires || Date.now()>req.session.expires) return res.status(401).json({error:'Please sign in.'});next();
@@ -83,8 +86,8 @@ app.post('/api/admin/login',sameOrigin,rateLimit({windowMs:15*60000,limit:10,sta
   } catch(err){next(err);}
 });
 app.post('/api/admin/logout',sameOrigin,authenticated,(req,res,next)=>{
-  const actual=req.get('x-csrf-token')||''; const expected=req.session.csrf||'';
-  if(actual.length!==expected.length || !crypto.timingSafeEqual(Buffer.from(actual),Buffer.from(expected))) return res.status(403).json({error:'Request not allowed.'});
+  const actual=Buffer.from(req.get('x-csrf-token')||''); const expected=Buffer.from(req.session.csrf||'');
+  if(actual.length!==expected.length || !crypto.timingSafeEqual(actual,expected)) return res.status(403).json({error:'Request not allowed.'});
   req.session.destroy(err=>{if(err)return next(err);res.clearCookie('portfolio_admin',{httpOnly:true,secure:true,sameSite:'lax',path:'/'});res.json({ok:true});});
 });
 app.get('/api/admin/stats',authenticated,(req,res)=>{
