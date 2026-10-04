@@ -127,5 +127,30 @@
     $('bots').textContent = d.excludedBots ? `${fmt(d.excludedBots)} bot hits excluded` : '';
   }
 
+  // pull to refresh (touch)
+  (function () {
+    const ind = el('div', 'ptr'); ind.setAttribute('aria-hidden', 'true'); ind.append(el('span', 'ptr-spin'));
+    document.body.append(ind);
+    let y0 = null, dy = 0, busy = false; const T = 70;
+    const appOn = () => !$('app').hidden;
+    addEventListener('touchstart', (e) => { if (!busy && appOn() && scrollY <= 0 && e.touches.length === 1) { y0 = e.touches[0].clientY; dy = 0; } }, { passive: true });
+    addEventListener('touchmove', (e) => {
+      if (y0 === null) return;
+      dy = Math.max(0, e.touches[0].clientY - y0);
+      if (scrollY > 0) { y0 = null; dy = 0; }
+      const d = Math.min(dy * 0.5, T + 20);
+      ind.style.transform = `translate(-50%, ${d - 50}px) rotate(${d * 4}deg)`;
+      ind.classList.toggle('ready', d >= T); ind.classList.toggle('show', d > 4);
+    }, { passive: true });
+    addEventListener('touchend', async () => {
+      if (y0 === null) return; y0 = null;
+      if (Math.min(dy * 0.5, T + 20) >= T) {
+        busy = true; ind.classList.add('spin'); ind.style.transform = 'translate(-50%, 16px)';
+        try { await load(); } finally { busy = false; }
+      }
+      ind.classList.remove('spin', 'ready', 'show'); ind.style.transform = ''; dy = 0;
+    });
+  })();
+
   init().catch(() => show(false));
 })();
