@@ -42,7 +42,7 @@ function openAnalytics(file, salt) {
         const utm = body.utm && typeof body.utm === 'object' ? body.utm : {};
         const source = clean(utm.source) || (host && host !== body.hostname ? host : 'Direct');
         const id=crypto.randomUUID();
-        db.prepare('INSERT INTO visits VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)').run(id,key,now,now,clean(geo.country)||'Unknown',clean(geo.city)||'Unknown',source,clean(referrer,500),clean(utm.source),clean(utm.medium),clean(utm.campaign),clean(utm.term),clean(utm.content),clean(parsed.platform.type)||'Unknown',clean(parsed.browser.name)||'Unknown',clean(body.screen,30),hash(ip));
+        db.prepare('INSERT INTO visits VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)').run(id,key,now,now,clean(geo.country)||'Unknown',clean(geo.city)||'Unknown',source,clean(referrer,500),clean(utm.source),clean(utm.medium),clean(utm.campaign),clean(utm.term),clean(utm.content),clean(parsed.platform.type)||'Unknown',clean(parsed.browser.name)||'Unknown',clean(body.screen,30),hash(ip));
         visit={id};
       }
       db.prepare('INSERT INTO pages(id,visit,path,started,seconds) VALUES (?,?,?,?,0)').run(body.pageId,visit.id,body.path === '/index.html' ? '/' : body.path,now);
